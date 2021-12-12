@@ -1,0 +1,3370 @@
+??pmake function
+?minf
+??minf
+n   <- 20               # sample size#
+sig <- 20               # known sd#
+y   <- rnorm(n, 50, sig)   # 50 is unknown or true mean#
+write.csv(y, "./ClarkLab2NormalData.csv")
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)
+likeVal
+prior
+sig
+inData
+y
+priormu
+tau
+rseq
+prior
+? dnorm
+likeVal
+? diff
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 30     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=50)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=100)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=500)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=150)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=199)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=20)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,20)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesGen.R#
+# inference of mean in normally distributed data#
+# part I: generate the dataset#
+#
+# Paul Flikkema, NAU#
+#
+n   <- 50               # sample size#
+sig <- 20               # known sd#
+y   <- rnorm(n, 50, sig)   # 50 is unknown or true mean#
+write.csv(y, "./ClarkLab2NormalData.csv")
+# NormBayesGen.R#
+# inference of mean in normally distributed data#
+# part I: generate the dataset#
+#
+# Paul Flikkema, NAU#
+#
+#
+#
+n   <- 50               # sample size#
+sig <- 20               # known sd#
+y   <- rnorm(n, 50, sig)   # 50 is unknown or true mean#
+write.csv(y, "/Users/karljarvis/Documents/_NAU/Classes/R/_bayes_hw/ClarkLab2NormalData.csv")
+?hist
+hist(y)
+# NormBayesGen.R#
+# inference of mean in normally distributed data#
+# part I: generate the dataset#
+#
+# Paul Flikkema, NAU#
+#
+#
+#
+n   <- 50               # sample size#
+sig <- 20               # known sd#
+y   <- rnorm(n, 50, sig)   # 50 is unknown or true mean#
+write.csv(y, "/Users/karljarvis/Documents/_NAU/Classes/R/_bayes_hw/ClarkLab2NormalData.csv")#
+hist(y)
+# NormBayesGen.R#
+# inference of mean in normally distributed data#
+# part I: generate the dataset#
+#
+# Paul Flikkema, NAU#
+#
+#
+#
+n   <- 20               # sample size#
+sig <- 20               # known sd#
+y   <- rnorm(n, 50, sig)   # 50 is unknown or true mean#
+write.csv(y, "/Users/karljarvis/Documents/_NAU/Classes/R/_bayes_hw/ClarkLab2NormalData.csv")#
+hist(y)
+x <- seq(1,50,1)
+x
+plot(x,y)
+L <- 1  # Lambda, the value I want to guess#
+x <- seq(1,50,1)#
+y <- L*exp(-L*x)#
+plot(x,y)
+# make and check out the function first#
+#
+L <- 2  # Lambda, the value I want to guess#
+x <- seq(1,50,1)#
+y <- L*exp(-L*x)#
+plot(x,y)
+L <- .5  # Lambda, the value I want to guess#
+x <- seq(1,50,1)#
+y <- L*exp(-L*x)#
+plot(x,y)
+#
+L <- .1  # Lambda, the value I want to guess#
+x <- seq(1,50,1)#
+y <- L*exp(-L*x)#
+plot(x,y)
+#
+L <- .1  # Lambda, the value I want to guess#
+x <- seq(1,100,1)#
+y <- L*exp(-L*x)#
+plot(x,y)
+?seq
+a <- seq(0, 1, length.out=11)
+a
+x <- seq(1,20)
+x
+?uniform
+?uni
+?norm
+?dnorm
+?rnorm
+# NormBayesGen.R#
+# inference of mean in normally distributed data#
+# part I: generate the dataset#
+#
+# Paul Flikkema, NAU#
+#
+#
+#
+n   <- 20               # sample size#
+sig <- 20               # known sd#
+y   <- rnorm(n, 50, sig)   # 50 is unknown or true mean#
+write.csv(y, "/Users/karljarvis/Documents/_NAU/Classes/R/_bayes_hw/ClarkLab2NormalData.csv")#
+#
+hist(y)
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2]) # comes in as a data frame, needs to be a vector#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i], mean=rseq, sd=sig, log=TRUE)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1] #check out diff function#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+?rexp
+n <- 10    # # data points#
+L <- 0.08  # Lambda, the value I want to guess#
+y <- rexp(n,L)#
+#
+hist(y)
+write.csv(y, "/Users/karljarvis/Documents/_NAU/Classes/R/_bayes_hw/ExpData.csv")
+library(rgdal)
+q()
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2])#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i],rseq,sig,log=T)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+# likeVal <- exp()#
+#
+#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(1/(sig^2) + 1/(tau^2)))#
+v    <- y/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+inData <- read.csv(file="./ClarkLab2NormalData.csv")
+inData <- read.csv(file="/Users/karljarvis/Documents/_NAU/Classes/R/Bayes_hw/originals/ClarkLab2NormalData.csv")
+y <- as.vector(inData[,2])
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i],rseq,sig,log=T)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+# likeVal <- exp()#
+#
+#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]
+V    <- 1/(1/(sig^2) + 1/(tau^2)))#
+v    <- y/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))
+V    <- 1/(1/(sig^2) + 1/(tau^2))
+v    <- y/(sig^2) + priormu/(tau^2)
+post <- dnorm(rseq,V*v,sqrt(V))
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+y
+sum(y)
+length(y)
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="/Users/karljarvis/Documents/_NAU/Classes/R/Bayes_hw/originals/ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2])#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i],rseq,sig,log=T)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+# likeVal <- exp()#
+#
+#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(1/(sig^2) + 1/(tau^2))#
+v    <- y/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="./ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2])#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i],rseq,sig,log=T)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="/Users/karljarvis/Documents/_NAU/Classes/R/Bayes_hw/originals/ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2])#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i],rseq,sig,log=T)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+# likeVal <- exp()#
+#
+#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- y/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# NormBayesInf.R#
+# inference of mean in normally distributed data#
+# part II: do the Bayesian inference#
+#
+# we compute and plot#
+# 1. the prior distribution of the mean#
+# 2. the likelihood function#
+# 3. the posterior distribution of the mean#
+# 4. confidence intervals on the posterior#
+#
+# adapted from James S. Clark Lab 2#
+# Paul Flikkema, NAU#
+#
+# this is the sd of the data (known)#
+sig <- 20#
+#
+# read in the data file; force data column to vector for further computations#
+inData <- read.csv(file="/Users/karljarvis/Documents/_NAU/Classes/R/Bayes_hw/originals/ClarkLab2NormalData.csv")#
+y <- as.vector(inData[,2])#
+#
+# define prior distribution of the mean mu -- need the mean and variance/sd#
+priormu <- 40     # mean of prior distribution of mu#
+tau     <- 10     # sd of prior distribution of mu#
+#
+# define the abscissa values for the density plots#
+# and the points for which the likelihood is computed#
+rseq <- seq(10, 70, length=200)#
+#
+# compute prior density function#
+prior   <- dnorm(rseq,priormu,tau)#
+#
+# pre-allocate vector of likelihood values#
+likeVal  <- rep(0,200)#
+#
+# loop thru the observations to compute log-likelihood#
+# note likeval is a vector, so we are summing in #
+# the contributions of each data point at each#
+# abscissa value;#
+# emphasize that the data are involved here,#
+# even though we end up with a function (a density)#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dnorm(y[i],rseq,sig,log=T)#
+	}#
+#
+# convert back to likelihood and normalize to get density#
+# likeVal <- exp()#
+#
+#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+#
+# determine posterior distribution:#
+# our analysis allows us to compute the two#
+# parameters, V and v, that determine it completely.#
+# recall: mean, variance of posterior dist are vV and V resp#
+V    <- 1/(length(y)/(sig^2) + 1/(tau^2))#
+v    <- sum(y)/(sig^2) + priormu/(tau^2)#
+post <- dnorm(rseq,V*v,sqrt(V))#
+#
+# plot the results: posterior, likelihood, and prior#
+plot(rseq, post, type='l', col='blue', xlab = "mean", ylab = "density")#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+#
+# compute and plot 95% confidence interval and dataset#
+ci <- qnorm(c(.025,.975),V*v,sqrt(V))#
+abline(v=ci, col='blue')#
+points(y, rep(0, length(y)), col='black')#
+#
+# add legend#
+# color match to curves for ease of interpretation#
+lineColors <- c('green', 'black', 'black', 'blue')#
+legend("topleft", c("prior", "data", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 0, 2, 1), pch = c(-1, 1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+ an attempt at the posterior...#
+post <- rep(0,200)#
+likeVal2 <- rep(0,200)#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+#post <- likeVal*prior#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+post <- rep(0,200)#
+likeVal2 <- rep(0,200)#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+#post <- likeVal*prior#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+post <- rep(0,200)#
+likeVal2 <- rep(0,200)#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+#post <- likeVal*prior#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+#post <- likeVal*prior#
+#
+post <- rexp(y,prior*likeVal)#
+#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+#post <- likeVal*prior#
+#
+post <- dexp(y,prior*likeVal)#
+#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+#post <- likeVal*prior#
+#
+post <- rexp(y,prior*likeVal)#
+#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+#post <- likeVal*prior#
+#
+post <- rexp(y,prior*likeVal)#
+#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+#post <- likeVal*prior#
+post <- rexp(y, likeVal*prior)#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+#post <- likeVal*prior#
+#
+post <- rexp(y,prior*likeVal)#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+#post <- likeVal*prior#
+post <- rexp(y,prior*likeVal)#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+rexp(y,prior*likeVal)
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+#post <- likeVal*prior#
+#
+post <- rexp(y,prior*likeVal)#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+#post <- likeVal*prior#
+#post <- rexp(y,prior*likeVal)#
+post <- rep(0,200)#
+for(i in 1:length(y))#
+	{#
+	like <- dexp(y[i], rate=rseq, log=TRUE)#
+	post <- like*prior#
+		}#
+#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+post <- likeVal*prior#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+#post <- likeVal*prior#
+#post <- rexp(y,prior*likeVal)#
+post <- rep(0,200)#
+for(i in 1:length(y))#
+	{#
+	like <- dexp(y[i], rate=rseq, log=TRUE)#
+	post <- like*prior#
+		}#
+#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+post <- likeVal*prior#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+#post <- likeVal*prior#
+#post <- rexp(y,prior*likeVal)#
+post <- rep(0,200)#
+for(i in 1:length(y))#
+	{#
+	post <- post + dexp(y[i],likeVal*prior)#
+		}#
+#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+post <- likeVal*prior#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+#post <- likeVal*prior#
+#post <- rexp(y,prior*likeVal)#
+post <- rep(0,200)#
+for(i in 1:length(y))#
+	{#
+	post <- post + rexp(y[i],likeVal*prior)#
+		}#
+#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+# Homework: Bayesian inference of exponential function#
+# adapted from Flikkema code#
+#
+# we compute and plot#
+# 1. the prior distribution of Lambda#
+# 2. the likelihood function#
+# 3. the posterior distribution of Lambda#
+# 4. confidence intervals on the posterior#
+#
+y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # all the possible parameters for lambda that we're going to check for#
+#
+likeVal <- rep(0,200) # pre allocating a vector that likeVal will go into#
+for(i in 1:length(y)) # for each of the 10 data points#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# an attempt at the posterior...#
+#post <- rep(0,200)#
+#likeVal2 <- rep(0,200)#
+#for(i in 1:length(y)) # for each of the 10 data points#
+#	{#
+#	post <- likeVal2*prior + dexp(y[i], rate=rseq, log=TRUE) # log likelihood - exponential pdf of the data points, given the parameters.#
+#		}#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]  #
+post <- likeVal*prior#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# B. ##
+#######
+#
+#y <- rexp(n=10,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.29 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) #
+#	post <- likeVal + dexp(y[i], rate=rseq*prior, log=TRUE) # another posterior attempt#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#post <- exp(post)/sum(exp(post))/diff(rseq)[1]#
+#post <- likeVal*prior#
+#post <- rexp(y,prior*likeVal)#
+post <- rep(0,200)#
+for(i in 1:length(y))#
+	{#
+	post <- post + dexp(y[i],likeVal*prior)#
+		}#
+#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')#
+#
+#######
+# C. ##
+#######
+#
+y <- rexp(n=20,rate=0.08) # the data#
+#
+a <- 0.01 # min for prior#
+b <- 0.10 # max for prior#
+prior <- dunif(rseq,min=a, max=b) # the prior#
+#
+rseq <- seq(0, 0.30, length=200) # points to use for plotting#
+#
+likeVal <- rep(0,200) # pre allocating vector for likeVal#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+	}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]#
+#
+post <- likeVal*prior#
+#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot#
+lines(rseq, likeVal, lty=2)#
+lines(rseq, prior, col='green')#
+lineColors <- c('green', 'black', 'blue')#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors,#
+       text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1),#
+       merge = TRUE, bg = 'gray98')
+y <- rexp(n=10,rate=0.08)#
+#
+# bounds for the prior#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+#
+# all the possible parameters for lambda that we're going to search in for the most likely parameter#
+rseq <- seq(0, 0.30, length=200)#
+#
+# the prior is a density function that is uniformly distributed from a to b#
+prior <- dunif(rseq,min=a, max=b) #
+#
+# pre allocating a vector that likeVal will go into#
+likeVal <- rep(0,200)#
+#
+# for each point in the dataset, we want to find the likelihood for all rseq parameter values. I haven't wrapped my head around this and am not sure why it should be a for loop at all, but that's how it was done with the normal so I'm assuming it should be this way with the exponential.#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# another approach - create negative log likelihood function for probability density function for exponential#
+expNLL1 = function(L)#
+{#
+  -sum(dexp(y, rate=L, log=TRUE))#
+}#
+#
+# load Bolker book package for likelihood#
+library(emdbook)#
+#
+# give my estimate a starting value#
+L <- 0.1#
+#
+# estimate ML parameter using optim function#
+MLE <- optim(fn=expNLL1,par=c(L), method="BFGS")#
+MLE$par#
+#
+# use the ML Lambda parameter and the prior to generate points along the posterior distribution.#
+post <- dexp(rseq, MLE$par*prior)
+post
+hist(post)
+plot(rseq,post)
+y <- rexp(n=10,rate=0.08)#
+#
+# bounds for the prior#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+#
+# all the possible parameters for lambda that we're going to search in for the most likely parameter#
+rseq <- seq(0, 0.30, length=200)#
+#
+# the prior is a density function that is uniformly distributed from a to b#
+prior <- dunif(rseq,min=a, max=b) #
+#
+# pre allocating a vector that likeVal will go into#
+likeVal <- rep(0,200)
+expNLL1 = function(L)#
+{#
+  -sum(dexp(y, rate=L, log=TRUE))#
+}#
+#
+# estimate ML parameter using mle2 function#
+library(bbmle)#
+MLE <- mle2( minuslogl=expNLL1, start=list(L=0.10), data=y)#
+MLE
+# another approach - create negative log likelihood function for probability density function for exponential#
+expNLL1 = function(L)#
+{#
+  -sum(dexp(y, rate=L, log=TRUE))#
+}#
+#
+# estimate ML parameter using mle2 function#
+library(bbmle)#
+MLE <- mle2( minuslogl=expNLL1, start=list(L=0.10), data=list(y))#
+MLE
+# pre allocating a vector that likeVal will go into#
+likeVal <- rep(0,200)#
+#
+# for each point in the dataset, we want to find the likelihood for all rseq parameter values. I haven't wrapped my head around this and am not sure why it should be a for loop at all, but that's how it was done with the normal so I'm assuming it should be this way with the exponential.#
+for(i in 1:length(y))#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE)#
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot the posterior#
+lines(rseq, likeVal, lty=2) # plot the likelihood#
+lines(rseq, prior, col='green') # plot the prior#
+lineColors <- c('green', 'black', 'blue') # set the legend colors#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors, text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1), merge = TRUE, bg = 'gray98') # set the legend
+post <- likeVal*prior # Another attempt at the posterior. If it's going to be wrong, it might as well be simple!
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot the posterior#
+lines(rseq, likeVal, lty=2) # plot the likelihood#
+lines(rseq, prior, col='green') # plot the prior#
+lineColors <- c('green', 'black', 'blue') # set the legend colors#
+legend("topright", c("prior", "likelihood", "posterior"), col = lineColors, text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1), merge = TRUE, bg = 'gray98') # set the legend
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot the posterior#
+lines(rseq, likeVal, lty=2) # plot the likelihood#
+lines(rseq, prior, col='green') # plot the prior#
+lineColors <- c('green', 'black', 'blue') # set the legend colors#
+#legend("topright", c("prior", "likelihood", "posterior"), col = lineColors, text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1), merge = TRUE, bg = 'gray98') # set the legend
+likeVal <- rep(0,200)#
+#
+# for each point in the dataset, we want to find the likelihood for all values of rseq. #
+for(i in 1:length(y)) # loop through each data point#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # #
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]
+structure(likeVal)
+likeVal
+plot(rseq,likeVal)
+plot(rseq,prior)
+?abline
+abline(v=MLE)
+plot(rseq,likeVal)
+abline(v=MLE)
+MLE
+MLE$Coefficients
+MLE$Coefficient
+MLE$Coeff
+?mle2
+MLE$coef
+abline(v=0.198599)
+MLE
+MLE$Call
+MLE$call
+class(MLE)
+MLE$par
+post <- rep(0,200)#
+for(i in 1:length(y))#
+	{#
+	post <- dexp(rseq,likeVal*prior)	#
+		}
+post
+plot(rseq,post)
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density") # plot the posterior#
+lines(rseq, likeVal, lty=2) # plot the likelihood#
+lines(rseq, prior, col='green') # plot the prior#
+lineColors <- c('green', 'black', 'blue') # set the legend colors#
+#legend("topright", c("prior", "likelihood", "posterior"), col = lineColors, text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1), merge = TRUE, bg = 'gray98') # set the legend
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density", ylim=c(0,10)) # plot the posterior
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density", ylim=c(0,10)) # plot the posterior#
+lines(rseq, likeVal, lty=2) # plot the likelihood#
+lines(rseq, prior, col='green') # plot the prior#
+lineColors <- c('green', 'black', 'blue') # set the legend colors#
+#legend("topright", c("prior", "likelihood", "posterior"), col = lineColors, text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1), merge = TRUE, bg = 'gray98') # set the legend
+post.wrong <- dexp(rseq,likeVal*prior)
+post.wrong
+post
+y <- rexp(n=10,rate=0.08)#
+#
+# bounds for the prior#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+#
+# the range of parameters for lambda that we're going to search in#
+rseq <- seq(0, 0.30, length=200)#
+#
+# the prior is a density function that is uniformly distributed from a to b#
+prior <- dunif(rseq,min=a, max=b) #
+#
+# pre allocating a vector that the likelihood values will go into#
+likeVal <- rep(0,200)#
+#
+# for each point in the dataset, we want to find the likelihood for all values of rseq. #
+for(i in 1:length(y)) # loop through each data point#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # #
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]  #
+#
+# I want to confirm that my ML function is correct, so I'm creating a negative log likelihood function. This way I can find the ML estimate, so I know if my likelihood values are on the right track.#
+expNLL1 = function(L)#
+{#
+  -sum(dexp(y, rate=L, log=TRUE))#
+}#
+#
+# estimate ML parameter using mle2 function#
+library(bbmle)#
+MLE <- mle2( minuslogl=expNLL1, start=list(L=0.10), data=list(y))#
+abline(v=0.198599) # hooray, it's right!#
+#
+# use the ML Lambda parameter and the prior to generate points along the posterior distribution.#
+post <- rep(0,200)#
+for(i in 1:length(y))#
+	{#
+	post <- dexp(rseq,likeVal*prior)	#
+		}#
+post2 <- dexp(rseq,likeVal*prior)#
+#
+par(mfrow=c(1,3))#
+plot(rseq, post, type='l', col='blue', xlab = "lambda", ylab = "density", ylim=c(0,10)) # plot the posterior#
+plot(rseq, post2)#
+lines(rseq, likeVal, lty=2) # plot the likelihood#
+lines(rseq, prior, col='green') # plot the prior#
+lineColors <- c('green', 'black', 'blue') # set the legend colors#
+#legend("topright", c("prior", "likelihood", "posterior"), col = lineColors, text.col = lineColors, lty = c(1, 2, 1), pch = c(-1, -1, -1), merge = TRUE, bg = 'gray98') # set the legend
+y <- rexp(n=10,rate=0.08)#
+#
+# bounds for the prior#
+a <- 0.01 # min for prior#
+b <- 0.20 # max for prior#
+#
+# the range of parameters for lambda that we're going to search in#
+rseq <- seq(0, 0.30, length=200)#
+#
+# the prior is a density function that is uniformly distributed from a to b#
+prior <- dunif(rseq,min=a, max=b) #
+#
+# pre allocating a vector that the likelihood values will go into#
+likeVal <- rep(0,200)#
+#
+# for each point in the dataset, we want to find the likelihood for all values of rseq. #
+for(i in 1:length(y)) # loop through each data point#
+	{#
+	likeVal <- likeVal + dexp(y[i], rate=rseq, log=TRUE) # #
+		}#
+likeVal <- exp(likeVal)/sum(exp(likeVal))/diff(rseq)[1]
+post <- rep(0,200)#
+for(i in 1:length(y))#
+	{#
+	post <- dexp(rseq,likeVal*prior)	#
+		}
+post
+post2 <- dexp(rseq,likeVal*prior)
+post2
+?dexp
+y <- rexp(n=10, rate=0.08)
+y
+hist(y,10)
+hist(y)
+?hist
+hist(y,breaks=10)
+hist(y,breaks=3)
+y
+a <- 0.01 # min for prior
+b <- 0.20 # max for prior
+rseq <- seq(0, 0.30, length=200)
+prior <- dunif(rseq,min=a, max=b)
+5.6978-2
+3.6978/3.7015
+n <- 10
+y <- round(rexp(n,.1))
+y
+rhomle <- 1/mean(y); rhomle
+-n*log(rhomle) + rhomle*sum(y)
+rseq <- seq(0.01,.4,length=100)
+rseq
+lkexp <- function(rho) {-n*log(rho) + rho*sum(y)}
+lkexp
+plot(rseq,lkexp(rseq),type='l')
+abline(v=rhomle, lty=2)
+plot(rseq,lkexp(rseq),type='l')
+abline(v=rhomle, lty=2)
+abline(h=lkexp(rhomle),lty=2)
+plot(rseq,lkexp(rseq),type='l', xlab="-lnL", ylab="MLE")
+abline(v=rhomle, lty=2)
+abline(h=lkexp(rhomle),lty=2)
+fit <- optimize(lkexp,lower=0.01,upper=0.5,maximum=F)
+fit
+fit$objective
+fit$minimum
+lr <- -lkexp(rseq) + fit$objective
+fit <- optimize(lkexp,lower=0.01,upper=0.5,maximum=F)#
+fit # minimum=rho, objective=-lnL @ rhoML#
+#
+#########################
+# Confidence intervals ##
+#########################
+#
+# Likelihood profile#
+#
+# log of the likelihood ratio - the difference in log likelihood between all values in rseq and the MLE#
+lr <- -lkexp(rseq) + fit$objective#
+#
+# relationship between likelihood ratio and deviance#
+dev <- -2*lr#
+#
+gchisq(0.95,1)
+qchisq(0.95,1)
+#################################
+# Maximum likelihood estimates ##
+#################################
+ #
+# ML of 10 mortality ages, exponential distribution#
+n <- 10#
+y <- round(rexp(n,.1)); y#
+#
+#analytical solution - preferable if there is one#
+rhomle <- 1/mean(y); rhomle#
+#
+# - log likelihood associated with the rhomle value#
+-n*log(rhomle) + rhomle*sum(y)#
+#
+# explore the likelihood function numerically#
+rseq <- seq(0.01,.4,length=100)#
+#
+# R function showing -log likelihood for the data#
+lkexp <- function(rho) {-n*log(rho) + rho*sum(y)}#
+#
+# plot the function#
+plot(rseq,lkexp(rseq),type='l', xlab="-lnL", ylab="MLE")#
+abline(v=rhomle, lty=2)#
+abline(h=lkexp(rhomle),lty=2)#
+#
+# numerical solution using function "optimize"#
+fit <- optimize(lkexp,lower=0.01,upper=0.5,maximum=F)#
+fit # minimum=rho, objective=-lnL @ rhoML#
+#
+#########################
+# Confidence intervals ##
+#########################
+#
+# Likelihood profile#
+#
+# log of the likelihood ratio - the difference in log likelihood between all values in rseq and the MLE#
+lr <- -lkexp(rseq) + fit$objective#
+#
+# relationship between likelihood ratio and deviance#
+dev <- -2*lr#
+#
+# quantile function for the chi square distribution. Gives the deviance for 95% confidence.#
+qchisq(0.95,1)#
+#
+# sequence of p values for this deviance is X2 with 1 df#
+p <- 1 - pchisq(dev,1)#
+#
+# plots for likelihood, lkhd profile, deviance:#
+par(mfrow=c(3,1))#
+#
+plot(rseq, exp(lr), type='l') #likelihood#
+	abline(v=rhomle,lty=3)#
+	#
+plot(rseq, dev, type='l') # deviance#
+	dc <- qchisq(.95,1)	# deviance at 95%#
+	abline(h=dc, lty=3)	# horizontal line at 95% conf#
+	hi <- max(rseq[ dev<dc] ) # lower limit#
+	lo <- min(rseq[ dev<dc] ) # upper limit#
+	abline(v=c(lo, hi), lty=3)	# confidence level#
+	abline(v=rhomle,lty=3)#
+	#
+plot(rseq,p,type='l')#
+  abline(h=0.05,lty=3)#
+  abline(v=c(lo,hi),lty=3)#
+  #
+################################
+# CI using Fisher Information ##
+################################
+#
+se <- rhomle/sqrt(n)#
+#
+# find the 95%tile using the quantile function for the normal distribution#
+#
+ci <- qnorm(c(0.025,0.975),rhomle,se)#
+#
+# Drawing a normal distributions centered on the confidence limits (CLs) we have #
+#
+low  <- dnorm(rseq,ci[1],se)#
+high <- dnorm(rseq,ci[2],se)#
+plot(rseq,low,type='l')#
+  lines(rseq,high)#
+  abline(v=ci,lty=3)#
+#
+###########################  #
+# nonparametric bootstrap ##
+############################
+#
+# To bootstrap parameter error, define the number of iterations and an array to hold the bootstrap estimates#
+nboot <- 2000#
+mle <- rep( 0, nboot)#
+#
+# for loop that samples from the dataset and fills the mle vector with 1/mean of the samples#
+for( b in 1:nboot) {#
+	a <- sample(y, n, replace=T) 	# resampled data set#
+	mle[b] <- 1/mean(a)				# the bth MLE#
+}#
+#
+# std err for b#
+seb <- sd(mle); seb#
+#
+# CIs are quantiles#
+cib <- quantile(mle, c(0.025, 0.975)); cib#
+#
+# histogram of parameter values#
+hist( mle, nclass=20, probability=T)#
+	abline( v=cib, lty=3)
+library(Geneland)
+install.packages("Geneland")
+library(Geneland)
+?geneland
+?Geneland
+library(Geneland)
+library(picante)
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Data")
+phy <- read.nexus("arthro.nexus")
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Analyses/arthro/")
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Analyses/arthro/")
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Analyses/arthro")
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro")
+phy <- read.nexus("arthro.nexus")
+phy
+plot(phy)
+plot(phy, cex=0.25)
+trait <- read.table("arthrotrai.txt")
+trait <- read.table("arthrotrait.txt")
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro")#
+phy <- read.nexus("arthro.nexus")#
+plot(phy, cex=0.25)#
+comm <- data.matrix(read.table("arthrocomm.txt"))#
+trait <- read.table("arthrotrait.txt")
+comm#
+class(comm)#
+colnames(comm)#
+rownames(comm)
+comm#
+class(comm)#
+colnames(comm)#
+rownames(comm)
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro")#
+phy <- read.nexus("arthro.nexus")#
+plot(phy, cex=0.25)#
+comm <- data.matrix(read.table("arthrocomm.txt"))#
+trait <- read.table("arthrotrait.txt")
+comm
+class(comm)
+colnames(comm)
+rownames(comm)
+phydist <- cophenetic(phy)#
+ses.mpd.result <- ses.mpd(comm,phydist, null.model = 'taxa.labels', abundance.weighted = FALSE, runs = 99) #need way more runs for a good analysis#
+ses.mpd.result
+library(picante)
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro/")
+phy <- read.nexus("arthro.nexus")
+comm <- data.matrix(read.table("arthrocomm.txt"))
+pd.phy <- pd(comm, phy, include.root = TRUE); pd.phy
+write.table(pd.phy,"phylodiv.txt")
+ses.pd.phy.richness <- ses.pd(comm, phy, null.model="richness", runs=999)
+phy <- read.nexus("arthroultra.trees")
+plot(phy)
+plot(phy, cex=0.25)
+pd.phy <- pd(comm, phy, include.root = TRUE); pd.phy
+write.table(pd.phy,"phylodivult.txt")
+ses.pd.phy.richness <- ses.pd(comm, phy, null.model="richness", runs=999)#
+write.table(ses.pd.phy.richness,"PD_stand_richnessult.txt")
+phydist <- cophenetic(phy)#
+ses.mpd.myco.w <- ses.mpd(comm, phydist, null.model = 'richness', abundance.weighted = TRUE, runs = 999); ses.mpd.myco.w
+write.table(ses.mpd.myco.w,"NRI_weighted_rich.txt")
+write.table(ses.mpd.myco.w,"NRI_weighted_rich.xls")
+# abundance weighted#
+phydist <- cophenetic(phy)#
+ses.mntd.arthro.w <- ses.mntd(comm, phydist, null.model = 'richness', abundance.weighted = TRUE, runs = 999); ses.mntd.arthro.w#
+write.table(ses.mntd.arthro.w,"NTI_weighted.txt")
+multiPhylosignal(trait,phy)
+?multiPhylosignal
+trait <- read.table("arthrotrait.txt")
+trait
+traitnum <- replace(trait,c(chelicera,chewing,sucking), c(1,2,3))
+traitnum <- replace(trait,c("chelicera",chewing,sucking), c(1,2,3))
+traitnum <- replace(trait,c("chelicera","chewing","sucking"), c(1,2,3))
+traitnum
+?substitute
+traitnum <- replace(trait, "chelicera", 1)
+traitnum
+multiPhylosignal(trait,phy)
+class(trait)
+class(phy)
+phydist <- cophenetic(phy)
+comdist.result <- comdist(comm, phydist, abundance.weighted=TRUE)#
+comdist.result.w#
+library(cluster)#
+comdist.clusters.w <- hclust(comdist.result.w)#
+plot(comdist.clusters.w, cex=0.5)#
+write(comdist.result.w, "phylobeta.txt", ncol=nrow(comm))
+comdist.result.w <- comdist(comm, phydist, abundance.weighted=TRUE)#
+comdist.result.w#
+library(cluster)#
+comdist.clusters.w <- hclust(comdist.result.w)#
+plot(comdist.clusters.w, cex=0.5)#
+write(comdist.result.w, "phylobeta.txt", ncol=nrow(comm))
+comdistnt.result.w <- comdistnt(comm, phydist, abundance.weighted=TRUE)
+comdistnt.result.w <- comdistnt(comm, phydist, abundance.weighted=TRUE)
+comdistnt.result.w
+library(cluster)
+comdistnt.clusters.w <- hclust(comdistnt.result.w)
+?hclust
+phydist

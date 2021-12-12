@@ -1,0 +1,35 @@
+[1] 4
+ [1]  0  1  2  3  4  5  6  7  8  9 10 11 12
+: MPD ~ crosstype + (1 | year) + (1 | phylo)
+   Data: MNia
+
+REML criterion at convergence: 15172.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.9087 -0.4960  0.0797  0.5927  3.3373 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ phylo    (Intercept) 9.004    3.001   
+ year     (Intercept) 2.450    1.565   
+ Residual             6.450    2.540   
+Number of obs: 3200, groups:  phylo, 20; year, 4
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)  11.1794     1.0347  10.804
+crosstypefr  -1.5623     0.1270 -12.303
+crosstypena  -0.8153     0.1100  -7.414
+
+Correlation of Fixed Effects:
+            (Intr) crsstypf
+crosstypefr -0.061         
+crosstypena -0.071  0.577  
+                 2.5 %    97.5 %
+.sig01       2.2297211  4.203547
+.sig02       0.8011075  3.592117
+.sigma       2.4777253  2.602625
+(Intercept)  9.0192883 13.339429
+crosstypefr -1.8111651 -1.313400
+crosstypena -1.0308560 -0.599779

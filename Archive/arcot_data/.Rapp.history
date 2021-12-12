@@ -1,0 +1,479 @@
+seq(a:g)
+?seq
+data1[1:10,1:2]
+data1
+data1 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata1.csv")
+data1[1:10,1:2]
+rnorm(10)
+d <- data1[1:10,1:2]
+r <- rnorm(10)
+dr <- cbind(d,r)
+dr
+n <- c(2, 58.1, 0.12345
+)
+drn <- rbind(dr,n)
+drn
+colnames(dr)[3] <- “new
+colnames(dr)[3] <- “new"
+colnames(dr)[3] <- "new"
+dr
+seq(1,500,10)
+?seq
+seq(1,500,length.out=10)
+attributes(data1)
+attr(data1,class="matrix")
+attr(data1,class=matrix)
+?attr
+attr(data1,class,matrix)
+attr(data1,class,"matrix")
+attr(data1,class)
+attr(data1,"class")
+attr(data1,"class") <- "matrix"
+data1
+d1 <- read.table("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata1.txt")#
+#
+d2 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata2.csv")#
+#
+d3 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata3.csv")#
+#
+d4 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata4.csv")
+d1
+d2
+d3
+d4
+d1 <- read.table("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata1.txt")#
+#
+d2 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata2.csv")#
+#
+d3 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata3.csv")#
+#
+d4 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata4.csv")
+d2
+d1 <- read.table("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata1.txt")#
+#
+d2 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata2.csv")#
+#
+d3 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata3.csv")#
+#
+d4 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata4.csv")
+d1
+d2
+d3
+d4
+?read.table
+d1
+d2
+d1 <- read.table("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata1.txt", header=FALSE)
+d4 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata4.csv", header=FALSE)
+d4
+d1
+d2
+d2 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata2.csv", row.names=1)
+d2
+d2 <- read.csv("~/Documents/Classes/Lab_Meetings/LLECB/R-Short-Course/mothdata2.csv", row.names="site")
+d2
+d1
+d1[5,2]
+d1[d1$moth=1,]
+d1[d1$moth==1,]
+d1[d1$canopy>150,]
+d1[d1$canopy>150 & d1&canopy<200,]
+d1[d1$canopy>150 & <200,]
+d1[d1[,1]>150 & d1[,1]<200,]
+?"&"
+d1$canopy <200
+d1$canopy >200
+d1[d1[,1]>150 & d1[,1]<200,]
+d1[d1[,1] > 150 & d1[,1] < 200,]
+d1[d1[,1] > 150 & < 200,]
+d1[d1$canopy > 150 & d1&canopy < 200,]
+d1[d1$canopy > 150 & d14canopy < 200,]
+d1[d1$canopy > 150 & d1$canopy < 200,]
+d1[d1$canopy > 150 & d1$A < 30,]
+seq(20,-50,50)
+seq(-50, 50, length.out=20)
+d1
+site21 <- c(1, 122.2, 24.3)
+site21
+rbind(d1, site21)
+allatonce <- cbind(d, r, ru, s)
+ru <- runif(20)
+s <- seq(-50,50,20)
+allatonce <- cbind(d, r, ru, s)
+allatonce <- cbind(d1, r, ru, s)
+d1
+r
+ru
+s
+s <- seq(-50,50,length.out=20)
+length(r)
+length(ru)
+r <- rnorm(20)
+allatonce <- cbind(d1, r, ru, s)
+allatonce
+?runif
+ru <- runif(20, 100, 200)
+ru
+dextra <- rbind(d1, site21)
+dextra
+dextra <- rbind(allatonce, site21)
+dextra
+?rbind
+drus
+drus <- cbind(dr, ru, s)
+drus <- cbind(d1, ru, s)
+drus
+dextra <- rbind(drus, site21)
+dextra
+calc <- d1$canopy / d1$A
+calc
+2.	Dall <- rbind(allatonce, site21)
+Dall <- rbind(allatonce, site21)
+Dall[4:7, 21] <- c("blkj","sdljkf","lsdkfj","lkj")
+Dall[4:7, 21] <- c(5, 10, 15, 20)
+Dall[4:7,21]
+Dall
+allatonce <- cbind(d, r, ru, s, calc)
+calc <- d1$canopy/d1$A
+allatonce <- cbind(d1, r, ru, s, calc)
+allatonce
+Dall <- rbind(allatonce,site21)
+Dall
+Dall[4:7,21]
+Dall[21, 4:7]
+Dall[21, 4:7] <- c(5,10,15,20)
+Dall
+sort(d1)
+sort(d1$moth)
+?sort
+d1[sort(d1$moth),]
+d1
+d1[order(d1$A),]
+d1[order(d1$moth, d1$A), ]
+?order
+allatonce$s
+allatonce$s <- NULL
+allatonce
+allatonce$ru <- NULL
+allatonce
+allatonce$calc <- NULL
+allatonce
+?mode
+class(calc)
+class(allatonce)
+clas(d1)
+class(d1)
+class(r)
+class(ru)
+dim(ru)
+length(ru)
+attributes(ru)
+attributes(calc)
+str(calc)
+is.vector(calc)
+class(d1$A)
+is.numeric(d1$A)
+vector(NA)
+numeric(NA)
+numeric(0)
+ls()
+edit(d1)
+d1
+edit(d1)
+d1
+edit(d1)
+d1
+edit(d1)
+?"numeric"
+help.start()
+l <- as.character(calc)
+l
+cti <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/cti.img")
+library(raster)
+cti <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/cti.img")
+library(raster)
+cti <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/cti.img")
+cti
+plot(cti)
+ffp <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/ffp.img")
+ffp
+pairs(cti,ffp)
+help.start()
+?pairs
+Calculating cost distances from landscape data#
+# for DGS Landscape Genetics project - AIC group#
+# Goal of general project: to see if we can use a regression approach to select the best landscape model for genetic data#
+# Goal of simulations: to see if the regression approach can select the best model when the process that led to the genetic pattern is known and is exactly the same as the options that we have as options to select from. #
+#
+# procedure based on Melanie Murphy's lab from Lab 8 of DGS Landscape Genetics Spring 2012#
+# and the gdistance manual#
+# data is from Murphy et al 2010#
+#
+setwd("~/AIC_Project/RALU_data")#
+#
+# get packages installed and loaded#
+# install.packages("raster")#
+# install.packages("gdistance")#
+# install.packages("sp")#
+# install.packages('rgdal',repos="http://www.stats.ox.ac.uk/pub/RWin")#
+# install.packages("igraph")#
+# install.packages("vegan")#
+# install.packages("stringr")#
+# install.packages("rgeos")#
+# install.packages("maptools")#
+#
+require(gdistance)#
+require(rgdal)#
+# require(vegan)#
+require(rgeos)#
+# require(maptools)#
+##### Import Rasters ######
+# Compound Topographic Index - flow accumulation by catchment size (wetness)#
+# derived from SRTM#
+cti <- raster("cti.img")#
+#
+# Elevation Relief Ratio - elevational complexity#
+# derived from SRTM#
+err <- raster("err.img")#
+#
+# Frost Free Period - date of last freeze minus date of first freeze#
+# derived from Spline#
+ffp <- raster("ffp.img")#
+#
+# Growing Season Precipitation - #
+gsp <- raster("gsp.img")#
+#
+# plot rasters to explore them#
+par(mfrow=c(2,2))#
+plot(cti, main = "cti")#
+plot(err, main = "err")#
+plot(ffp, main = "ffp")#
+plot(gsp, main = "gsp")#
+#
+# load UTM data#
+sites <- read.csv("RALU_UTM.csv")#
+xy.dat <- sites[c("X","Y")]#
+sites <- SpatialPointsDataFrame(coords=xy.dat,sites)#
+#
+# plot points over ffp layer#
+plot(ffp)#
+points(sites, pch=3)#
+#
+##### Setting Costs ######
+# get rasters to same scale#
+cti <- resample(cti, gsp, method="bilinear")#
+err <- resample(err, gsp, method="bilinear")
+Import Rasters ######
+# Compound Topographic Index - flow accumulation by catchment size (wetness)#
+# derived from SRTM#
+cti <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/cti.img")#
+#
+# Elevation Relief Ratio - elevational complexity#
+# derived from SRTM#
+err <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/err.img")#
+#
+# Frost Free Period - date of last freeze minus date of first freeze#
+# derived from Spline#
+ffp <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/ffp.img")#
+#
+# Growing Season Precipitation - #
+gsp <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/gsp.img")
+plot rasters to explore them#
+par(mfrow=c(2,2))#
+plot(cti, main = "cti")#
+plot(err, main = "err")#
+plot(ffp, main = "ffp")#
+plot(gsp, main = "gsp")#
+#
+# load UTM data#
+sites <- read.csv("RALU_UTM.csv")#
+xy.dat <- sites[c("X","Y")]#
+sites <- SpatialPointsDataFrame(coords=xy.dat,sites)#
+#
+# plot points over ffp layer#
+plot(ffp)#
+points(sites, pch=3)#
+#
+##### Setting Costs ######
+# get rasters to same scale#
+cti <- resample(cti, gsp, method="bilinear")#
+err <- resample(err, gsp, method="bilinear")
+sites <- read.csv("~/Projects/AIC_Project/DGS_class/RALU_data/RALU_UTM.csv")
+sites <- read.csv("~/Projects/AIC_Project/DGS_class/RALU_data/RALU_UTM.csv")#
+xy.dat <- sites[c("X","Y")]#
+sites <- SpatialPointsDataFrame(coords=xy.dat,sites)#
+#
+# plot points over ffp layer#
+plot(ffp)#
+points(sites, pch=3)#
+#
+##### Setting Costs ######
+# get rasters to same scale#
+cti <- resample(cti, gsp, method="bilinear")#
+err <- resample(err, gsp, method="bilinear")#
+#
+##### Correlations of rasters ######
+s <- stack(cti, err, ffp, gsp)
+dev.new()#
+pairs(s)
+cti <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/cti.img")#
+#
+# Elevation Relief Ratio - elevational complexity#
+# derived from SRTM#
+err <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/err.img")#
+#
+# Frost Free Period - date of last freeze minus date of first freeze#
+# derived from Spline#
+ffp <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/ffp.img")#
+#
+# Growing Season Precipitation - #
+gsp <- raster("~/Projects/AIC_Project/DGS_class/RALU_data/gsp.img")
+par(mfrow=c(2,2))#
+plot(cti, main = "cti")#
+plot(err, main = "err")#
+plot(ffp, main = "ffp")#
+plot(gsp, main = "gsp")
+pairs(s)
+?pairs
+values(cti)
+ctival <- values(cti)
+density(ctival)
+ctidens <- density(ctival)
+plot(ctidens)
+pairs(s)
+update.packages("picante", dependencies = TRUE)#
+library(picante)#
+#
+# Picante manual#
+# vignette("picante-intro")#
+#
+######################################################################
+# Load in communities and phylogenies, and format data for analysis ##
+######################################################################
+#
+setwd("~/Projects/Phylomeet/Analysis/arcot_common2_2y")#
+#
+# Cottonwood community with all arthropods, 2000-2003#
+	# pool_bytype <- data.matrix(read.table("pool_bytype.txt"))#
+	# pool_byyear <- data.matrix(read.table("pool_byyear.txt"))#
+	pool_bytypeyear <- data.matrix(read.table("pool_bytypeyear.txt"))#
+	comm <- data.matrix(read.table("arcot_common2_2y.txt"))#
+	# # create single list of communities#
+	# commlist <- list(pool_bytype,pool_byyear,pool_bytypeyear,comm)#
+	# names(commlist) <- c("pool_bytype","pool_byyear","pool_bytypeyear","comm")#
+#
+# load nexus files for phylogenies#
+	phy.ultra.full <- read.nexus("ultra.tre")#
+	phy.equal.full <- read.nexus("equal.tre")#
+	phy.grad.full <- read.nexus("grad.tre")#
+#
+	# # create single list of phylogenies#
+	# phylist <- list(phy.ultra.full,phy.equal.full,phy.grad.full)#
+	# names(phylist) <- c("phy.ultra.full","phy.equal.full","phy.grad.full")#
+#
+# # prune phylogenies to fit community data#
+	# phycommlist <- vector("list",length(commlist)*length(phylist))#
+	# for (c in 1:length(commlist))#
+	# {#
+		# for (p in 1:length(phylist))#
+		# {#
+			# phycommlist[[]] <- prune.sample(commlist[[c]],phylist[[p]])#
+		# }#
+	# }#
+#
+# par(mfrow=c(3,4))#
+# for(i in 1:length(phycommlist))#
+# {plot(phycommlist[[i]])}#
+#
+# phy.u.type <- prune.sample(pool_bytype,phy.ultra.full)#
+# phy.e.type <- prune.sample(pool_bytype,phy.equal.full)#
+# phy.g.type <- prune.sample(pool_bytype,phy.grad.full)#
+#
+# phy.u.year <- prune.sample(pool_byyear,phy.ultra.full)#
+# phy.e.year <- prune.sample(pool_byyear,phy.equal.full)#
+# phy.g.year <- prune.sample(pool_byyear,phy.grad.full)#
+#
+phy.u.typeyear <- prune.sample(pool_bytypeyear,phy.ultra.full)#
+phy.e.typeyear <- prune.sample(pool_bytypeyear,phy.equal.full)#
+phy.g.typeyear <- prune.sample(pool_bytypeyear,phy.grad.full)#
+#
+phy.ultra <- prune.sample(comm,phy.ultra.full)#
+phy.equal <- prune.sample(comm,phy.equal.full)#
+phy.grad <- prune.sample(comm,phy.grad.full)#
+#
+# Form distance matrix for each topology#
+# phydist.u.type <- cophenetic(phy.u.type)#
+# phydist.e.type <- cophenetic(phy.e.type)#
+# phydist.g.type <- cophenetic(phy.g.type)#
+#
+# phydist.u.year <- cophenetic(phy.u.year)#
+# phydist.e.year <- cophenetic(phy.e.year)#
+# phydist.g.year <- cophenetic(phy.g.year)#
+#
+phydist.u.typeyear <- cophenetic(phy.u.typeyear)#
+phydist.e.typeyear <- cophenetic(phy.e.typeyear)#
+phydist.g.typeyear <- cophenetic(phy.g.typeyear)#
+#
+phydist.ultra <- cophenetic(phy.ultra)#
+phydist.equal <- cophenetic(phy.equal)#
+phydist.grad <- cophenetic(phy.grad)
+par(mfrow=c(1,3))#
+plot(phy.ultra, cex=0.5) #
+title(main = "Ultrametric Branch Lengths")#
+#
+plot(phy.equal, cex=0.5) #
+title(main = "Equal Branch Lengths")#
+#
+plot(phy.grad, cex=0.5) #
+title(main = "Graduated Branch Lengths")
+phy.equal
+Ntip(phy.equal)
+Nnode(phy.equal)
+Nedge(phy.equal)
+plot(phy.ultra, cex=1) #
+title(main = "Ultrametric Branch Lengths")
+attributes(phy.equal)
+phy.equal$names
+phy.equal$class
+class(phy.equal)
+names(phy.equal)
+order(phy.equal)
+attr(phy.equal, "names")
+attr(phy.equal, "class")
+attr(phy.equal, "order")
+?"phylo"
+?read.nexus
+phy.equal$edge
+phy.equal$tip.label
+phy.equal$Nnode
+phy.equal$edge
+tr <- list(edge = matrix(c(2,1), 1, 2), tip.label = "a", Nnode = 1L)
+tr
+plot(tr)
+edge = matrix(c(2,1), 1, 2)
+edge
+class(tr) <- "phylo"
+tr <- list(edge = matrix(c(2,1), 1, 2), tip.label = "a", Nnode = 1L)
+class(tr)
+class(tr) <- "phylo"
+str(tr)
+plot(tr)
+tr <- rtree(1000)
+tr
+plot(tr)
+object.size(randtree)
+randtree <- rtree(1000)
+object.size(randtree)
+randtree <- rtree(1000)#
+object.size(randtree)
+randtree <- paste("A_long_label_for_a_tree_with_1000_tips", 1:1000, sep="-")
+plot(phy.ultra, cex=0.5)
+par(mfrow=c(1,3))#
+plot(phy.ultra, cex=0.5) #
+title(main = "Ultrametric Branch Lengths")#
+#
+plot(phy.equal, cex=0.5) #
+title(main = "Equal Branch Lengths")#
+#
+plot(phy.grad, cex=0.5) #
+title(main = "Graduated Branch Lengths")

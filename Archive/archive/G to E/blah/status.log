@@ -1,0 +1,11 @@
+12/13/10 20:40:27	Information	Saving project...
+12/13/10 20:40:27	Information	Saving project complete.
+12/13/10 20:41:09	Information	Importing samples from 1 file... 
+12/13/10 20:41:09	Information	Fasta quality file not found: ITS_myco3.txt.qual
+12/13/10 20:41:09	Information	Import complete.
+12/13/10 20:41:47	Information	Started Assembly of 9 reads.
+12/13/10 20:41:47	Information	Rejected assembly of Seq6 & 3 read contig (1st sample: Seq9) -  percent identity too low (69.8%; required:70.0)
+12/13/10 20:41:47	Information	Rejected assembly of 5 read contig (1st sample: Seq3) & Seq6 -  percent identity too low (52.7%; required:70.0)
+12/13/10 20:41:47	Information	Rejected assembly of 5 read contig (1st sample: Seq3) & 3 read contig (1st sample: Seq9) -  percent identity too low (50.5%; required:70.0)
+12/13/10 20:41:48	Information	Assembly completed in 0.97 seconds; 6 successful joins, resulting in 2 contigs & 1 unassembled sample.
+12/13/10 20:50:00	Information	Project blah.proj closed without saving.

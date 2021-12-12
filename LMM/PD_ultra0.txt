@@ -1,0 +1,32 @@
+Linear mixed model fit by REML ['lmerMod']
+Formula: PD ~ crosstype + (1 | year)
+   Data: PDiu
+
+REML criterion at convergence: 1398.5
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.34362 -0.71324  0.09289  0.57550  2.63046 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ year     (Intercept) 286.6    16.93   
+ Residual             375.9    19.39   
+Number of obs: 160, groups:  year, 4
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)  113.013      9.003  12.553
+crosstypefr  -17.463      4.335  -4.028
+crosstypena  -14.250      3.754  -3.796
+
+Correlation of Fixed Effects:
+            (Intr) crsstypf
+crosstypefr -0.241         
+crosstypena -0.278  0.577  
+                 2.5 %     97.5 %
+.sig01        7.911115  36.412721
+.sigma       17.307546  21.614589
+(Intercept)  93.635853 132.389171
+crosstypefr -25.956632  -8.968368
+crosstypena -21.606134  -6.893866

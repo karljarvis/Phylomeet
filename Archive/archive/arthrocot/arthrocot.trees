@@ -1,0 +1,681 @@
+#NEXUS
+[written Fri Aug 12 16:44:41 MST 2011 by Mesquite  version 2.74 (build 550) at student50461.student.nau.edu/134.114.145.203]
+
+BEGIN TAXA;
+	TITLE 'arthro_cot';
+	DIMENSIONS NTAX=159;
+	TAXLABELS
+		aca_eriophyid_aceria_parapopuli aca_erythraeid_1 ara_araneid_araneus ara_araneid_araniella ara_araneid_metepeira_1 ara_araneid_metepeira_2 ara_araneid_metepeira_wittfeldae ara_araneid_neoscona ara_araneid_1 ara_clubionid_cheiracanthium ara_clubionid_1 ara_clubionid_2 ara_clubionid_3 ara_dictynid_dictyna ara_oxyopid_oxyopes ara_philodromid_philodromus ara_salticid_bredana_1 ara_salticid_bredana_2 ara_salticid_corythalia ara_salticid_metaphidippus_1 ara_salticid_metaphidippus_2 ara_salticid_paradamoetus ara_salticid_phidippus ara_salticid_salticus_scenicus ara_salticid_salticus ara_theridiid_1 ara_theridiid_2 ara_thomisid_misumenops ara_thomisid_1 ara_thomisid_2 col_anthicid_1 col_buprestid_1 col_cantharid_1 col_chrysomelid_1 col_chrysomelid_2 col_chrysomelid_3 col_clerid_1 col_clerid_2 col_coccinellid_adalia_bipunctata col_coccinellid_coccinella_septum col_coccinellid_cryptolaemus col_coccinellid_harmonia col_coccinellid_hippodamia_convergens col_coccinellid_scymnus col_coccinellid_1 col_curculionid_microtyphius col_curculionid_1 col_curculionid_2 col_curculionid_3 col_curculionid_4 col_lampyrid_1 col_melyrid_1 col_melyrid_2 col_melyrid_3 col_melyrid_4 col_melyrid_5 col_mordellid_1 col_mordellid_2 der_forficulid_1 dip_agromyzid_hexomyza_schineri dip_agromyzid_1 dip_anthomyiid_1 dip_bibionid_1 dip_bombyliid_1 dip_ceratapogonid_1 dip_ceratopogonid_2 dip_chironomid_1 dip_chloropid_1 dip_empidid_1 dip_empidid_2 dip_muscid_1 dip_phorid_1 dip_sciarid_1 dip_syrphid_1 dip_tachynid_1 hem_anthocorid_anthocoris hem_aphidid_chaitophorus_populicola hem_aphidid_chaitophorus_popullellus hem_aphidid_pemphigus_betae hem_aphidid_pemphigus_populicaulis hem_aphidid_pemphigus_populiglobuli hem_aphidid_pemphigus_populitransversus hem_aphidid_thecabius_populicondupifolius hem_aphidid_thecabius_populimonilis hem_cercopid_1 hem_cicadellid_1 hem_cicadellid_10 hem_cicadellid_11 hem_cicadellid_12 hem_cicadellid_13 hem_cicadellid_14 hem_cicadellid_15 hem_cicadellid_2 hem_cicadellid_3 hem_cicadellid_4 hem_cicadellid_5 hem_cicadellid_6 hem_cicadellid_7 hem_cicadellid_8 hem_cicadellid_9 hem_cixiid_1 hem_diaspidid_lepidosaphes_ulmi hem_lygaeid_1 hem_membracid_1 hem_membracid_2 hem_mirid_ceratocapsus hem_mirid_1 hem_mirid_2 hem_mirid_3 hem_mirid_4 hem_nabid_1 hem_pentatomid_brochymena hem_pentatomid_euschistus hem_pentatomid_podisus hem_pentatomid_thyanta hem_reduviid_phymata hem_reduviid_1 hem_rhopalid_1 hym_braconid_1 hym_braconid_2 hym_braconid_3 hym_braconid_4 hym_braconid_5 hym_chalcidid_1 hym_dryinid_1 hym_encyrtid_1 hym_encyrtid_2 hym_eulophid_1 hym_eulophid_2 hym_eupelmid_1 hym_eurytomid_1 hym_formicid_camponotus hym_formicid_formica hym_formicid_1 hym_halictid_1 hym_ichneumonid_1 hym_ichneumonid_2 hym_ichneumonid_3 hym_mymarid_stephanodes hym_mymarid_2 hym_pteromalid_1 hym_tenthredinid_nematus hym_tenthredinid_phyllocolpa lep_gelechiid_anacampsis_niveopulvella lep_gelechiid_1 lep_geometrid_1 lep_gracillarid_phyllocnistis lep_lyonetiid_1 lep_noctuid_1 lep_tortricid_gypsonoma_haimbachiana lep_1 neu_chrysopid_1 neu_chrysopid_2 neu_raphidiid_1 odo_coenagrionid_1 ort_gryllid_oecanthus ort_tettigoniid_1 thy_aeolothripid_1 thy_thripid_1 
+	;
+
+END;
+
+
+BEGIN TREES;
+	Title 'Trees from "arthro_cot_ultra.trees"';
+	LINK Taxa = 'arthro_cot';
+	TRANSLATE
+		1 aca_eriophyid_aceria_parapopuli,
+		2 aca_erythraeid_1,
+		3 ara_araneid_araneus,
+		4 ara_araneid_araniella,
+		5 ara_araneid_metepeira_1,
+		6 ara_araneid_metepeira_2,
+		7 ara_araneid_metepeira_wittfeldae,
+		8 ara_araneid_neoscona,
+		9 ara_araneid_1,
+		10 ara_clubionid_cheiracanthium,
+		11 ara_clubionid_1,
+		12 ara_clubionid_2,
+		13 ara_clubionid_3,
+		14 ara_dictynid_dictyna,
+		15 ara_oxyopid_oxyopes,
+		16 ara_philodromid_philodromus,
+		17 ara_salticid_bredana_1,
+		18 ara_salticid_bredana_2,
+		19 ara_salticid_corythalia,
+		20 ara_salticid_metaphidippus_1,
+		21 ara_salticid_metaphidippus_2,
+		22 ara_salticid_paradamoetus,
+		23 ara_salticid_phidippus,
+		24 ara_salticid_salticus_scenicus,
+		25 ara_salticid_salticus,
+		26 ara_theridiid_1,
+		27 ara_theridiid_2,
+		28 ara_thomisid_misumenops,
+		29 ara_thomisid_1,
+		30 ara_thomisid_2,
+		31 col_anthicid_1,
+		32 col_buprestid_1,
+		33 col_cantharid_1,
+		34 col_chrysomelid_1,
+		35 col_chrysomelid_2,
+		36 col_chrysomelid_3,
+		37 col_clerid_1,
+		38 col_clerid_2,
+		39 col_coccinellid_adalia_bipunctata,
+		40 col_coccinellid_coccinella_septum,
+		41 col_coccinellid_cryptolaemus,
+		42 col_coccinellid_harmonia,
+		43 col_coccinellid_hippodamia_convergens,
+		44 col_coccinellid_scymnus,
+		45 col_coccinellid_1,
+		46 col_curculionid_microtyphius,
+		47 col_curculionid_1,
+		48 col_curculionid_2,
+		49 col_curculionid_3,
+		50 col_curculionid_4,
+		51 col_lampyrid_1,
+		52 col_melyrid_1,
+		53 col_melyrid_2,
+		54 col_melyrid_3,
+		55 col_melyrid_4,
+		56 col_melyrid_5,
+		57 col_mordellid_1,
+		58 col_mordellid_2,
+		59 der_forficulid_1,
+		60 dip_agromyzid_hexomyza_schineri,
+		61 dip_agromyzid_1,
+		62 dip_anthomyiid_1,
+		63 dip_bibionid_1,
+		64 dip_bombyliid_1,
+		65 dip_ceratapogonid_1,
+		66 dip_ceratopogonid_2,
+		67 dip_chironomid_1,
+		68 dip_chloropid_1,
+		69 dip_empidid_1,
+		70 dip_empidid_2,
+		71 dip_muscid_1,
+		72 dip_phorid_1,
+		73 dip_sciarid_1,
+		74 dip_syrphid_1,
+		75 dip_tachynid_1,
+		76 hem_anthocorid_anthocoris,
+		77 hem_aphidid_chaitophorus_populicola,
+		78 hem_aphidid_chaitophorus_popullellus,
+		79 hem_aphidid_pemphigus_betae,
+		80 hem_aphidid_pemphigus_populicaulis,
+		81 hem_aphidid_pemphigus_populiglobuli,
+		82 hem_aphidid_pemphigus_populitransversus,
+		83 hem_aphidid_thecabius_populicondupifolius,
+		84 hem_aphidid_thecabius_populimonilis,
+		85 hem_cercopid_1,
+		86 hem_cicadellid_1,
+		87 hem_cicadellid_10,
+		88 hem_cicadellid_11,
+		89 hem_cicadellid_12,
+		90 hem_cicadellid_13,
+		91 hem_cicadellid_14,
+		92 hem_cicadellid_15,
+		93 hem_cicadellid_2,
+		94 hem_cicadellid_3,
+		95 hem_cicadellid_4,
+		96 hem_cicadellid_5,
+		97 hem_cicadellid_6,
+		98 hem_cicadellid_7,
+		99 hem_cicadellid_8,
+		100 hem_cicadellid_9,
+		101 hem_cixiid_1,
+		102 hem_diaspidid_lepidosaphes_ulmi,
+		103 hem_lygaeid_1,
+		104 hem_membracid_1,
+		105 hem_membracid_2,
+		106 hem_mirid_ceratocapsus,
+		107 hem_mirid_1,
+		108 hem_mirid_2,
+		109 hem_mirid_3,
+		110 hem_mirid_4,
+		111 hem_nabid_1,
+		112 hem_pentatomid_brochymena,
+		113 hem_pentatomid_euschistus,
+		114 hem_pentatomid_podisus,
+		115 hem_pentatomid_thyanta,
+		116 hem_reduviid_phymata,
+		117 hem_reduviid_1,
+		118 hem_rhopalid_1,
+		119 hym_braconid_1,
+		120 hym_braconid_2,
+		121 hym_braconid_3,
+		122 hym_braconid_4,
+		123 hym_braconid_5,
+		124 hym_chalcidid_1,
+		125 hym_dryinid_1,
+		126 hym_encyrtid_1,
+		127 hym_encyrtid_2,
+		128 hym_eulophid_1,
+		129 hym_eulophid_2,
+		130 hym_eupelmid_1,
+		131 hym_eurytomid_1,
+		132 hym_formicid_camponotus,
+		133 hym_formicid_formica,
+		134 hym_formicid_1,
+		135 hym_halictid_1,
+		136 hym_ichneumonid_1,
+		137 hym_ichneumonid_2,
+		138 hym_ichneumonid_3,
+		139 hym_mymarid_stephanodes,
+		140 hym_mymarid_2,
+		141 hym_pteromalid_1,
+		142 hym_tenthredinid_nematus,
+		143 hym_tenthredinid_phyllocolpa,
+		144 lep_gelechiid_anacampsis_niveopulvella,
+		145 lep_gelechiid_1,
+		146 lep_geometrid_1,
+		147 lep_gracillarid_phyllocnistis,
+		148 lep_lyonetiid_1,
+		149 lep_noctuid_1,
+		150 lep_tortricid_gypsonoma_haimbachiana,
+		151 lep_1,
+		152 neu_chrysopid_1,
+		153 neu_chrysopid_2,
+		154 neu_raphidiid_1,
+		155 odo_coenagrionid_1,
+		156 ort_gryllid_oecanthus,
+		157 ort_tettigoniid_1,
+		158 thy_aeolothripid_1,
+		159 thy_thripid_1;
+	TREE 'arthrocot_ultra' = (((15:3.0,16:3.0,(28:1.0,29:1.0,30:1.0):2.0,(10:1.0,11:1.0,12:1.0,13:1.0):2.0,((26:1.0,27:1.0):1.0,(3:1.0,4:1.0,5:1.0,6:1.0,7:1.0,8:1.0,9:1.0):1.0):1.0,(17:1.0,18:1.0,19:1.0,20:1.0,21:1.0,22:1.0,23:1.0,24:1.0,25:1.0):2.0):1.0,(14:1.0,1:1.0,2:1.0):3.0):6.0,(155:9.0,((59:2.0,(156:1.0,157:1.0)Orthoptera:1.0)Polyneoptera:6.0,(((158:1.0,159:1.0)Thysanoptera:5.0,((102:2.0,(77:1.0,78:1.0,79:1.0,80:1.0,81:1.0,82:1.0,83:1.0,84:1.0):1.0)Sternorrhyncha:3.0,((111:3.0,118:3.0,(103:2.0,(112:1.0,113:1.0,114:1.0,115:1.0):1.0)Pentatomorpha:1.0,(76:2.0,(116:1.0,117:1.0):1.0,(106:1.0,107:1.0,108:1.0,109:1.0,110:1.0):1.0):1.0)Heteropterodea:1.0,(85:3.0,101:3.0,((104:1.0,105:1.0):1.0,(86:1.0,87:1.0,88:1.0,89:1.0,90:1.0,91:1.0,92:1.0,93:1.0,94:1.0,95:1.0,96:1.0,97:1.0,98:1.0,99:1.0,100:1.0):1.0)Membracoidea:1.0)Auchenorrhyncha:1.0):1.0):1.0)Hemimetabola:1.0,(((154:2.0,(152:1.0,153:1.0):1.0)Neuroptera:1.0,(31:2.0,32:2.0,33:2.0,51:2.0,(37:1.0,38:1.0):1.0,(57:1.0,58:1.0):1.0,(34:1.0,35:1.0,36:1.0):1.0,(46:1.0,47:1.0,48:1.0,49:1.0,50:1.0):1.0,(52:1.0,53:1.0,54:1.0,55:1.0,56:1.0):1.0,(39:1.0,40:1.0,41:1.0,42:1.0,43:1.0,44:1.0,45:1.0):1.0)Coleoptera:1.0):2.0,(((146:2.0,147:2.0,148:2.0,149:2.0,150:2.0,151:2.0,(144:1.0,145:1.0):1.0)Lepidoptera:1.0,(60:1.0,61:1.0,62:1.0,63:1.0,64:1.0,65:1.0,66:1.0,67:1.0,68:1.0,69:1.0,70:1.0,71:1.0,72:1.0,73:1.0,74:1.0,75:1.0)Diptera:2.0):1.0,(124:2.0,125:2.0,128:2.0,129:2.0,130:2.0,131:2.0,135:2.0,141:2.0,(126:1.0,127:1.0):1.0,(139:1.0,140:1.0):1.0,(142:1.0,143:1.0):1.0,(132:1.0,133:1.0,134:1.0):1.0,(136:1.0,137:1.0,138:1.0):1.0,(119:1.0,120:1.0,121:1.0,122:1.0,123:1.0):1.0)Hymenoptera:2.0):1.0)Eumetabola:2.0):1.0)Neoptera:1.0)Insecta:1.0):1.0;
+	TREE 'arthrocot_equal' = (((15:1.0,16:1.0,(28:1.0,29:1.0,30:1.0):1.0,(10:1.0,11:1.0,12:1.0,13:1.0):1.0,((26:1.0,27:1.0):1.0,(3:1.0,4:1.0,5:1.0,6:1.0,7:1.0,8:1.0,9:1.0):1.0):1.0,(17:1.0,18:1.0,19:1.0,20:1.0,21:1.0,22:1.0,23:1.0,24:1.0,25:1.0):1.0):1.0,(14:1.0,1:1.0,2:1.0):1.0):1.0,(155:1.0,((59:1.0,(156:1.0,157:1.0)Orthoptera:1.0)Polyneoptera:1.0,(((158:1.0,159:1.0)Thysanoptera:1.0,((102:1.0,(77:1.0,78:1.0,79:1.0,80:1.0,81:1.0,82:1.0,83:1.0,84:1.0):1.0)Sternorrhyncha:1.0,((111:1.0,118:1.0,(103:1.0,(112:1.0,113:1.0,114:1.0,115:1.0):1.0)Pentatomorpha:1.0,(76:1.0,(116:1.0,117:1.0):1.0,(106:1.0,107:1.0,108:1.0,109:1.0,110:1.0):1.0):1.0)Heteropterodea:1.0,(85:1.0,101:1.0,((104:1.0,105:1.0):1.0,(86:1.0,87:1.0,88:1.0,89:1.0,90:1.0,91:1.0,92:1.0,93:1.0,94:1.0,95:1.0,96:1.0,97:1.0,98:1.0,99:1.0,100:1.0):1.0)Membracoidea:1.0)Auchenorrhyncha:1.0):1.0):1.0)Hemimetabola:1.0,(((154:1.0,(152:1.0,153:1.0):1.0)Neuroptera:1.0,(31:1.0,32:1.0,33:1.0,51:1.0,(37:1.0,38:1.0):1.0,(57:1.0,58:1.0):1.0,(34:1.0,35:1.0,36:1.0):1.0,(46:1.0,47:1.0,48:1.0,49:1.0,50:1.0):1.0,(52:1.0,53:1.0,54:1.0,55:1.0,56:1.0):1.0,(39:1.0,40:1.0,41:1.0,42:1.0,43:1.0,44:1.0,45:1.0):1.0)Coleoptera:1.0):1.0,(((146:1.0,147:1.0,148:1.0,149:1.0,150:1.0,151:1.0,(144:1.0,145:1.0):1.0)Lepidoptera:1.0,(60:1.0,61:1.0,62:1.0,63:1.0,64:1.0,65:1.0,66:1.0,67:1.0,68:1.0,69:1.0,70:1.0,71:1.0,72:1.0,73:1.0,74:1.0,75:1.0)Diptera:1.0):1.0,(124:1.0,125:1.0,128:1.0,129:1.0,130:1.0,131:1.0,135:1.0,141:1.0,(126:1.0,127:1.0):1.0,(139:1.0,140:1.0):1.0,(142:1.0,143:1.0):1.0,(132:1.0,133:1.0,134:1.0):1.0,(136:1.0,137:1.0,138:1.0):1.0,(119:1.0,120:1.0,121:1.0,122:1.0,123:1.0):1.0)Hymenoptera:1.0):1.0)Eumetabola:1.0):1.0)Neoptera:1.0)Insecta:1.0):1.0;
+	TREE 'arthrocot_grad' = (((15:0.0,16:0.0,(28:0.0,29:0.0,30:0.0):1.0,(10:0.0,11:0.0,12:0.0,13:0.0):1.0,((26:0.0,27:0.0):1.0,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.0,8:0.0,9:0.0):1.0):2.0,(17:0.0,18:0.0,19:0.0,20:0.0,21:0.0,22:0.0,23:0.0,24:0.0,25:0.0):1.0):3.0,(14:0.0,1:0.0,2:0.0):1.0):4.0,(155:0.0,((59:0.0,(156:0.0,157:0.0)Orthoptera:1.0)Polyneoptera:2.0,(((158:0.0,159:0.0)Thysanoptera:1.0,((102:0.0,(77:0.0,78:0.0,79:0.0,80:0.0,81:0.0,82:0.0,83:0.0,84:0.0):1.0)Sternorrhyncha:2.0,((111:0.0,118:0.0,(103:0.0,(112:0.0,113:0.0,114:0.0,115:0.0):1.0)Pentatomorpha:2.0,(76:0.0,(116:0.0,117:0.0):1.0,(106:0.0,107:0.0,108:0.0,109:0.0,110:0.0):1.0):2.0)Heteropterodea:3.0,(85:0.0,101:0.0,((104:0.0,105:0.0):1.0,(86:0.0,87:0.0,88:0.0,89:0.0,90:0.0,91:0.0,92:0.0,93:0.0,94:0.0,95:0.0,96:0.0,97:0.0,98:0.0,99:0.0,100:0.0):1.0)Membracoidea:2.0)Auchenorrhyncha:3.0):4.0):5.0)Hemimetabola:6.0,(((154:0.0,(152:0.0,153:0.0):1.0)Neuroptera:2.0,(31:0.0,32:0.0,33:0.0,51:0.0,(37:0.0,38:0.0):1.0,(57:0.0,58:0.0):1.0,(34:0.0,35:0.0,36:0.0):1.0,(46:0.0,47:0.0,48:0.0,49:0.0,50:0.0):1.0,(52:0.0,53:0.0,54:0.0,55:0.0,56:0.0):1.0,(39:0.0,40:0.0,41:0.0,42:0.0,43:0.0,44:0.0,45:0.0):1.0)Coleoptera:2.0):3.0,(((146:0.0,147:0.0,148:0.0,149:0.0,150:0.0,151:0.0,(144:0.0,145:0.0):1.0)Lepidoptera:2.0,(60:0.0,61:0.0,62:0.0,63:0.0,64:0.0,65:0.0,66:0.0,67:0.0,68:0.0,69:0.0,70:0.0,71:0.0,72:0.0,73:0.0,74:0.0,75:0.0)Diptera:1.0):3.0,(124:0.0,125:0.0,128:0.0,129:0.0,130:0.0,131:0.0,135:0.0,141:0.0,(126:0.0,127:0.0):1.0,(139:0.0,140:0.0):1.0,(142:0.0,143:0.0):1.0,(132:0.0,133:0.0,134:0.0):1.0,(136:0.0,137:0.0,138:0.0):1.0,(119:0.0,120:0.0,121:0.0,122:0.0,123:0.0):1.0)Hymenoptera:2.0):4.0)Eumetabola:5.0):7.0)Neoptera:8.0)Insecta:9.0):10.0;
+	TREE 'arthrocot_ultrarand' = (((15:0.2538205659009223,16:0.0,(28:0.189360821795998,29:0.0,30:2.389703279986917):0.0,(10:0.0,11:3.3048100257197506,12:1.0719813633238648,13:0.13258276608063646):3.316758070000833,((26:0.14547915425469427,27:0.5137803856827745):0.717328082447738,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.8374272521927626,8:1.9074797723424808,9:3.748716592319978):0.11409449457644671):0.6358611062704174,(17:4.369770028068066,18:1.6481325473803272,19:3.341105732164136,20:0.0,21:3.0779682795061047,22:2.170960300590584,23:0.0,24:4.281968971397216,25:3.184943570105075):0.15271593430020936):3.2452193839412655,(14:0.7836837809220356,1:0.0,2:0.030476277798410778):15.287689479455175):36.220615392356606,(155:18.879466980619263,((59:2.5847660827887533,(156:0.622213104320081,157:4.449667545883436)Orthoptera:3.511700660612711)Polyneoptera:0.0,(((158:0.0,159:0.0)Thysanoptera:0.0,((102:0.0,(77:1.8215392721989683,78:3.5693361758368503,79:0.0,80:0.0,81:0.5931922905316331,82:4.45166971980146,83:1.8139380560366987,84:0.11160074789648611):0.0)Sternorrhyncha:0.0,((111:6.6650720582572465,118:14.082152739266714,(103:11.540051845245006,(112:4.534115925898815,113:0.0,114:2.9877611989912616,115:4.968193031102512):0.0)Pentatomorpha:2.5602585442596615,(76:0.0,(116:2.69522234774458,117:1.6975641798782735):6.414027242889442,(106:2.4813927800069924,107:4.457433765507849,108:0.7218748546421443,109:0.17530137275309077,110:0.0):4.719341113094908):0.7653227049669573)Heteropterodea:1.1953228968841159,(85:6.40921400461037,101:0.0,((104:3.14920903837488,105:4.034786979060504):0.0,(86:0.0,87:3.6434072609616046,88:0.3961992293469091,89:5.44191619265522,90:0.9737255462698472,91:0.0,92:0.7256679633606677,93:0.6327657456184785,94:0.87029369379284,95:1.2650055697006706,96:4.006178655472512,97:1.1102465545960423,98:0.0,99:2.3214897646577244,100:1.7405959104058317):0.3904406213315881)Membracoidea:0.0)Auchenorrhyncha:0.0):0.3204793310032965):0.0)Hemimetabola:0.09955928974948813,(((154:5.8790287635103455,(152:1.4072201877524435,153:0.0):3.539616255811975)Neuroptera:3.4531891386366307,(31:8.737433711995857,32:2.9678748066200935,33:0.0,51:0.0,(37:0.0,38:2.7750639877776058):0.0,(57:4.3781324439950104,58:0.0):0.0,(34:0.0,35:0.0,36:0.7990337671384328):2.7781189764027587,(46:3.2573687955301485,47:4.620491490933744,48:2.3972132267870387,49:2.0409513990403285,50:0.0):2.3699421601007282,(52:0.0,53:0.0,54:1.133139059180895,55:0.0,56:4.049512344096499):0.4276936535951863,(39:0.2291007583206014,40:0.0,41:0.0,42:0.0,43:2.916009259162383,44:1.5367508008154758,45:1.4591134415625586):0.7202821916024535)Coleoptera:0.0):0.0,(((146:2.529147985591465,147:2.903217347813016,148:4.758920327702327,149:1.1869783395373985,150:6.631242834572297,151:2.8174612514953488,(144:0.5784849381844069,145:1.802776937333376):4.11400350092844)Lepidoptera:2.052908614728808,(60:0.0,61:0.0,62:0.788616054344824,63:4.05879665861602,64:0.0,65:1.3239959287667933,66:0.0,67:1.3386418170760348,68:1.553862221228366,69:4.439972986613117,70:0.05484560941630201,71:0.07620222773589824,72:0.0,73:2.3153578825542733,74:2.6079463107326486,75:0.0)Diptera:0.1540599288400759):3.47361569491301,(124:0.0,125:3.53824561357494,128:0.0,129:6.5941517578441795,130:0.1538840662824299,131:4.151827978880966,135:0.0,141:5.985078484268339,(126:4.154561951768516,127:3.8334325518510783):0.0,(139:0.0,140:1.1927098990361664):1.9588340274739302,(142:0.789998633155284,143:0.0):0.0,(132:2.5337089185287596,133:0.8917509405474942,134:0.6235877568351043):0.6139253384049421,(136:0.0,137:0.0,138:0.0):0.0,(119:1.5616295663826087,120:0.0,121:0.925257680600033,122:1.12959359908456,123:0.0):0.0)Hymenoptera:0.0):0.0)Eumetabola:0.4618334210860684):0.8554570128356853)Neoptera:3.8057455698363825)Insecta:5.485499714369417):0.0[% ] [%test = 0.2 ];
+	TREE 'arthrocot_gradrand' = (((15:0.0,16:0.0,(28:0.0,29:0.0,30:0.0):0.0,(10:0.0,11:0.0,12:0.0,13:0.0):0.6897896215018005,((26:0.0,27:0.0):2.09349416287489,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.0,8:0.0,9:0.0):0.909077539658661):1.1544490924659954,(17:0.0,18:0.0,19:0.0,20:0.0,21:0.0,22:0.0,23:0.0,24:0.0,25:0.0):0.0):0.0,(14:0.0,1:0.0,2:0.0):0.6455879053292073):10.627120513923078,(155:0.0,((59:0.0,(156:0.0,157:0.0)Orthoptera:0.0)Polyneoptera:0.0,(((158:0.0,159:0.0)Thysanoptera:0.5343974149936693,((102:0.0,(77:0.0,78:0.0,79:0.0,80:0.0,81:0.0,82:0.0,83:0.0,84:0.0):0.10051316883539163)Sternorrhyncha:5.421237056000582,((111:0.0,118:0.0,(103:0.0,(112:0.0,113:0.0,114:0.0,115:0.0):2.2217883866030883)Pentatomorpha:0.0,(76:0.0,(116:0.0,117:0.0):0.0,(106:0.0,107:0.0,108:0.0,109:0.0,110:0.0):0.9656111600807267):0.0)Heteropterodea:0.0,(85:0.0,101:0.0,((104:0.0,105:0.0):1.4075888133043726,(86:0.0,87:0.0,88:0.0,89:0.0,90:0.0,91:0.0,92:0.0,93:0.0,94:0.0,95:0.0,96:0.0,97:0.0,98:0.0,99:0.0,100:0.0):1.8245963254150523)Membracoidea:0.0)Auchenorrhyncha:3.824452998974775):0.0):0.0)Hemimetabola:0.8196593239747125,(((154:0.0,(152:0.0,153:0.0):2.3416210307032257)Neuroptera:3.8065378908375704,(31:0.0,32:0.0,33:0.0,51:0.0,(37:0.0,38:0.0):0.5942863542554548,(57:0.0,58:0.0):0.0,(34:0.0,35:0.0,36:0.0):1.9003105851614288,(46:0.0,47:0.0,48:0.0,49:0.0,50:0.0):2.537373266907955,(52:0.0,53:0.0,54:0.0,55:0.0,56:0.0):2.6664791667944088,(39:0.0,40:0.0,41:0.0,42:0.0,43:0.0,44:0.0,45:0.0):1.7620160687605102)Coleoptera:11.568833596504629):6.415706358921204,(((146:0.0,147:0.0,148:0.0,149:0.0,150:0.0,151:0.0,(144:0.0,145:0.0):2.0858223055116287)Lepidoptera:0.0,(60:0.0,61:0.0,62:0.0,63:0.0,64:0.0,65:0.0,66:0.0,67:0.0,68:0.0,69:0.0,70:0.0,71:0.0,72:0.0,73:0.0,74:0.0,75:0.0)Diptera:0.4650400985280291):0.9554252659950477,(124:0.0,125:0.0,128:0.0,129:0.0,130:0.0,131:0.0,135:0.0,141:0.0,(126:0.0,127:0.0):0.9570245605266204,(139:0.0,140:0.0):0.0,(142:0.0,143:0.0):0.0,(132:0.0,133:0.0,134:0.0):0.0,(136:0.0,137:0.0,138:0.0):1.082261316260305,(119:0.0,120:0.0,121:0.0,122:0.0,123:0.0):0.8454873097829246)Hymenoptera:5.292598940861097):0.0)Eumetabola:0.7069002162760336):2.3538043869687693)Neoptera:4.56085244599185)Insecta:28.53785449500442):21.76836680578087[% ] [%test = 0.2 ];
+
+END;
+
+
+BEGIN TREES;
+	Title Randomly_Modify_Current_Tree;
+	LINK Taxa = 'arthro_cot';
+[!Parameters: Randomly modifying tree from: Tree(s) used from Tree Window 1 showing Stored Trees. Last tree used: arthrocot_randgrad  [tree: (((15:0.0,16:0.0,(28:0.0,29:0.0,30:0.0):1.0,(10:0.0,11:0.0,12:0.0,13:0.0):1.0,((26:0.0,27:0.0):1.0,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.0,8:0.0,9:0.0):1.0):2.0,(17:0.0,18:0.0,19:0.0,20:0.0,21:0.0,22:0.0,23:0.0,24:0.0,25:0.0):1.0):3.0,(14:0.0,1:0.0,2:0.0):1.0):4.0,(155:0.0,((59:0.0,(156:0.0,157:0.0)Orthoptera:1.0)Polyneoptera:2.0,(((158:0.0,159:0.0)Thysanoptera:1.0,((102:0.0,(77:0.0,78:0.0,79:0.0,80:0.0,81:0.0,82:0.0,83:0.0,84:0.0):1.0)Sternorrhyncha:2.0,((111:0.0,118:0.0,(103:0.0,(112:0.0,113:0.0,114:0.0,115:0.0):1.0)Pentatomorpha:2.0,(76:0.0,(116:0.0,117:0.0):1.0,(106:0.0,107:0.0,108:0.0,109:0.0,110:0.0):1.0):2.0)Heteropterodea:3.0,(85:0.0,101:0.0,((104:0.0,105:0.0):1.0,(86:0.0,87:0.0,88:0.0,89:0.0,90:0.0,91:0.0,92:0.0,93:0.0,94:0.0,95:0.0,96:0.0,97:0.0,98:0.0,99:0.0,100:0.0):1.0)Membracoidea:2.0)Auchenorrhyncha:3.0):4.0):5.0)Hemimetabola:6.0,(((154:0.0,(152:0.0,153:0.0):1.0)Neuroptera:2.0,(31:0.0,32:0.0,33:0.0,51:0.0,(37:0.0,38:0.0):1.0,(57:0.0,58:0.0):1.0,(34:0.0,35:0.0,36:0.0):1.0,(46:0.0,47:0.0,48:0.0,49:0.0,50:0.0):1.0,(52:0.0,53:0.0,54:0.0,55:0.0,56:0.0):1.0,(39:0.0,40:0.0,41:0.0,42:0.0,43:0.0,44:0.0,45:0.0):1.0)Coleoptera:2.0):3.0,(((146:0.0,147:0.0,148:0.0,149:0.0,150:0.0,151:0.0,(144:0.0,145:0.0):1.0)Lepidoptera:2.0,(60:0.0,61:0.0,62:0.0,63:0.0,64:0.0,65:0.0,66:0.0,67:0.0,68:0.0,69:0.0,70:0.0,71:0.0,72:0.0,73:0.0,74:0.0,75:0.0)Diptera:1.0):3.0,(124:0.0,125:0.0,128:0.0,129:0.0,130:0.0,131:0.0,135:0.0,141:0.0,(126:0.0,127:0.0):1.0,(139:0.0,140:0.0):1.0,(142:0.0,143:0.0):1.0,(132:0.0,133:0.0,134:0.0):1.0,(136:0.0,137:0.0,138:0.0):1.0,(119:0.0,120:0.0,121:0.0,122:0.0,123:0.0):1.0)Hymenoptera:2.0):4.0)Eumetabola:5.0):7.0)Neoptera:8.0)Insecta:9.0):10.0;] . [seed: 1313180642643]]
+	TRANSLATE
+		1 aca_eriophyid_aceria_parapopuli,
+		2 aca_erythraeid_1,
+		3 ara_araneid_araneus,
+		4 ara_araneid_araniella,
+		5 ara_araneid_metepeira_1,
+		6 ara_araneid_metepeira_2,
+		7 ara_araneid_metepeira_wittfeldae,
+		8 ara_araneid_neoscona,
+		9 ara_araneid_1,
+		10 ara_clubionid_cheiracanthium,
+		11 ara_clubionid_1,
+		12 ara_clubionid_2,
+		13 ara_clubionid_3,
+		14 ara_dictynid_dictyna,
+		15 ara_oxyopid_oxyopes,
+		16 ara_philodromid_philodromus,
+		17 ara_salticid_bredana_1,
+		18 ara_salticid_bredana_2,
+		19 ara_salticid_corythalia,
+		20 ara_salticid_metaphidippus_1,
+		21 ara_salticid_metaphidippus_2,
+		22 ara_salticid_paradamoetus,
+		23 ara_salticid_phidippus,
+		24 ara_salticid_salticus_scenicus,
+		25 ara_salticid_salticus,
+		26 ara_theridiid_1,
+		27 ara_theridiid_2,
+		28 ara_thomisid_misumenops,
+		29 ara_thomisid_1,
+		30 ara_thomisid_2,
+		31 col_anthicid_1,
+		32 col_buprestid_1,
+		33 col_cantharid_1,
+		34 col_chrysomelid_1,
+		35 col_chrysomelid_2,
+		36 col_chrysomelid_3,
+		37 col_clerid_1,
+		38 col_clerid_2,
+		39 col_coccinellid_adalia_bipunctata,
+		40 col_coccinellid_coccinella_septum,
+		41 col_coccinellid_cryptolaemus,
+		42 col_coccinellid_harmonia,
+		43 col_coccinellid_hippodamia_convergens,
+		44 col_coccinellid_scymnus,
+		45 col_coccinellid_1,
+		46 col_curculionid_microtyphius,
+		47 col_curculionid_1,
+		48 col_curculionid_2,
+		49 col_curculionid_3,
+		50 col_curculionid_4,
+		51 col_lampyrid_1,
+		52 col_melyrid_1,
+		53 col_melyrid_2,
+		54 col_melyrid_3,
+		55 col_melyrid_4,
+		56 col_melyrid_5,
+		57 col_mordellid_1,
+		58 col_mordellid_2,
+		59 der_forficulid_1,
+		60 dip_agromyzid_hexomyza_schineri,
+		61 dip_agromyzid_1,
+		62 dip_anthomyiid_1,
+		63 dip_bibionid_1,
+		64 dip_bombyliid_1,
+		65 dip_ceratapogonid_1,
+		66 dip_ceratopogonid_2,
+		67 dip_chironomid_1,
+		68 dip_chloropid_1,
+		69 dip_empidid_1,
+		70 dip_empidid_2,
+		71 dip_muscid_1,
+		72 dip_phorid_1,
+		73 dip_sciarid_1,
+		74 dip_syrphid_1,
+		75 dip_tachynid_1,
+		76 hem_anthocorid_anthocoris,
+		77 hem_aphidid_chaitophorus_populicola,
+		78 hem_aphidid_chaitophorus_popullellus,
+		79 hem_aphidid_pemphigus_betae,
+		80 hem_aphidid_pemphigus_populicaulis,
+		81 hem_aphidid_pemphigus_populiglobuli,
+		82 hem_aphidid_pemphigus_populitransversus,
+		83 hem_aphidid_thecabius_populicondupifolius,
+		84 hem_aphidid_thecabius_populimonilis,
+		85 hem_cercopid_1,
+		86 hem_cicadellid_1,
+		87 hem_cicadellid_10,
+		88 hem_cicadellid_11,
+		89 hem_cicadellid_12,
+		90 hem_cicadellid_13,
+		91 hem_cicadellid_14,
+		92 hem_cicadellid_15,
+		93 hem_cicadellid_2,
+		94 hem_cicadellid_3,
+		95 hem_cicadellid_4,
+		96 hem_cicadellid_5,
+		97 hem_cicadellid_6,
+		98 hem_cicadellid_7,
+		99 hem_cicadellid_8,
+		100 hem_cicadellid_9,
+		101 hem_cixiid_1,
+		102 hem_diaspidid_lepidosaphes_ulmi,
+		103 hem_lygaeid_1,
+		104 hem_membracid_1,
+		105 hem_membracid_2,
+		106 hem_mirid_ceratocapsus,
+		107 hem_mirid_1,
+		108 hem_mirid_2,
+		109 hem_mirid_3,
+		110 hem_mirid_4,
+		111 hem_nabid_1,
+		112 hem_pentatomid_brochymena,
+		113 hem_pentatomid_euschistus,
+		114 hem_pentatomid_podisus,
+		115 hem_pentatomid_thyanta,
+		116 hem_reduviid_phymata,
+		117 hem_reduviid_1,
+		118 hem_rhopalid_1,
+		119 hym_braconid_1,
+		120 hym_braconid_2,
+		121 hym_braconid_3,
+		122 hym_braconid_4,
+		123 hym_braconid_5,
+		124 hym_chalcidid_1,
+		125 hym_dryinid_1,
+		126 hym_encyrtid_1,
+		127 hym_encyrtid_2,
+		128 hym_eulophid_1,
+		129 hym_eulophid_2,
+		130 hym_eupelmid_1,
+		131 hym_eurytomid_1,
+		132 hym_formicid_camponotus,
+		133 hym_formicid_formica,
+		134 hym_formicid_1,
+		135 hym_halictid_1,
+		136 hym_ichneumonid_1,
+		137 hym_ichneumonid_2,
+		138 hym_ichneumonid_3,
+		139 hym_mymarid_stephanodes,
+		140 hym_mymarid_2,
+		141 hym_pteromalid_1,
+		142 hym_tenthredinid_nematus,
+		143 hym_tenthredinid_phyllocolpa,
+		144 lep_gelechiid_anacampsis_niveopulvella,
+		145 lep_gelechiid_1,
+		146 lep_geometrid_1,
+		147 lep_gracillarid_phyllocnistis,
+		148 lep_lyonetiid_1,
+		149 lep_noctuid_1,
+		150 lep_tortricid_gypsonoma_haimbachiana,
+		151 lep_1,
+		152 neu_chrysopid_1,
+		153 neu_chrysopid_2,
+		154 neu_raphidiid_1,
+		155 odo_coenagrionid_1,
+		156 ort_gryllid_oecanthus,
+		157 ort_tettigoniid_1,
+		158 thy_aeolothripid_1,
+		159 thy_thripid_1;
+	TREE 'Randomly modified from arthrocot_randgrad (#0)' = (((15:0.0,16:0.0,(28:0.0,29:0.0,30:0.0):0.0,(10:0.0,11:0.0,12:0.0,13:0.0):2.6224196818120755,((26:0.0,27:0.0):0.12967320451756514,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.0,8:0.0,9:0.0):0.0):0.0,(17:0.0,18:0.0,19:0.0,20:0.0,21:0.0,22:0.0,23:0.0,24:0.0,25:0.0):2.6933691001066755):9.342214535559268,(14:0.0,1:0.0,2:0.0):0.19239953998421866):0.0,(155:0.0,((59:0.0,(156:0.0,157:0.0)Orthoptera:3.9528642056779204)Polyneoptera:0.9366418055425152,(((158:0.0,159:0.0)Thysanoptera:1.1937142625093928,((102:0.0,(77:0.0,78:0.0,79:0.0,80:0.0,81:0.0,82:0.0,83:0.0,84:0.0):4.322900924409303)Sternorrhyncha:0.0,((111:0.0,118:0.0,(103:0.0,(112:0.0,113:0.0,114:0.0,115:0.0):3.7316242581802253)Pentatomorpha:0.8713690991811003,(76:0.0,(116:0.0,117:0.0):2.354617823926473,(106:0.0,107:0.0,108:0.0,109:0.0,110:0.0):2.587503309896708):0.09907889929576652)Heteropterodea:0.0,(85:0.0,101:0.0,((104:0.0,105:0.0):2.024738818051377,(86:0.0,87:0.0,88:0.0,89:0.0,90:0.0,91:0.0,92:0.0,93:0.0,94:0.0,95:0.0,96:0.0,97:0.0,98:0.0,99:0.0,100:0.0):0.4708991787404354)Membracoidea:3.0739621620031095)Auchenorrhyncha:6.248980909492934):3.4533605948824713):5.892609071805687)Hemimetabola:20.241055155658447,(((154:0.0,(152:0.0,153:0.0):3.0624917184395706)Neuroptera:8.25798756869808,(31:0.0,32:0.0,33:0.0,51:0.0,(37:0.0,38:0.0):0.0,(57:0.0,58:0.0):0.5312642844215436,(34:0.0,35:0.0,36:0.0):0.6156462557322112,(46:0.0,47:0.0,48:0.0,49:0.0,50:0.0):3.2367646466080124,(52:0.0,53:0.0,54:0.0,55:0.0,56:0.0):0.0,(39:0.0,40:0.0,41:0.0,42:0.0,43:0.0,44:0.0,45:0.0):0.9979174643913911)Coleoptera:4.769996995158707):2.116292889391355,(((146:0.0,147:0.0,148:0.0,149:0.0,150:0.0,151:0.0,(144:0.0,145:0.0):0.6636220205606245)Lepidoptera:0.8931481968798503,(60:0.0,61:0.0,62:0.0,63:0.0,64:0.0,65:0.0,66:0.0,67:0.0,68:0.0,69:0.0,70:0.0,71:0.0,72:0.0,73:0.0,74:0.0,75:0.0)Diptera:1.7508240308513732):0.0,(124:0.0,125:0.0,128:0.0,129:0.0,130:0.0,131:0.0,135:0.0,141:0.0,(126:0.0,127:0.0):1.1031168280761179,(139:0.0,140:0.0):2.3854898973876333,(142:0.0,143:0.0):2.648043924979974,(132:0.0,133:0.0,134:0.0):0.35590236797575847,(136:0.0,137:0.0,138:0.0):0.9930999136041516,(119:0.0,120:0.0,121:0.0,122:0.0,123:0.0):0.0)Hymenoptera:6.965570098727241):1.4738983790977507)Eumetabola:6.685648353256614):31.289642993879543)Neoptera:14.082846622823336)Insecta:21.989380880333204):0.0[% ] [%test = 0.2 ];
+	TREE 'Randomly modified from arthrocot_randgrad (#1)' = (((15:0.0,16:0.0,(28:0.0,29:0.0,30:0.0):0.0,(10:0.0,11:0.0,12:0.0,13:0.0):0.6897896215018005,((26:0.0,27:0.0):2.09349416287489,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.0,8:0.0,9:0.0):0.909077539658661):1.1544490924659954,(17:0.0,18:0.0,19:0.0,20:0.0,21:0.0,22:0.0,23:0.0,24:0.0,25:0.0):0.0):0.0,(14:0.0,1:0.0,2:0.0):0.6455879053292073):10.627120513923078,(155:0.0,((59:0.0,(156:0.0,157:0.0)Orthoptera:0.0)Polyneoptera:0.0,(((158:0.0,159:0.0)Thysanoptera:0.5343974149936693,((102:0.0,(77:0.0,78:0.0,79:0.0,80:0.0,81:0.0,82:0.0,83:0.0,84:0.0):0.10051316883539163)Sternorrhyncha:5.421237056000582,((111:0.0,118:0.0,(103:0.0,(112:0.0,113:0.0,114:0.0,115:0.0):2.2217883866030883)Pentatomorpha:0.0,(76:0.0,(116:0.0,117:0.0):0.0,(106:0.0,107:0.0,108:0.0,109:0.0,110:0.0):0.9656111600807267):0.0)Heteropterodea:0.0,(85:0.0,101:0.0,((104:0.0,105:0.0):1.4075888133043726,(86:0.0,87:0.0,88:0.0,89:0.0,90:0.0,91:0.0,92:0.0,93:0.0,94:0.0,95:0.0,96:0.0,97:0.0,98:0.0,99:0.0,100:0.0):1.8245963254150523)Membracoidea:0.0)Auchenorrhyncha:3.824452998974775):0.0):0.0)Hemimetabola:0.8196593239747125,(((154:0.0,(152:0.0,153:0.0):2.3416210307032257)Neuroptera:3.8065378908375704,(31:0.0,32:0.0,33:0.0,51:0.0,(37:0.0,38:0.0):0.5942863542554548,(57:0.0,58:0.0):0.0,(34:0.0,35:0.0,36:0.0):1.9003105851614288,(46:0.0,47:0.0,48:0.0,49:0.0,50:0.0):2.537373266907955,(52:0.0,53:0.0,54:0.0,55:0.0,56:0.0):2.6664791667944088,(39:0.0,40:0.0,41:0.0,42:0.0,43:0.0,44:0.0,45:0.0):1.7620160687605102)Coleoptera:11.568833596504629):6.415706358921204,(((146:0.0,147:0.0,148:0.0,149:0.0,150:0.0,151:0.0,(144:0.0,145:0.0):2.0858223055116287)Lepidoptera:0.0,(60:0.0,61:0.0,62:0.0,63:0.0,64:0.0,65:0.0,66:0.0,67:0.0,68:0.0,69:0.0,70:0.0,71:0.0,72:0.0,73:0.0,74:0.0,75:0.0)Diptera:0.4650400985280291):0.9554252659950477,(124:0.0,125:0.0,128:0.0,129:0.0,130:0.0,131:0.0,135:0.0,141:0.0,(126:0.0,127:0.0):0.9570245605266204,(139:0.0,140:0.0):0.0,(142:0.0,143:0.0):0.0,(132:0.0,133:0.0,134:0.0):0.0,(136:0.0,137:0.0,138:0.0):1.082261316260305,(119:0.0,120:0.0,121:0.0,122:0.0,123:0.0):0.8454873097829246)Hymenoptera:5.292598940861097):0.0)Eumetabola:0.7069002162760336):2.3538043869687693)Neoptera:4.56085244599185)Insecta:28.53785449500442):21.76836680578087[% ] [%test = 0.2 ];
+	TREE 'Randomly modified from arthrocot_randgrad (#2)' = (((15:0.0,16:0.0,(28:0.0,29:0.0,30:0.0):0.0,(10:0.0,11:0.0,12:0.0,13:0.0):0.40791893383137057,((26:0.0,27:0.0):1.9647517714499623,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.0,8:0.0,9:0.0):3.875539459582539):2.6902975820497557,(17:0.0,18:0.0,19:0.0,20:0.0,21:0.0,22:0.0,23:0.0,24:0.0,25:0.0):1.3843554880065563):0.5044849356838221,(14:0.0,1:0.0,2:0.0):2.91161315439748):1.9043756454288814,(155:0.0,((59:0.0,(156:0.0,157:0.0)Orthoptera:2.2307722442054416)Polyneoptera:2.392301443413947,(((158:0.0,159:0.0)Thysanoptera:3.2733757887503896,((102:0.0,(77:0.0,78:0.0,79:0.0,80:0.0,81:0.0,82:0.0,83:0.0,84:0.0):0.0)Sternorrhyncha:0.0,((111:0.0,118:0.0,(103:0.0,(112:0.0,113:0.0,114:0.0,115:0.0):2.7247170343550806)Pentatomorpha:3.84881984675913,(76:0.0,(116:0.0,117:0.0):2.4671098686602293,(106:0.0,107:0.0,108:0.0,109:0.0,110:0.0):2.3218186623244748):0.0)Heteropterodea:2.6571651169249466,(85:0.0,101:0.0,((104:0.0,105:0.0):3.8034786444980093,(86:0.0,87:0.0,88:0.0,89:0.0,90:0.0,91:0.0,92:0.0,93:0.0,94:0.0,95:0.0,96:0.0,97:0.0,98:0.0,99:0.0,100:0.0):0.0)Membracoidea:5.231078562423183)Auchenorrhyncha:5.536305458547805):0.0):11.122044434579156)Hemimetabola:0.0,(((154:0.0,(152:0.0,153:0.0):2.857557984749084)Neuroptera:4.442399421707799,(31:0.0,32:0.0,33:0.0,51:0.0,(37:0.0,38:0.0):0.5823095767332981,(57:0.0,58:0.0):0.6789699538740248,(34:0.0,35:0.0,36:0.0):2.6516581288001,(46:0.0,47:0.0,48:0.0,49:0.0,50:0.0):0.0,(52:0.0,53:0.0,54:0.0,55:0.0,56:0.0):0.0,(39:0.0,40:0.0,41:0.0,42:0.0,43:0.0,44:0.0,45:0.0):1.6898910057220027)Coleoptera:1.274242714637204):0.0,(((146:0.0,147:0.0,148:0.0,149:0.0,150:0.0,151:0.0,(144:0.0,145:0.0):1.292184174081876)Lepidoptera:1.2129643833620758,(60:0.0,61:0.0,62:0.0,63:0.0,64:0.0,65:0.0,66:0.0,67:0.0,68:0.0,69:0.0,70:0.0,71:0.0,72:0.0,73:0.0,74:0.0,75:0.0)Diptera:1.5892973694492536):3.894214436368114,(124:0.0,125:0.0,128:0.0,129:0.0,130:0.0,131:0.0,135:0.0,141:0.0,(126:0.0,127:0.0):0.0,(139:0.0,140:0.0):2.203895259094855,(142:0.0,143:0.0):0.0,(132:0.0,133:0.0,134:0.0):0.0,(136:0.0,137:0.0,138:0.0):3.2726797749346628,(119:0.0,120:0.0,121:0.0,122:0.0,123:0.0):0.0)Hymenoptera:2.7941791743495292):6.967908131664458)Eumetabola:20.25950087993647):0.0)Neoptera:8.306017944567053)Insecta:26.19417063642417):10.952152713797586[% ] [%test = 0.2 ];
+	TREE 'Randomly modified from arthrocot_randgrad (#3)' = (((15:0.0,16:0.0,(28:0.0,29:0.0,30:0.0):1.2955234267743445,(10:0.0,11:0.0,12:0.0,13:0.0):2.554079358063409,((26:0.0,27:0.0):3.485977926121772,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.0,8:0.0,9:0.0):0.0):4.020255912873732,(17:0.0,18:0.0,19:0.0,20:0.0,21:0.0,22:0.0,23:0.0,24:0.0,25:0.0):0.0):1.741694121610791,(14:0.0,1:0.0,2:0.0):0.0):7.505461389409446,(155:0.0,((59:0.0,(156:0.0,157:0.0)Orthoptera:0.0)Polyneoptera:1.1109807120441726,(((158:0.0,159:0.0)Thysanoptera:1.5563807355221573,((102:0.0,(77:0.0,78:0.0,79:0.0,80:0.0,81:0.0,82:0.0,83:0.0,84:0.0):2.0900636792584377)Sternorrhyncha:8.174816453564002,((111:0.0,118:0.0,(103:0.0,(112:0.0,113:0.0,114:0.0,115:0.0):2.3084924804537117)Pentatomorpha:3.465915866388416,(76:0.0,(116:0.0,117:0.0):0.0,(106:0.0,107:0.0,108:0.0,109:0.0,110:0.0):0.73900297338252):3.602270106853398)Heteropterodea:4.194636756538646,(85:0.0,101:0.0,((104:0.0,105:0.0):0.17719867558893232,(86:0.0,87:0.0,88:0.0,89:0.0,90:0.0,91:0.0,92:0.0,93:0.0,94:0.0,95:0.0,96:0.0,97:0.0,98:0.0,99:0.0,100:0.0):1.6176534671382998)Membracoidea:4.271289624673072)Auchenorrhyncha:0.0):1.8848585841773358):0.0)Hemimetabola:1.9122203068041284,(((154:0.0,(152:0.0,153:0.0):0.03746611472335837)Neuroptera:3.8109127340844076,(31:0.0,32:0.0,33:0.0,51:0.0,(37:0.0,38:0.0):0.0,(57:0.0,58:0.0):0.24754601671283938,(34:0.0,35:0.0,36:0.0):1.3375750333039311,(46:0.0,47:0.0,48:0.0,49:0.0,50:0.0):4.299216825261792,(52:0.0,53:0.0,54:0.0,55:0.0,56:0.0):0.0,(39:0.0,40:0.0,41:0.0,42:0.0,43:0.0,44:0.0,45:0.0):0.0)Coleoptera:2.8380967198116727):12.344984150934723,(((146:0.0,147:0.0,148:0.0,149:0.0,150:0.0,151:0.0,(144:0.0,145:0.0):1.527024776517281)Lepidoptera:1.6981989186831463,(60:0.0,61:0.0,62:0.0,63:0.0,64:0.0,65:0.0,66:0.0,67:0.0,68:0.0,69:0.0,70:0.0,71:0.0,72:0.0,73:0.0,74:0.0,75:0.0)Diptera:1.6345566845778592):11.732181389180193,(124:0.0,125:0.0,128:0.0,129:0.0,130:0.0,131:0.0,135:0.0,141:0.0,(126:0.0,127:0.0):0.0,(139:0.0,140:0.0):0.0,(142:0.0,143:0.0):0.4279620029528979,(132:0.0,133:0.0,134:0.0):2.190037905109026,(136:0.0,137:0.0,138:0.0):3.0909852168184484,(119:0.0,120:0.0,121:0.0,122:0.0,123:0.0):0.5961680274379129)Hymenoptera:3.033628130729986):0.0)Eumetabola:12.81972824177149):18.53313565225747)Neoptera:3.737023603384488)Insecta:4.965618651733363):3.935385023082776[% ] [%test = 0.2 ];
+	TREE 'Randomly modified from arthrocot_randgrad (#4)' = (((15:0.0,16:0.0,(28:0.0,29:0.0,30:0.0):0.0,(10:0.0,11:0.0,12:0.0,13:0.0):3.648053705620213,((26:0.0,27:0.0):1.336658647630787,(3:0.0,4:0.0,5:0.0,6:0.0,7:0.0,8:0.0,9:0.0):0.5913519060102798):2.8334838875054564,(17:0.0,18:0.0,19:0.0,20:0.0,21:0.0,22:0.0,23:0.0,24:0.0,25:0.0):4.0269179851213):7.211659535406067,(14:0.0,1:0.0,2:0.0):3.802019825712541):0.0,(155:0.0,((59:0.0,(156:0.0,157:0.0)Orthoptera:3.2391449109700696)Polyneoptera:0.0,(((158:0.0,159:0.0)Thysanoptera:1.6516860922309804,((102:0.0,(77:0.0,78:0.0,79:0.0,80:0.0,81:0.0,82:0.0,83:0.0,84:0.0):2.401785262658662)Sternorrhyncha:2.8425511416115032,((111:0.0,118:0.0,(103:0.0,(112:0.0,113:0.0,114:0.0,115:0.0):1.601467514506912)Pentatomorpha:0.8504141383495927,(76:0.0,(116:0.0,117:0.0):0.12718893257068953,(106:0.0,107:0.0,108:0.0,109:0.0,110:0.0):1.6226214508519659):1.365871936080011)Heteropterodea:5.778294052825794,(85:0.0,101:0.0,((104:0.0,105:0.0):0.6807529734475952,(86:0.0,87:0.0,88:0.0,89:0.0,90:0.0,91:0.0,92:0.0,93:0.0,94:0.0,95:0.0,96:0.0,97:0.0,98:0.0,99:0.0,100:0.0):1.192951892510711)Membracoidea:0.0)Auchenorrhyncha:5.23389781432779):7.391544758622179):17.674862003100927)Hemimetabola:0.0,(((154:0.0,(152:0.0,153:0.0):2.4396751994401504)Neuroptera:0.0,(31:0.0,32:0.0,33:0.0,51:0.0,(37:0.0,38:0.0):1.3536500563085967,(57:0.0,58:0.0):2.910373130399212,(34:0.0,35:0.0,36:0.0):0.0,(46:0.0,47:0.0,48:0.0,49:0.0,50:0.0):0.03342729363517705,(52:0.0,53:0.0,54:0.0,55:0.0,56:0.0):2.2700723327876045,(39:0.0,40:0.0,41:0.0,42:0.0,43:0.0,44:0.0,45:0.0):1.4135074414003466)Coleoptera:1.1169255250824806):2.3045353370124086,(((146:0.0,147:0.0,148:0.0,149:0.0,150:0.0,151:0.0,(144:0.0,145:0.0):0.4321288119632575)Lepidoptera:2.145981520998312,(60:0.0,61:0.0,62:0.0,63:0.0,64:0.0,65:0.0,66:0.0,67:0.0,68:0.0,69:0.0,70:0.0,71:0.0,72:0.0,73:0.0,74:0.0,75:0.0)Diptera:0.0):2.7280197823523613,(124:0.0,125:0.0,128:0.0,129:0.0,130:0.0,131:0.0,135:0.0,141:0.0,(126:0.0,127:0.0):0.0,(139:0.0,140:0.0):0.17905627352059883,(142:0.0,143:0.0):0.7710084900647899,(132:0.0,133:0.0,134:0.0):2.615189482925192,(136:0.0,137:0.0,138:0.0):3.5717535190580016,(119:0.0,120:0.0,121:0.0,122:0.0,123:0.0):0.591716686047687)Hymenoptera:0.0):3.2163043469579145)Eumetabola:1.3816770669994072):11.914572452054406)Neoptera:0.0)Insecta:11.652221977945015):0.0[% ] [%test = 0.2 ];
+
+END;
+
+
+Begin MESQUITE;
+		MESQUITESCRIPTVERSION 2;
+		TITLE AUTO;
+		tell ProjectCoordinator;
+		timeSaved 1313192681462;
+		getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa;
+		tell It;
+			setID 0 4358579751254627158;
+		endTell;
+		getWindow;
+		tell It;
+			suppress;
+			setResourcesState false false 212;
+			setPopoutState 400;
+			setExplanationSize 0;
+			setAnnotationSize 0;
+			setFontIncAnnot 0;
+			setFontIncExp 0;
+			setSize 1280 880;
+			setLocation 0 22;
+			setFont SanSerif;
+			setFontSize 10;
+			getToolPalette;
+			tell It;
+			endTell;
+			desuppress;
+		endTell;
+		getEmployee  #mesquite.io.ExportTreeSourceToNEXUS.ExportTreeSourceToNEXUS;
+		tell It;
+			getEmployee #mesquite.treefarm.CurrentTree.CurrentTree;
+			tell It;
+				setTreeSource  #mesquite.trees.TreeOfContext.TreeOfContext;
+				tell It;
+					setContextID 979.1313160826999.6038517077087479598;
+				endTell;
+			endTell;
+			getEmployee #mesquite.treefarm.CurrentTree.CurrentTree;
+			tell It;
+				setTreeSource  #mesquite.trees.TreeOfContext.TreeOfContext;
+			endTell;
+			getEmployee #mesquite.treefarm.CurrentTree.CurrentTree;
+			tell It;
+				setTreeSource  #mesquite.trees.TreeOfContext.TreeOfContext;
+				tell It;
+					setContextID 979.1313160826999.6038517077087479598;
+				endTell;
+			endTell;
+			getEmployee #mesquite.treefarm.CurrentTree.CurrentTree;
+			tell It;
+				setTreeSource  #mesquite.trees.TreeOfContext.TreeOfContext;
+			endTell;
+			getEmployee #mesquite.treefarm.CurrentTree.CurrentTree;
+			tell It;
+				setTreeSource  #mesquite.trees.TreeOfContext.TreeOfContext;
+				tell It;
+					setContextID 1159.1313180837603.8039800895768447564;
+				endTell;
+			endTell;
+			getEmployee #mesquite.treefarm.CurrentTree.CurrentTree;
+			tell It;
+				setTreeSource  #mesquite.trees.TreeOfContext.TreeOfContext;
+				tell It;
+					setContextID 1159.1313180837603.8039800895768447564;
+				endTell;
+			endTell;
+		endTell;
+		getEmployee  #mesquite.trees.ManageTrees.ManageTrees;
+		tell It;
+			getTreeBlock 1;
+			tell It;
+				setSelected  1;
+				attachments ;
+			endTell;
+			showTrees 0 #mesquite.lists.TreesList.TreesList;
+			tell It;
+				setTreeBlock 1;
+				getWindow;
+				tell It;
+					newAssistant  #mesquite.lists.NumForTreeList.NumForTreeList;
+				tell It;
+					suppress;
+					setValueTask  #mesquite.trees.NumberOfTaxa.NumberOfTaxa;
+					desuppress;
+				endTell;
+					newAssistant  #mesquite.lists.TreeListRooted.TreeListRooted;
+					newAssistant  #mesquite.lists.TreeListPolys.TreeListPolys;
+					newAssistant  #mesquite.lists.TreeListPolyAssumption.TreeListPolyAssumption;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1068 813;
+					setLocation 0 22;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+						setTool mesquite.lists.TreesList.TreesListWindow.ibeam;
+					endTell;
+				endTell;
+				showWindow;
+			endTell;
+		endTell;
+		getEmployee  #mesquite.trees.BasicTreeWindowCoord.BasicTreeWindowCoord;
+		tell It;
+			makeTreeWindow #4358579751254627158  #mesquite.trees.BasicTreeWindowMaker.BasicTreeWindowMaker;
+			tell It;
+				suppressEPCResponse;
+				setTreeSource  #mesquite.trees.StoredTrees.StoredTrees;
+				tell It;
+					setTreeBlock 1;
+					toggleUseWeights off;
+				endTell;
+				setAssignedID 1159.1313180837603.8039800895768447564;
+				getTreeWindow;
+				tell It;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1068 813;
+					setLocation 0 22;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+					endTell;
+					setActive;
+					getTreeDrawCoordinator #mesquite.trees.BasicTreeDrawCoordinator.BasicTreeDrawCoordinator;
+				tell It;
+					suppress;
+					setTreeDrawer  #mesquite.trees.SquareTree.SquareTree;
+					tell It;
+						setNodeLocs #mesquite.trees.NodeLocsStandard.NodeLocsStandard;
+						tell It;
+							branchLengthsToggle off;
+							toggleScale on;
+							toggleBroadScale off;
+							toggleCenter on;
+							toggleEven on;
+						endTell;
+						setEdgeWidth 6;
+						orientUp;
+						setCornerMode Right_Angle  50;
+					endTell;
+					setBackground White;
+					setBranchColor Black;
+					showNodeNumbers off;
+					showBranchColors on;
+					labelBranchLengths on;
+					centerBrLenLabels on;
+					showBrLensUnspecified on;
+					showBrLenLabelsOnTerminals on;
+					setBrLenLabelColor 0 0 255;
+					setNumBrLenDecimals 6;
+					desuppress;
+					getEmployee #mesquite.trees.BasicDrawTaxonNames.BasicDrawTaxonNames;
+					tell It;
+						setColor Black;
+						toggleColorPartition on;
+						toggleShadePartition off;
+						toggleShowFootnotes on;
+						toggleNodeLabels on;
+						toggleCenterNodeNames off;
+						toggleShowNames on;
+						namesAngle ?;
+					endTell;
+				endTell;
+					setTreeNumber 5;
+					setDrawingSizeMode 0;
+					toggleLegendFloat on;
+					scale 0;
+					toggleTextOnTree off;
+					showWindow;
+				endTell;
+				desuppressEPCResponse;
+				getEmployee #mesquite.trees.ColorBranches.ColorBranches;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.ornamental.BranchNotes.BranchNotes;
+				tell It;
+					setAlwaysOn off;
+				endTell;
+				getEmployee #mesquite.ornamental.ColorTreeByPartition.ColorTreeByPartition;
+				tell It;
+					colorByPartition off;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocDoubles.DrawTreeAssocDoubles;
+				tell It;
+					setOn on;
+					setDigits 4;
+					writeAsPercentage off;
+					toggleCentred on;
+					toggleHorizontal on;
+					setFontSize 10;
+					setOffset 0  0;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocStrings.DrawTreeAssocStrings;
+				tell It;
+					setOn on;
+					toggleCentred on;
+					toggleHorizontal on;
+					setFontSize 10;
+					setOffset 0  0;
+				endTell;
+				getEmployee #mesquite.trees.TreeInfoValues.TreeInfoValues;
+				tell It;
+					panelOpen false;
+				endTell;
+			endTell;
+			makeTreeWindow #4358579751254627158  #mesquite.trees.BasicTreeWindowMaker.BasicTreeWindowMaker;
+			tell It;
+				suppressEPCResponse;
+				setTreeSource  #mesquite.trees.StoredTrees.StoredTrees;
+				tell It;
+					setTreeBlock 2;
+					toggleUseWeights off;
+				endTell;
+				setAssignedID 1189.1313180880941.7392236057639445549;
+				getTreeWindow;
+				tell It;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1068 813;
+					setLocation 0 22;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+					endTell;
+					getTreeDrawCoordinator #mesquite.trees.BasicTreeDrawCoordinator.BasicTreeDrawCoordinator;
+				tell It;
+					suppress;
+					setTreeDrawer  #mesquite.trees.SquareTree.SquareTree;
+					tell It;
+						setNodeLocs #mesquite.trees.NodeLocsStandard.NodeLocsStandard;
+						tell It;
+							branchLengthsToggle off;
+							toggleScale on;
+							toggleBroadScale off;
+							toggleCenter on;
+							toggleEven on;
+						endTell;
+						setEdgeWidth 6;
+						orientUp;
+						setCornerMode Right_Angle  50;
+					endTell;
+					setBackground White;
+					setBranchColor Black;
+					showNodeNumbers off;
+					showBranchColors on;
+					labelBranchLengths on;
+					centerBrLenLabels on;
+					showBrLensUnspecified on;
+					showBrLenLabelsOnTerminals on;
+					setBrLenLabelColor 0 0 255;
+					setNumBrLenDecimals 6;
+					desuppress;
+					getEmployee #mesquite.trees.BasicDrawTaxonNames.BasicDrawTaxonNames;
+					tell It;
+						setColor Black;
+						toggleColorPartition on;
+						toggleShadePartition off;
+						toggleShowFootnotes on;
+						toggleNodeLabels on;
+						toggleCenterNodeNames off;
+						toggleShowNames on;
+						namesAngle ?;
+					endTell;
+				endTell;
+					setTreeNumber 2;
+					setDrawingSizeMode 0;
+					toggleLegendFloat on;
+					scale 0;
+					toggleTextOnTree off;
+					showWindow;
+				endTell;
+				desuppressEPCResponse;
+				getEmployee #mesquite.trees.ColorBranches.ColorBranches;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.ornamental.BranchNotes.BranchNotes;
+				tell It;
+					setAlwaysOn off;
+				endTell;
+				getEmployee #mesquite.ornamental.ColorTreeByPartition.ColorTreeByPartition;
+				tell It;
+					colorByPartition off;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocDoubles.DrawTreeAssocDoubles;
+				tell It;
+					setOn on;
+					setDigits 4;
+					writeAsPercentage off;
+					toggleCentred on;
+					toggleHorizontal on;
+					setFontSize 10;
+					setOffset 0  0;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocStrings.DrawTreeAssocStrings;
+				tell It;
+					setOn on;
+					toggleCentred on;
+					toggleHorizontal on;
+					setFontSize 10;
+					setOffset 0  0;
+				endTell;
+				getEmployee #mesquite.trees.TreeInfoValues.TreeInfoValues;
+				tell It;
+					panelOpen false;
+				endTell;
+			endTell;
+		endTell;
+		endTell;
+end;
+
+

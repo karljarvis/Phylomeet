@@ -1,0 +1,20 @@
+Analyses 4/28/11
+Got myco data to work with picante package. analyses:
+
+-PD
+
+
+-NRI 
+with/without abundance 
+null model shuffling/richness
+both appear to be mostly random. Only 3 or 4 instances where p(clustering) is under 0.05
+put all results into one spreadsheet called NRI.xlsx
+
+Phylobeta 
+with/without abundance
+clustering looks very much random. haven't looked through the values much yet. don't know much about what the values mean!
+
+Phylosor
+based on branch length... not so useful with our dataset
+
+Unifrac... not sure

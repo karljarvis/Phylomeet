@@ -1,0 +1,58 @@
+nri.u <- read.csv("nri.u_ultra_rich.csv")
+nri.u <- as.matrix(nri.u)
+
+fr00.nri.u <- as.numeric(nri.u[1:10,7])
+fo00.nri.u <- as.numeric(nri.u[11:20,7])
+na00.nri.u <- as.numeric(nri.u[21:40,7])
+fr01.nri.u <- as.numeric(nri.u[41:50,7])
+fo01.nri.u <- as.numeric(nri.u[51:60,7])
+na01.nri.u <- as.numeric(nri.u[61:80,7])
+fr02.nri.u <- as.numeric(nri.u[81:90,7])
+fo02.nri.u <- as.numeric(nri.u[91:100,7])
+na02.nri.u <- as.numeric(nri.u[101:120,7])
+fr03.nri.u <- as.numeric(nri.u[121:130,7])
+fo03.nri.u <- as.numeric(nri.u[131:140,7])
+na03.nri.u <- as.numeric(nri.u[141:160,7])
+
+# bar graph of 2001
+nri.u01.nri.u <- c(mean(fr01.nri.u), mean(fo01.nri.u), mean(na01.nri.u))
+barplot(nri.u01.nri.u)
+
+# histograms of nri.u
+par(mfrow=c(4,3))
+hist(fr00.nri.u)
+hist(fo00.nri.u)
+hist(na00.nri.u)
+hist(fr01.nri.u)
+hist(fo01.nri.u)
+hist(na01.nri.u)
+hist(fr02.nri.u)
+hist(fo02.nri.u)
+hist(na02.nri.u)
+hist(fr03.nri.u)
+hist(fo03.nri.u)
+hist(na03.nri.u)
+
+# Is there non-neutral phylogenetic structure?
+# wilcoxon test
+fr00.nri.u.w <- wilcox.test(fr00.nri.u); fr00.nri.u.w
+fo00.nri.u.w <- wilcox.test(fo00.nri.u); fo00.nri.u.w
+na00.nri.u.w <- wilcox.test(na00.nri.u); na00.nri.u.w
+fr01.nri.u.w <- wilcox.test(fr01.nri.u); fr01.nri.u.w
+fo01.nri.u.w <- wilcox.test(fo01.nri.u); fo01.nri.u.w
+na01.nri.u.w <- wilcox.test(na01.nri.u); na01.nri.u.w
+fr02.nri.u.w <- wilcox.test(fr02.nri.u); fr02.nri.u.w
+fo02.nri.u.w <- wilcox.test(fo02.nri.u); fo02.nri.u.w
+na02.nri.u.w <- wilcox.test(na02.nri.u); na02.nri.u.w
+fr03.nri.u.w <- wilcox.test(fr03.nri.u); fr03.nri.u.w
+fo03.nri.u.w <- wilcox.test(fo03.nri.u); fo03.nri.u.w
+na03.nri.u.w <- wilcox.test(na03.nri.u); na03.nri.u.w
+
+# Do the host types differ?
+# kruskal-wallis test
+nri.u.k
+
+
+# mann-whitney
+fr01.nri.u.w <- wilcox.test(fr01.nri.u, fo01.nri.u); fr01.nri.u.w
+

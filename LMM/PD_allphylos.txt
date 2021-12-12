@@ -1,0 +1,34 @@
+Linear mixed model fit by REML ['lmerMod']
+Formula: PD ~ crosstype + (1 | year) + (1 | phylo)
+   Data: PDi
+
+REML criterion at convergence: 27033.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.2792 -0.5965  0.0451  0.5959  3.4508 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ phylo    (Intercept) 554.4    23.55   
+ year     (Intercept) 196.0    14.00   
+ Residual             262.7    16.21   
+Number of obs: 3200, groups:  phylo, 20; year, 4
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)  89.2369     8.7772   10.17
+crosstypefr -13.8847     0.8104  -17.13
+crosstypena -10.4466     0.7018  -14.88
+
+Correlation of Fixed Effects:
+            (Intr) crsstypf
+crosstypefr -0.046         
+crosstypena -0.053  0.577  
+                 2.5 %     97.5 %
+.sig01       17.525955  33.042894
+.sig02        7.149673  31.707960
+.sigma       15.811965  16.609028
+(Intercept)  70.737099 107.736710
+crosstypefr -15.472974 -12.296415
+crosstypena -11.822082  -9.071101

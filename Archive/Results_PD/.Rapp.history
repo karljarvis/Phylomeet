@@ -1,0 +1,2331 @@
+for( c in 1:length(ComDist) )#
+	{#
+		pdf( file=paste0( FIGwd, "ComDist_", names( ComDist[c]), ".pdf" ), width=10, height=10 )#
+		par( mfrow=c(4,5) )#
+		for( p in 1:20 )#
+		{#
+			fit <- isoMDS(ComDist[[c]][[p]], k=2)#
+			x <- fit$points[,1]#
+			y <- fit$points[,2]#
+			plot( x, y, col=cols, pch=syms, cex=2, main = paste0( names( ComDist[c]), " ", names( ComDist[[c]][p] ) ) )#
+		}#
+	dev.off()#
+	}
+Plot individual means#
+	pdf( file=paste0( FIGwd, "NRI_", names(NRI[1]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRIindiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(NRIindiv)[[p]])#
+	}#
+	dev.off()#
+#
+	# attempt to plot with error bars using ggplot2#
+	# library(ggplot2)#
+	# for (p in 1:20) #
+	# { 	#
+# lims <- aes(ymax=mean+se, ymin=mean-se)#
+# p1 <- ggplot(NRIindiv[[p]], aes(fill=host, y=mean, x=year))#
+# d <- position_dodge(width=0.9)#
+# p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)#
+	# }#
+# Pooled by host within years#
+	pdf( file=paste0( FIGwd, "NRI_", names(NRI[2]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[2]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRIindiv)[[p]])#
+	}#
+	dev.off()#
+# Pooled by host type#
+	pdf( file=paste0( FIGwd, "NRI_", names(NRI[3]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[3]][[p]][,6], col = c("black", "red", "blue"), main=names(NRIindiv)[[p]])#
+	}#
+	dev.off()
+par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[3]][[p]][,6], col = c("black", "red", "blue"), main=names(NRIindiv)[[p]])#
+	}
+par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[3]][[p]][,6], col = c("black", "red", "blue"), main=names(NRIindiv)[[p]], ylim=c(-1.5,1.5))#
+	}
+par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[2]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRIindiv)[[p]])#
+	}
+par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[2]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRIindiv)[[p]], ylim=c(-2,2))#
+	}
+par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRIindiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(NRIindiv)[[p]], ylim=c(-2,2))#
+	}
+pdf( file=paste0( FIGwd, "NRI_", names(NRI[1]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRIindiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(NRIindiv)[[p]], ylim=c(-2,2))#
+	}#
+	dev.off()#
+#
+	# attempt to plot with error bars using ggplot2#
+	# library(ggplot2)#
+	# for (p in 1:20) #
+	# { 	#
+# lims <- aes(ymax=mean+se, ymin=mean-se)#
+# p1 <- ggplot(NRIindiv[[p]], aes(fill=host, y=mean, x=year))#
+# d <- position_dodge(width=0.9)#
+# p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)#
+	# }#
+# Pooled by host within years#
+	pdf( file=paste0( FIGwd, "NRI_", names(NRI[2]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[2]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRIindiv)[[p]], ylim=c(-2,2))#
+	}#
+	dev.off()#
+# Pooled by host type#
+	pdf( file=paste0( FIGwd, "NRI_", names(NRI[3]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[3]][[p]][,6], col = c("black", "red", "blue"), main=names(NRIindiv)[[p]], ylim=c(-2,2))#
+	}#
+	dev.off()
+HYnames
+CtYrNames
+CtYrnames
+rm(list=ls())
+library(picante)#
+#
+# Picante manual#
+# vignette("picante-intro")#
+#
+# Set directory for input data#
+DATAwd <- "~/Projects/Phylomeet/Analysis/arcot_data/"#
+#
+# Set directory for figures#
+FIGwd <- "~/Projects/Phylomeet/Analysis/Figures/"#
+#
+##############################################################
+# Load in communities, take subsets and format for analysis ##
+##############################################################
+#
+# load community data#
+fullcom <- read.table(paste(DATAwd, "arcot.txt", sep=""))#
+crosstype <- rep(c(rep("fremont",10), rep("f1",10), rep("backcross",10), rep("narrowleaf",10)),4)#
+cthost <- rep(c(rep("fr",10), rep("fo",10), rep("na",20)),4)#
+year <- c(rep(2000,40),rep(2001,40),rep(2002,40),rep(2003,40))#
+com <- cbind(year, cthost, fullcom)#
+#
+years <- 2000:2003#
+crosstypes <- c("fr","fo","na")#
+CtYrNames <- c("fr2000","fo2000","na2000","fr2001","fo2001","na2001","fr2002","fo2002","na2002","fr2003","fo2003","na2003")#
+spaces <- c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2)#
+#
+# pool data#
+	# byCT: sum of occcurrences in all years by crosstype#
+	sumFr <- apply(com[com$cthost=="fr",3:ncol(com)],2,sum)#
+	sumFo <- apply(com[com$cthost=="fo",3:ncol(com)],2,sum)#
+	sumNa <- apply(com[com$cthost=="na",3:ncol(com)],2,sum)#
+	byCT <- rbind(sumFr,sumFo,sumNa)#
+	# byYear: sum of occcurrences by year on all crosstypes#
+	sum2000 <- apply(com[com$year==2000,3:ncol(com)],2,sum)#
+	sum2001 <- apply(com[com$year==2001,3:ncol(com)],2,sum)#
+	sum2002 <- apply(com[com$year==2002,3:ncol(com)],2,sum)#
+	sum2003 <- apply(com[com$year==2003,3:ncol(com)],2,sum)#
+	byYear <- rbind(sum2000,sum2001,sum2002,sum2003)#
+	# byCtYr: sum of occurrences by year and by crosstype#
+	byCtYrMaker <- function(com) #
+	{ 	#
+		fr2000 <- apply(com[com$year==2000 & com$cthost=="fr",3:ncol(com)],2,sum)#
+		fo2000 <- apply(com[com$year==2000 & com$cthost=="fo",3:ncol(com)],2,sum)#
+		na2000 <- apply(com[com$year==2000 & com$cthost=="na",3:ncol(com)],2,sum)#
+		fr2001 <- apply(com[com$year==2001 & com$cthost=="fr",3:ncol(com)],2,sum)#
+		fo2001 <- apply(com[com$year==2001 & com$cthost=="fo",3:ncol(com)],2,sum)#
+		na2001 <- apply(com[com$year==2001 & com$cthost=="na",3:ncol(com)],2,sum)#
+		fr2002 <- apply(com[com$year==2002 & com$cthost=="fr",3:ncol(com)],2,sum)#
+		fo2002 <- apply(com[com$year==2002 & com$cthost=="fo",3:ncol(com)],2,sum)#
+		na2002 <- apply(com[com$year==2002 & com$cthost=="na",3:ncol(com)],2,sum)#
+		fr2003 <- apply(com[com$year==2003 & com$cthost=="fr",3:ncol(com)],2,sum)#
+		fo2003 <- apply(com[com$year==2003 & com$cthost=="fo",3:ncol(com)],2,sum)#
+		na2003 <- apply(com[com$year==2003 & com$cthost=="na",3:ncol(com)],2,sum)#
+		byCtYr <- rbind(fr2000,fo2000,na2000,fr2001,fo2001,na2001,fr2002,fo2002,na2002,fr2003,fo2003,na2003)#
+		byCtYr#
+	}#
+	byCtMaker <- function(com)#
+	{#
+		fr <- apply(com[com$cthost=="fr",3:ncol(com)],2,sum)#
+		fo <- apply(com[com$cthost=="fo",3:ncol(com)],2,sum)#
+		na <- apply(com[com$cthost=="na",3:ncol(com)],2,sum)#
+		byH <- rbind(fr, fo, na)#
+		byH		#
+	}#
+	byCtYr <- byCtYrMaker(com=com)#
+#
+	# sumAll: sum of all occurrences in all years on all crosstypes#
+	sumAll <- apply(com[,4:ncol(com)],2,sum)#
+	# CtYr: pooled by crosstype and Year#
+	CtYr <- byCtYrMaker(com=com)#
+	# H: pooled by crosstype only#
+	H <- byCtMaker(com=com)	#
+#
+# subset data based on commonness#
+fullsumAll <- rbind(fullcom,sumAll)#
+#
+	# sp2: exclude species that have only one occurrence#
+	sp2 <- fullsumAll[1:160,sumAll >= 2] #
+#
+	# sp2CtYr: com2sp, pooled by crosstype and year#
+	sp2CtYr <- byCtYrMaker(com=cbind(year, cthost, sp2))#
+#
+	# sp3: exclude species that have only one occurrence#
+	sp3 <- fullsumAll[1:160,sumAll >= 3] #
+#
+	# sp3CtYr: com3sp, pooled by crosstype and year#
+	sp3CtYr <- byCtYrMaker(com=cbind(year, cthost, sp3))#
+#
+	# yr2: all except species that are only present in one year#
+	y <- byYear#
+	for(i in 1:ncol(y)) #
+	{ #
+		for(j in 1:nrow(y)) #
+		{ #
+			if (byYear[j,i] > 0) {y[j,i] <- 1} #
+		}	#
+	}#
+	nyear <- apply(y,2,sum)#
+	fullnyear <- rbind(fullcom,nyear)#
+	yr2 <- fullnyear[1:160,nyear >= 2]#
+#
+	# yr2CtYr: y2, pooled by crosstype and year#
+	yr2CtYr <- byCtYrMaker(com=cbind(year, cthost, yr2))#
+	# yr2sp2: intersection of sp2 and yr2#
+	sp2year <- rbind(sp2,nyear)#
+	yr2sp2 <- sp2year[1:160,sp2year[161,] >= 2]#
+#
+	# yr2sp2CtYr: yr2sp2, pooled by crosstype and year#
+	yr2sp2CtYr <- byCtYrMaker(com=cbind(year, cthost, yr2sp2))#
+#
+	# yr2sp3: intersection of sp3 and yr2#
+	sp3year <- rbind(sp3,nyear)#
+	yr2sp3 <- sp3year[1:160,sp3year[161,] >= 2]#
+#
+	# yr2sp3CtYr: yr2sp3, pooled by crosstype and year#
+	yr2sp3CtYr <- byCtYrMaker(com=cbind(year, cthost, yr2sp3))#
+	# yr2sp3H: yr2sp3, pooled by crosstype#
+	yr2sp3H <- byCtMaker(com=cbind(year, cthost, yr2sp3))#
+# list of full community and subsets	#
+	 # coms <- lapply(list(fullcom, CtYr, sp2, sp3, yr2, yr2sp2, yr2sp3, sp2CtYr, sp3CtYr, yr2CtYr, yr2sp2CtYr, yr2sp3CtYr), as.matrix)#
+	 # names(coms) <- c("fullcom", "CtYr", "sp2", "sp3", "yr2", "yr2sp2", "yr2sp3", "sp2CtYr", "sp3CtYr", "yr2CtYr", "yr2sp2CtYr", "yr2sp3CtYr")#
+# list of the full community and the smallest subset	#
+	 # coms <- lapply(list(fullcom, CtYr, yr2sp3, yr2sp3CtYr), as.matrix)#
+	 # names(coms) <- c("fullcom", "CtYr", "yr2sp3", "yr2sp3CtYr")#
+#
+# list of the smallest subset	#
+	 coms <- lapply(list(yr2sp3, yr2sp3CtYr, yr2sp3H), as.matrix)#
+	 names(coms) <- c("indiv", "pooled", "crosstype")
+Phylogeny with ultrametricized branch lengths#
+	# read in phylogeny #
+	ultra <- read.nexus(paste(DATAwd,"phylos/","ultra",".tre",sep=""))#
+	ultras <- list(ultra)#
+	names(ultras) <- "ultra"#
+	lel <- length(ultra$edge.length)#
+#
+	# number of randomized branch lengths#
+	nrand = 9#
+#
+	# create nrand more trees with randomly altered branch lengths#
+	for(i in 1:nrand)#
+	{#
+		ultras[[i+1]] <- ultra#
+		ultras[[i+1]]$edge.length <- ultra$edge.length + runif(lel, min=-0.99, max=0.99)#
+		names(ultras)[[i+1]] <- paste0("urand", i)#
+	}#
+#
+# Phylogeny with each edge length set equal #
+	# read in phylogeny #
+	equal <- ultra#
+	equal$edge.length <- rep(1, length=lel)#
+	equals <- list(equal)#
+	names(equals) <- "equal"#
+#
+	# create nrand more trees with randomly altered branch lengths#
+	for(i in 1:nrand)#
+	{#
+		equals[[i+1]] <- equal#
+		equals[[i+1]]$edge.length <- runif(lel, min=0.01, max=2)#
+		names(equals)[[i+1]] <- paste0("erand", i)#
+	}#
+# Combine all phylogenies into one list#
+	phylos <- as.list(c(ultras, equals))#
+	phyNames <- names(phylos)#
+#
+# Plot phylogenies#
+	# dev.new()#
+	# par(mfrow=c(4,2))#
+	# for(i in 1:length(phylos))#
+	# {#
+		# plot(phylos[[i]], cex=0.5, show.tip.label=F)#
+	# }#
+# Prune phylogenies by community#
+	phy <- vector("list",length=length(coms))#
+	names(phy) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		phy[[c]] <- vector("list", length=length(phyNames))#
+		names(phy[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			phy[[c]][[p]] <- prune.sample(coms[[c]], phylos[[p]]) #
+		}#
+	}#
+#
+	plot(phy$pooled$ultra, cex=0.6)		#
+#
+# Create distance matrix for each topology#
+	phydist <- vector("list",length=length(coms))#
+	names(phydist) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	phydist[[c]] <- vector("list", length=length(phyNames))#
+		names(phydist[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	phydist[[c]][[p]] <- cophenetic(phy[[c]][[p]]) 	}#
+	}#
+#
+# Plotting phylogenies#
+	# First five sets of phylogenies to get overview#
+	# par(mfrow=c(4,3))#
+	# for (c in 1:9) #
+	# {	#
+		# plot(phy[[c]][[1]], show.tip.label=F) #
+	# }#
+#
+	# # large versions of full phylogenies#
+	# par(mfrow=c(1,2))#
+	# plot(phy$fullcom$ultra, cex=0.5)#
+	# plot(phy$fullcom$equal, cex=0.5)
+PDwd <- "~/Projects/Phylomeet/Analysis/Results_PD/"#
+	setwd(PDwd)#
+#
+# Make a list to contain PD results#
+	PD <- vector("list",length=length(coms))#
+	names(PD) <- names(coms)
+Read in PD from file#
+	PD <- vector("list",length=length(coms))#
+	names(PD) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		# create list to hold each set of results within each community #
+		PD[[c]] <- vector("list",length=length(phyNames))#
+		names(PD[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			# read in results#
+			PD[[c]][[p]] <- read.csv(paste0(PDwd, "PD_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)	#
+		}#
+	}#
+#
+# Analyze PD#
+years <- 2000:2003#
+crosstypes <- c("fr","fo","na")#
+spaces <- c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2)#
+#
+# PD: Individual#
+	# Summary statistics of individual PD results#
+	PDindiv <- vector("list",length=length(phyNames))#
+	names(PDindiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDhy <- cbind(cthost, year, PD$indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PDindiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PDindiv[[p]]) <- HYnames#
+	}#
+#
+	# Plot individual mean PD#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[1]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PDindiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PDindiv)[[p]])#
+	}#
+	dev.off()#
+# PD: Pooled by crosstype within years#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[2]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[2]][[p]][,1], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(PDindiv)[[p]])#
+	}#
+	dev.off()#
+# PD: Pooled by crosstype#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[3]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[3]][[p]][,1], col = c("black", "red", "blue"), main=names(PDindiv)[[p]], ylim=c(60,160))#
+	}#
+	dev.off()
+PD: Individual#
+	# Summary statistics of individual PD results#
+	PDindiv <- vector("list",length=length(phyNames))#
+	names(PDindiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDhy <- cbind(cthost, year, PD$indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PDindiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PDindiv[[p]]) <- CtYrNames#
+	}
+Summary statistics of individual PD results#
+	PDindiv <- vector("list",length=length(phyNames))#
+	names(PDindiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDsum <- cbind(ctyear, year, PD$indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PDindiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PDindiv[[p]]) <- CtYrNames#
+	}
+Gery notes for next steps:#
+# (3) pooling each crosstype across years#
+# (2) NRI with new topology#
+# (1) phylobeta diversity#
+# load package#
+# install.packages("picante", dependencies = TRUE, repos = "http://R.research.att.com/")#
+library(picante)#
+#
+# Picante manual#
+# vignette("picante-intro")#
+#
+# Set directory for input data#
+DATAwd <- "~/Projects/Phylomeet/Analysis/arcot_data/"#
+#
+# Set directory for figures#
+FIGwd <- "~/Projects/Phylomeet/Analysis/Figures/"#
+#
+##############################################################
+# Load in communities, take subsets and format for analysis ##
+##############################################################
+#
+# load community data#
+fullcom <- read.table(paste(DATAwd, "arcot.txt", sep=""))#
+crosstype <- rep(c(rep("fremont",10), rep("f1",10), rep("backcross",10), rep("narrowleaf",10)),4)#
+ctyear <- rep(c(rep("fr",10), rep("fo",10), rep("na",20)),4)#
+year <- c(rep(2000,40),rep(2001,40),rep(2002,40),rep(2003,40))#
+com <- cbind(year, ctyear, fullcom)#
+#
+years <- 2000:2003#
+crosstypes <- c("fr","fo","na")#
+CtYrNames <- c("fr2000","fo2000","na2000","fr2001","fo2001","na2001","fr2002","fo2002","na2002","fr2003","fo2003","na2003")#
+spaces <- c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2)#
+#
+# pool data#
+	# byCT: sum of occcurrences in all years by crosstype#
+	sumFr <- apply(com[com$ctyear=="fr",3:ncol(com)],2,sum)#
+	sumFo <- apply(com[com$ctyear=="fo",3:ncol(com)],2,sum)#
+	sumNa <- apply(com[com$ctyear=="na",3:ncol(com)],2,sum)#
+	byCT <- rbind(sumFr,sumFo,sumNa)#
+	# byYear: sum of occcurrences by year on all crosstypes#
+	sum2000 <- apply(com[com$year==2000,3:ncol(com)],2,sum)#
+	sum2001 <- apply(com[com$year==2001,3:ncol(com)],2,sum)#
+	sum2002 <- apply(com[com$year==2002,3:ncol(com)],2,sum)#
+	sum2003 <- apply(com[com$year==2003,3:ncol(com)],2,sum)#
+	byYear <- rbind(sum2000,sum2001,sum2002,sum2003)#
+	# byCtYr: sum of occurrences by year and by crosstype#
+	byCtYrMaker <- function(com) #
+	{ 	#
+		fr2000 <- apply(com[com$year==2000 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2000 <- apply(com[com$year==2000 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2000 <- apply(com[com$year==2000 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2001 <- apply(com[com$year==2001 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2001 <- apply(com[com$year==2001 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2001 <- apply(com[com$year==2001 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2002 <- apply(com[com$year==2002 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2002 <- apply(com[com$year==2002 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2002 <- apply(com[com$year==2002 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2003 <- apply(com[com$year==2003 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2003 <- apply(com[com$year==2003 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2003 <- apply(com[com$year==2003 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		byCtYr <- rbind(fr2000,fo2000,na2000,fr2001,fo2001,na2001,fr2002,fo2002,na2002,fr2003,fo2003,na2003)#
+		byCtYr#
+	}#
+	byCtMaker <- function(com)#
+	{#
+		fr <- apply(com[com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo <- apply(com[com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na <- apply(com[com$ctyear=="na",3:ncol(com)],2,sum)#
+		byH <- rbind(fr, fo, na)#
+		byH		#
+	}#
+	byCtYr <- byCtYrMaker(com=com)#
+#
+	# sumAll: sum of all occurrences in all years on all crosstypes#
+	sumAll <- apply(com[,4:ncol(com)],2,sum)#
+	# CtYr: pooled by crosstype and Year#
+	CtYr <- byCtYrMaker(com=com)#
+	# H: pooled by crosstype only#
+	H <- byCtMaker(com=com)	#
+#
+# subset data based on commonness#
+fullsumAll <- rbind(fullcom,sumAll)#
+#
+	# sp2: exclude species that have only one occurrence#
+	sp2 <- fullsumAll[1:160,sumAll >= 2] #
+#
+	# sp2CtYr: com2sp, pooled by crosstype and year#
+	sp2CtYr <- byCtYrMaker(com=cbind(year, ctyear, sp2))#
+#
+	# sp3: exclude species that have only one occurrence#
+	sp3 <- fullsumAll[1:160,sumAll >= 3] #
+#
+	# sp3CtYr: com3sp, pooled by crosstype and year#
+	sp3CtYr <- byCtYrMaker(com=cbind(year, ctyear, sp3))#
+#
+	# yr2: all except species that are only present in one year#
+	y <- byYear#
+	for(i in 1:ncol(y)) #
+	{ #
+		for(j in 1:nrow(y)) #
+		{ #
+			if (byYear[j,i] > 0) {y[j,i] <- 1} #
+		}	#
+	}#
+	nyear <- apply(y,2,sum)#
+	fullnyear <- rbind(fullcom,nyear)#
+	yr2 <- fullnyear[1:160,nyear >= 2]#
+#
+	# yr2CtYr: y2, pooled by crosstype and year#
+	yr2CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2))#
+	# yr2sp2: intersection of sp2 and yr2#
+	sp2year <- rbind(sp2,nyear)#
+	yr2sp2 <- sp2year[1:160,sp2year[161,] >= 2]#
+#
+	# yr2sp2CtYr: yr2sp2, pooled by crosstype and year#
+	yr2sp2CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2sp2))#
+#
+	# yr2sp3: intersection of sp3 and yr2#
+	sp3year <- rbind(sp3,nyear)#
+	yr2sp3 <- sp3year[1:160,sp3year[161,] >= 2]#
+#
+	# yr2sp3CtYr: yr2sp3, pooled by crosstype and year#
+	yr2sp3CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2sp3))#
+	# yr2sp3H: yr2sp3, pooled by crosstype#
+	yr2sp3H <- byCtMaker(com=cbind(year, ctyear, yr2sp3))#
+# list of full community and subsets	#
+	 # coms <- lapply(list(fullcom, CtYr, sp2, sp3, yr2, yr2sp2, yr2sp3, sp2CtYr, sp3CtYr, yr2CtYr, yr2sp2CtYr, yr2sp3CtYr), as.matrix)#
+	 # names(coms) <- c("fullcom", "CtYr", "sp2", "sp3", "yr2", "yr2sp2", "yr2sp3", "sp2CtYr", "sp3CtYr", "yr2CtYr", "yr2sp2CtYr", "yr2sp3CtYr")#
+# list of the full community and the smallest subset	#
+	 # coms <- lapply(list(fullcom, CtYr, yr2sp3, yr2sp3CtYr), as.matrix)#
+	 # names(coms) <- c("fullcom", "CtYr", "yr2sp3", "yr2sp3CtYr")#
+#
+# list of the smallest subset	#
+	 coms <- lapply(list(yr2sp3, yr2sp3CtYr, yr2sp3H), as.matrix)#
+	 names(coms) <- c("indiv", "pooled", "crosstype")#
+##########################################################################
+# Load in phylogenies, prune, and create distance matrices for analysis ##
+##########################################################################
+#
+# Phylogeny with ultrametricized branch lengths#
+	# read in phylogeny #
+	ultra <- read.nexus(paste(DATAwd,"phylos/","ultra",".tre",sep=""))#
+	ultras <- list(ultra)#
+	names(ultras) <- "ultra"#
+	lel <- length(ultra$edge.length)#
+#
+	# number of randomized branch lengths#
+	nrand = 9#
+#
+	# create nrand more trees with randomly altered branch lengths#
+	for(i in 1:nrand)#
+	{#
+		ultras[[i+1]] <- ultra#
+		ultras[[i+1]]$edge.length <- ultra$edge.length + runif(lel, min=-0.99, max=0.99)#
+		names(ultras)[[i+1]] <- paste0("urand", i)#
+	}#
+#
+# Phylogeny with each edge length set equal #
+	# read in phylogeny #
+	equal <- ultra#
+	equal$edge.length <- rep(1, length=lel)#
+	equals <- list(equal)#
+	names(equals) <- "equal"#
+#
+	# create nrand more trees with randomly altered branch lengths#
+	for(i in 1:nrand)#
+	{#
+		equals[[i+1]] <- equal#
+		equals[[i+1]]$edge.length <- runif(lel, min=0.01, max=2)#
+		names(equals)[[i+1]] <- paste0("erand", i)#
+	}#
+# Combine all phylogenies into one list#
+	phylos <- as.list(c(ultras, equals))#
+	phyNames <- names(phylos)#
+#
+# Plot phylogenies#
+	# dev.new()#
+	# par(mfrow=c(4,2))#
+	# for(i in 1:length(phylos))#
+	# {#
+		# plot(phylos[[i]], cex=0.5, show.tip.label=F)#
+	# }#
+# Prune phylogenies by community#
+	phy <- vector("list",length=length(coms))#
+	names(phy) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		phy[[c]] <- vector("list", length=length(phyNames))#
+		names(phy[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			phy[[c]][[p]] <- prune.sample(coms[[c]], phylos[[p]]) #
+		}#
+	}#
+#
+	plot(phy$pooled$ultra, cex=0.6)		#
+#
+# Create distance matrix for each topology#
+	phydist <- vector("list",length=length(coms))#
+	names(phydist) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	phydist[[c]] <- vector("list", length=length(phyNames))#
+		names(phydist[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	phydist[[c]][[p]] <- cophenetic(phy[[c]][[p]]) 	}#
+	}#
+#
+# Plotting phylogenies#
+	# First five sets of phylogenies to get overview#
+	# par(mfrow=c(4,3))#
+	# for (c in 1:9) #
+	# {	#
+		# plot(phy[[c]][[1]], show.tip.label=F) #
+	# }#
+#
+	# # large versions of full phylogenies#
+	# par(mfrow=c(1,2))#
+	# plot(phy$fullcom$ultra, cex=0.5)#
+	# plot(phy$fullcom$equal, cex=0.5)
+PDwd <- "~/Projects/Phylomeet/Analysis/Results_PD/"#
+	setwd(PDwd)#
+#
+# Make a list to contain PD results#
+	PD <- vector("list",length=length(coms))#
+	names(PD) <- names(coms)
+Read in PD from file#
+	PD <- vector("list",length=length(coms))#
+	names(PD) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		# create list to hold each set of results within each community #
+		PD[[c]] <- vector("list",length=length(phyNames))#
+		names(PD[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			# read in results#
+			PD[[c]][[p]] <- read.csv(paste0(PDwd, "PD_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)	#
+		}#
+	}#
+#
+# Analyze PD#
+years <- 2000:2003#
+crosstypes <- c("fr","fo","na")#
+spaces <- c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2)#
+#
+# PD: Individual#
+	# Summary statistics of individual PD results#
+	PDindiv <- vector("list",length=length(phyNames))#
+	names(PDindiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDsum <- cbind(ctyear, year, PD$indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PDindiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PDindiv[[p]]) <- CtYrNames#
+	}
+Find PD for all communities and branch lengths#
+	for (c in 1:length(coms)) #
+	{	PD[[c]] <- vector("list",length=length(phyNames))#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			PD[[c]][[p]] <- pd(coms[[c]], phy[[c]][[p]], include.root=TRUE)#
+			write.csv(PD[[c]][[p]], paste0(PDwd, "PD_", names(coms)[c], "_", phyNames[p], ".csv"))	# write PD to file#
+		}#
+	}#
+# Read in PD from file#
+	PD <- vector("list",length=length(coms))#
+	names(PD) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		# create list to hold each set of results within each community #
+		PD[[c]] <- vector("list",length=length(phyNames))#
+		names(PD[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			# read in results#
+			PD[[c]][[p]] <- read.csv(paste0(PDwd, "PD_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)	#
+		}#
+	}
+NRI - abundance weighted#
+# takes 10 seconds at 99 runs for each branch length setting#
+#
+# Set folder for NRI output#
+NRIwd <- "~/Projects/Phylomeet/Analysis/Results_NRI/"#
+#
+# Make a list to contain NRI results#
+NRI <- vector("list",length=length(coms))#
+#
+# Find NRI for all communities and branch lengths#
+for (c in 1:length(coms)) #
+{	NRI[[c]] <- vector("list",length=length(phyNames))#
+	for (p in 1:length(phylos)) #
+	{ 	NRI[[c]][[p]] <- ses.mpd(coms[[c]], phydist[[c]][[p]], null.model = "richness", abundance.weighted = TRUE, runs = 999)#
+#
+		# write results to file#
+		write.csv(NRI[[c]][[p]], paste0(NRIwd, "NRI_", names(coms)[c],"_", phyNames[p], ".csv"))#
+		# read in results from file#
+		NRI[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_", names(coms)[c],"_", phyNames[p], ".csv"))#
+	}#
+}#
+# Read in NRI from file#
+	NRI <- vector("list",length=length(coms))#
+	names(NRI) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		# create list to hold each set of results within each community #
+		NRI[[c]] <- vector("list",length=length(phyNames))#
+		names(NRI[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			# read in results#
+			NRI[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)	#
+		}#
+	}#
+#
+# Analyze NRI#
+# Individual#
+	# Summary statistics of individual NRI results#
+	NRIindiv <- vector("list",length=length(phyNames))#
+	names(NRIindiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		NRImean <- NRIse <- c()#
+		NRIhy <- cbind(ctyear, year, NRI$indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				NRImean <- c(NRImean, mean(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y],8]))#
+				NRIse <- c(NRIse, sd(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y],8])/sqrt(length(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y],8])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		NRIindiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=NRImean,se=NRIse)#
+		rownames(NRIindiv[[p]]) <- CtYrNames#
+	}#
+#
+	# Plot individual means#
+	pdf( file=paste0( FIGwd, "NRI_", names(NRI[1]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRIindiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(NRIindiv)[[p]], ylim=c(-2,2))#
+	}#
+	dev.off()#
+#
+	# attempt to plot with error bars using ggplot2#
+	# library(ggplot2)#
+	# for (p in 1:20) #
+	# { 	#
+# lims <- aes(ymax=mean+se, ymin=mean-se)#
+# p1 <- ggplot(NRIindiv[[p]], aes(fill=crosstype, y=mean, x=year))#
+# d <- position_dodge(width=0.9)#
+# p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)#
+	# }#
+# Pooled by crosstype within years#
+	pdf( file=paste0( FIGwd, "NRI_", names(NRI[2]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[2]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRIindiv)[[p]], ylim=c(-2,2))#
+	}#
+	dev.off()#
+# Pooled by cross type#
+	pdf( file=paste0( FIGwd, "NRI_", names(NRI[3]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(-NRI[[3]][[p]][,6], col = c("black", "red", "blue"), main=names(NRIindiv)[[p]], ylim=c(-2,2))#
+	}#
+	dev.off()
+library(ggplot2)
+lims <- aes(ymax=mean+se, ymin=mean-se)#
+p1 <- ggplot(NRIindiv[[p]], aes(fill=crosstype, y=mean, x=year))#
+d <- position_dodge(width=0.9)#
+p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)
+par(mfrow=c(4,5))#
+lims <- aes(ymax=mean+se, ymin=mean-se)#
+p1 <- ggplot(NRIindiv[[p]], aes(fill=crosstype, y=mean, x=year))#
+d <- position_dodge(width=0.9)#
+p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)
+par(mfrow=c(4,5))#
+lims <- aes(ymax=mean+se, ymin=mean-se)#
+p1 <- ggplot(NRIindiv[[p]], aes(fill=crosstype, y=mean, x=year))#
+d <- position_dodge(width=0.9)#
+p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)
+par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+lims <- aes(ymax=mean+se, ymin=mean-se)#
+p1 <- ggplot(NRIindiv[[p]], aes(fill=crosstype, y=mean, x=year))#
+d <- position_dodge(width=0.9)#
+p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)
+)
+p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)
+par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+lims <- aes(ymax=mean+se, ymin=mean-se)#
+p1 <- ggplot(NRIindiv[[p]], aes(fill=crosstype, y=mean, x=year))#
+d <- position_dodge(width=0.9)#
+p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)#
+	}
+par(mfrow=c(1,2))#
+	for (p in 1:2) #
+	{ 	#
+lims <- aes(ymax=mean+se, ymin=mean-se)#
+p1 <- ggplot(NRIindiv[[p]], aes(fill=crosstype, y=mean, x=year))#
+d <- position_dodge(width=0.9)#
+p1 + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)#
+	}
+p <- ggplot(NRIindiv[[p]], aes(fill=crosstype, y=mean, x=year))
+p + geom_bar(position="dodge", stat="identity") + geom_errorbar(lims, position=d, width=0.25)
+grid.arrange(p, p)
+library(ggplot2)
+?grid.arrange
+help.start()
+Community Phylogenetic Analyses  #
+###	Arthropod communities on cottonwood hosts#
+###	Dataset from Wimp et al. 2004#
+####
+### Code by Karl Jarvis#
+##############################################################
+#
+# Gery notes for next steps:#
+# (3) pooling each crosstype across years#
+# (2) NRI with new topology#
+# (1) phylobeta diversity#
+# load package#
+# install.packages("picante", dependencies = TRUE, repos = "http://R.research.att.com/")#
+library(picante)#
+#
+# Picante manual#
+# vignette("picante-intro")#
+#
+# Set directory for input data#
+DATAwd <- "~/Projects/Phylomeet/Analysis/arcot_data/"#
+#
+# Set directory for figures#
+FIGwd <- "~/Projects/Phylomeet/Analysis/Figures/"#
+#
+##############################################################
+# Load in communities, take subsets and format for analysis ##
+##############################################################
+#
+# load community data#
+fullcom <- read.table(paste(DATAwd, "arcot.txt", sep=""))#
+crosstype <- rep(c(rep("fremont",10), rep("f1",10), rep("backcross",10), rep("narrowleaf",10)),4)#
+ctyear <- rep(c(rep("fr",10), rep("fo",10), rep("na",20)),4)#
+year <- c(rep(2000,40),rep(2001,40),rep(2002,40),rep(2003,40))#
+com <- cbind(year, ctyear, fullcom)#
+#
+years <- 2000:2003#
+crosstypes <- c("fr","fo","na")#
+CtYrNames <- c("fr2000","fo2000","na2000","fr2001","fo2001","na2001","fr2002","fo2002","na2002","fr2003","fo2003","na2003")#
+spaces <- c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2)#
+#
+# pool data#
+	# byCT: sum of occcurrences in all years by crosstype#
+	sumFr <- apply(com[com$ctyear=="fr",3:ncol(com)],2,sum)#
+	sumFo <- apply(com[com$ctyear=="fo",3:ncol(com)],2,sum)#
+	sumNa <- apply(com[com$ctyear=="na",3:ncol(com)],2,sum)#
+	byCT <- rbind(sumFr,sumFo,sumNa)#
+	# byYear: sum of occcurrences by year on all crosstypes#
+	sum2000 <- apply(com[com$year==2000,3:ncol(com)],2,sum)#
+	sum2001 <- apply(com[com$year==2001,3:ncol(com)],2,sum)#
+	sum2002 <- apply(com[com$year==2002,3:ncol(com)],2,sum)#
+	sum2003 <- apply(com[com$year==2003,3:ncol(com)],2,sum)#
+	byYear <- rbind(sum2000,sum2001,sum2002,sum2003)#
+	# byCtYr: sum of occurrences by year and by crosstype#
+	byCtYrMaker <- function(com) #
+	{ 	#
+		fr2000 <- apply(com[com$year==2000 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2000 <- apply(com[com$year==2000 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2000 <- apply(com[com$year==2000 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2001 <- apply(com[com$year==2001 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2001 <- apply(com[com$year==2001 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2001 <- apply(com[com$year==2001 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2002 <- apply(com[com$year==2002 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2002 <- apply(com[com$year==2002 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2002 <- apply(com[com$year==2002 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2003 <- apply(com[com$year==2003 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2003 <- apply(com[com$year==2003 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2003 <- apply(com[com$year==2003 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		byCtYr <- rbind(fr2000,fo2000,na2000,fr2001,fo2001,na2001,fr2002,fo2002,na2002,fr2003,fo2003,na2003)#
+		byCtYr#
+	}#
+	byCtMaker <- function(com)#
+	{#
+		fr <- apply(com[com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo <- apply(com[com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na <- apply(com[com$ctyear=="na",3:ncol(com)],2,sum)#
+		byH <- rbind(fr, fo, na)#
+		byH		#
+	}#
+	byCtYr <- byCtYrMaker(com=com)#
+#
+	# sumAll: sum of all occurrences in all years on all crosstypes#
+	sumAll <- apply(com[,4:ncol(com)],2,sum)#
+	# CtYr: pooled by crosstype and Year#
+	CtYr <- byCtYrMaker(com=com)#
+	# Ct: pooled by crosstype only#
+	Ct <- byCtMaker(com=com)	#
+#
+# subset data based on commonness#
+fullsumAll <- rbind(fullcom,sumAll)#
+#
+	# sp2: exclude species that have only one occurrence#
+	sp2 <- fullsumAll[1:160,sumAll >= 2] #
+#
+	# sp2CtYr: sp2, pooled by crosstype and year#
+	sp2CtYr <- byCtYrMaker(com=cbind(year, ctyear, sp2))#
+#
+	# sp3: exclude species that have only one occurrence#
+	sp3 <- fullsumAll[1:160,sumAll >= 3] #
+#
+	# sp3CtYr: com3sp, pooled by crosstype and year#
+	sp3CtYr <- byCtYrMaker(com=cbind(year, ctyear, sp3))#
+#
+	# yr2: all except species that are only present in one year#
+	y <- byYear#
+	for(i in 1:ncol(y)) #
+	{ #
+		for(j in 1:nrow(y)) #
+		{ #
+			if (byYear[j,i] > 0) {y[j,i] <- 1} #
+		}	#
+	}#
+	nyear <- apply(y,2,sum)#
+	fullnyear <- rbind(fullcom,nyear)#
+	yr2 <- fullnyear[1:160,nyear >= 2]#
+#
+	# yr2CtYr: y2, pooled by crosstype and year#
+	yr2CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2))#
+	# yr2sp2: intersection of sp2 and yr2#
+	sp2year <- rbind(sp2,nyear)#
+	yr2sp2 <- sp2year[1:160,sp2year[161,] >= 2]#
+#
+	# yr2sp2CtYr: yr2sp2, pooled by crosstype and year#
+	yr2sp2CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2sp2))#
+#
+	# yr2sp3: intersection of sp3 and yr2#
+	sp3year <- rbind(sp3,nyear)#
+	yr2sp3 <- sp3year[1:160,sp3year[161,] >= 2]#
+#
+	# yr2sp3CtYr: yr2sp3, pooled by crosstype and year#
+	yr2sp3CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2sp3))#
+	# yr2sp3H: yr2sp3, pooled by crosstype#
+	yr2sp3Ct <- byCtMaker(com=cbind(year, ctyear, yr2sp3))#
+# list of full community and subsets	#
+	 # coms <- lapply(list(fullcom, CtYr, sp2, sp3, yr2, yr2sp2, yr2sp3, sp2CtYr, sp3CtYr, yr2CtYr, yr2sp2CtYr, yr2sp3CtYr), as.matrix)#
+	 # names(coms) <- c("fullcom", "CtYr", "sp2", "sp3", "yr2", "yr2sp2", "yr2sp3", "sp2CtYr", "sp3CtYr", "yr2CtYr", "yr2sp2CtYr", "yr2sp3CtYr")#
+# list of the full community and the smallest subset	#
+	 # coms <- lapply(list(fullcom, CtYr, yr2sp3, yr2sp3CtYr), as.matrix)#
+	 # names(coms) <- c("fullcom", "CtYr", "yr2sp3", "yr2sp3CtYr")#
+#
+# list of communities to use	#
+	 coms <- lapply(list(fullcom, CtYr, Ct, yr2sp3, yr2sp3CtYr, yr2sp3Ct), as.matrix)#
+	 names(coms) <- c("full_indiv", "full_pooled", "full_crosstype", "common_indiv", "common_pooled", "common_crosstype")
+Ct
+yrsp3Ct
+yr2sp3Ct
+Community Phylogenetic Analyses  #
+###	Arthropod communities on cottonwood hosts#
+###	Dataset from Wimp et al. 2004#
+####
+### Code by Karl Jarvis#
+##############################################################
+#
+# Gery notes for next steps:#
+# (3) pooling each crosstype across years#
+# (2) NRI with new topology#
+# (1) phylobeta diversity#
+# load package#
+# install.packages("picante", dependencies = TRUE, repos = "http://R.research.att.com/")#
+library(picante)#
+#
+# Picante manual#
+# vignette("picante-intro")#
+#
+# Set directory for input data: community file and phylogeny file#
+DATAwd <- "~/Projects/Phylomeet/Analysis/arcot_data/"#
+#
+# Set folder for output of Phylogenetic Diversity results#
+PDwd <- "~/Projects/Phylomeet/Analysis/Results_PD/"#
+#
+# Set folder for output of NRI results#
+NRIwd <- "~/Projects/Phylomeet/Analysis/Results_NRI/"#
+# Set directory for figures#
+FIGwd <- "~/Projects/Phylomeet/Analysis/Figures/"#
+##############################################################
+# Load in communities, take subsets and format for analysis ##
+##############################################################
+#
+# load community data#
+fullcom <- read.table(paste(DATAwd, "arcot.txt", sep=""))#
+crosstype <- rep(c(rep("fremont",10), rep("f1",10), rep("backcross",10), rep("narrowleaf",10)),4)#
+ctyear <- rep(c(rep("fr",10), rep("fo",10), rep("na",20)),4)#
+year <- c(rep(2000,40),rep(2001,40),rep(2002,40),rep(2003,40))#
+com <- cbind(year, ctyear, fullcom)#
+#
+years <- 2000:2003#
+crosstypes <- c("fr","fo","na")#
+CtYrNames <- c("fr2000","fo2000","na2000","fr2001","fo2001","na2001","fr2002","fo2002","na2002","fr2003","fo2003","na2003")#
+spaces <- c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2)#
+#
+# pool data#
+	# byCT: sum of occcurrences in all years by crosstype#
+	sumFr <- apply(com[com$ctyear=="fr",3:ncol(com)],2,sum)#
+	sumFo <- apply(com[com$ctyear=="fo",3:ncol(com)],2,sum)#
+	sumNa <- apply(com[com$ctyear=="na",3:ncol(com)],2,sum)#
+	byCT <- rbind(sumFr,sumFo,sumNa)#
+	# byYear: sum of occcurrences by year on all crosstypes#
+	sum2000 <- apply(com[com$year==2000,3:ncol(com)],2,sum)#
+	sum2001 <- apply(com[com$year==2001,3:ncol(com)],2,sum)#
+	sum2002 <- apply(com[com$year==2002,3:ncol(com)],2,sum)#
+	sum2003 <- apply(com[com$year==2003,3:ncol(com)],2,sum)#
+	byYear <- rbind(sum2000,sum2001,sum2002,sum2003)#
+	# byCtYr: sum of occurrences by year and by crosstype#
+	byCtYrMaker <- function(com) #
+	{ 	#
+		fr2000 <- apply(com[com$year==2000 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2000 <- apply(com[com$year==2000 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2000 <- apply(com[com$year==2000 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2001 <- apply(com[com$year==2001 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2001 <- apply(com[com$year==2001 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2001 <- apply(com[com$year==2001 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2002 <- apply(com[com$year==2002 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2002 <- apply(com[com$year==2002 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2002 <- apply(com[com$year==2002 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		fr2003 <- apply(com[com$year==2003 & com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo2003 <- apply(com[com$year==2003 & com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na2003 <- apply(com[com$year==2003 & com$ctyear=="na",3:ncol(com)],2,sum)#
+		byCtYr <- rbind(fr2000,fo2000,na2000,fr2001,fo2001,na2001,fr2002,fo2002,na2002,fr2003,fo2003,na2003)#
+		byCtYr#
+	}#
+	byCtMaker <- function(com)#
+	{#
+		fr <- apply(com[com$ctyear=="fr",3:ncol(com)],2,sum)#
+		fo <- apply(com[com$ctyear=="fo",3:ncol(com)],2,sum)#
+		na <- apply(com[com$ctyear=="na",3:ncol(com)],2,sum)#
+		byH <- rbind(fr, fo, na)#
+		byH		#
+	}#
+	byCtYr <- byCtYrMaker(com=com)#
+#
+	# sumAll: sum of all occurrences in all years on all crosstypes#
+	sumAll <- apply(com[,4:ncol(com)],2,sum)#
+	# CtYr: pooled by crosstype and Year#
+	CtYr <- byCtYrMaker(com=com)#
+	# Ct: pooled by crosstype only#
+	Ct <- byCtMaker(com=com)	#
+#
+# subset data based on commonness#
+fullsumAll <- rbind(fullcom,sumAll)#
+#
+	# sp2: exclude species that have only one occurrence#
+	sp2 <- fullsumAll[1:160,sumAll >= 2] #
+#
+	# sp2CtYr: sp2, pooled by crosstype and year#
+	sp2CtYr <- byCtYrMaker(com=cbind(year, ctyear, sp2))#
+#
+	# sp3: exclude species that have only one occurrence#
+	sp3 <- fullsumAll[1:160,sumAll >= 3] #
+#
+	# sp3CtYr: com3sp, pooled by crosstype and year#
+	sp3CtYr <- byCtYrMaker(com=cbind(year, ctyear, sp3))#
+#
+	# yr2: all except species that are only present in one year#
+	y <- byYear#
+	for(i in 1:ncol(y)) #
+	{ #
+		for(j in 1:nrow(y)) #
+		{ #
+			if (byYear[j,i] > 0) {y[j,i] <- 1} #
+		}	#
+	}#
+	nyear <- apply(y,2,sum)#
+	fullnyear <- rbind(fullcom,nyear)#
+	yr2 <- fullnyear[1:160,nyear >= 2]#
+#
+	# yr2CtYr: y2, pooled by crosstype and year#
+	yr2CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2))#
+	# yr2sp2: intersection of sp2 and yr2#
+	sp2year <- rbind(sp2,nyear)#
+	yr2sp2 <- sp2year[1:160,sp2year[161,] >= 2]#
+#
+	# yr2sp2CtYr: yr2sp2, pooled by crosstype and year#
+	yr2sp2CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2sp2))#
+#
+	# yr2sp3: intersection of sp3 and yr2#
+	sp3year <- rbind(sp3,nyear)#
+	yr2sp3 <- sp3year[1:160,sp3year[161,] >= 2]#
+#
+	# yr2sp3CtYr: yr2sp3, pooled by crosstype and year#
+	yr2sp3CtYr <- byCtYrMaker(com=cbind(year, ctyear, yr2sp3))#
+	# yr2sp3H: yr2sp3, pooled by crosstype#
+	yr2sp3Ct <- byCtMaker(com=cbind(year, ctyear, yr2sp3))#
+# list of full community and subsets	#
+	 # coms <- lapply(list(fullcom, CtYr, sp2, sp3, yr2, yr2sp2, yr2sp3, sp2CtYr, sp3CtYr, yr2CtYr, yr2sp2CtYr, yr2sp3CtYr), as.matrix)#
+	 # names(coms) <- c("fullcom", "CtYr", "sp2", "sp3", "yr2", "yr2sp2", "yr2sp3", "sp2CtYr", "sp3CtYr", "yr2CtYr", "yr2sp2CtYr", "yr2sp3CtYr")#
+# list of communities to use in this analysis#
+	 coms <- lapply(list(fullcom, yr2sp3, CtYr, yr2sp3CtYr, Ct, yr2sp3Ct), as.matrix)#
+	 names(coms) <- c("full_indiv", "common_indiv", "full_pooled", "common_pooled", "full_crosstype", "common_crosstype")
+ultra <- read.nexus(paste0(DATAwd,"phylos/ultra.tre"))#
+	ultras <- list(ultra)#
+	names(ultras) <- "ultra"#
+	lel <- length(ultra$edge.length)#
+#
+	# number of randomized branch lengths#
+	nrand = 9#
+#
+	# create nrand more trees with randomly altered branch lengths#
+	for(i in 1:nrand)#
+	{#
+		ultras[[i+1]] <- ultra#
+		ultras[[i+1]]$edge.length <- ultra$edge.length + runif(lel, min=-0.99, max=0.99)#
+		names(ultras)[[i+1]] <- paste0("urand", i)#
+	}#
+#
+# Phylogeny with each edge length set equal #
+	# read in phylogeny #
+	equal <- ultra#
+	equal$edge.length <- rep(1, length=lel)#
+	equals <- list(equal)#
+	names(equals) <- "equal"#
+#
+	# create nrand more trees with randomly altered branch lengths#
+	for(i in 1:nrand)#
+	{#
+		equals[[i+1]] <- equal#
+		equals[[i+1]]$edge.length <- runif(lel, min=0.01, max=2)#
+		names(equals)[[i+1]] <- paste0("erand", i)#
+	}#
+# Combine all phylogenies into one list#
+	phylos <- as.list(c(ultras, equals))#
+	phyNames <- names(phylos)#
+#
+# Plot phylogenies#
+	# dev.new()#
+	# par(mfrow=c(4,2))#
+	# for(i in 1:length(phylos))#
+	# {#
+		# plot(phylos[[i]], cex=0.5, show.tip.label=F)#
+	# }#
+# Prune phylogenies by community#
+	phy <- vector("list",length=length(coms))#
+	names(phy) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		phy[[c]] <- vector("list", length=length(phyNames))#
+		names(phy[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			phy[[c]][[p]] <- prune.sample(coms[[c]], phylos[[p]]) #
+		}#
+	}#
+#
+	plot(phy$pooled$ultra, cex=0.6)		#
+#
+# Create distance matrix for each topology#
+	phydist <- vector("list",length=length(coms))#
+	names(phydist) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		phydist[[c]] <- vector("list", length=length(phyNames))#
+		names(phydist[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			phydist[[c]][[p]] <- cophenetic(phy[[c]][[p]]) 	#
+		}#
+	}
+phy
+phy[[1]]
+phy[[1]][[1]]
+phy[[2]][[1]]
+phy[[3]][[1]]
+phy[[4]][[1]]
+phy[[5]][[1]]
+phy[[6]][[1]]
+phy[[7]][[1]]
+phy[[6]][[20]]
+length(phy)
+length(phy$full_indiv)
+plot[[1]][[1]]
+plot(phy[[1]][[1]])
+plot(phy[[2]][[1]])
+plot(phy[[3]][[1]])
+names(phy)
+names(phy$full_indiv)
+Make a list to contain PD results#
+	PD <- vector("list",length=length(coms))#
+	names(PD) <- names(coms)#
+#
+# Calculate PD for all communities and branch lengths#
+	for (c in 1:length(coms)) #
+	{	PD[[c]] <- vector("list",length=length(phyNames))#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			PD[[c]][[p]] <- pd(coms[[c]], phy[[c]][[p]], include.root=TRUE)#
+			write.csv(PD[[c]][[p]], paste0(PDwd, "PD_", names(coms)[c], "_", phyNames[p], ".csv"))	# write PD to file#
+		}#
+	}
+CtYrNames
+PD[1]
+names(PD[1])
+names(PD[2])
+paste0( FIGwd, "PD_", names(PD$full_indiv), ".pdf" )
+names(PD)
+PD$full_indiv
+names(PD[1])
+paste0( FIGwd, "PD_", names(PD[1]), ".pdf" )
+Read in PD from file#
+	PD <- vector("list",length=length(coms))#
+	names(PD) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		# create list to hold each set of results within each community #
+		PD[[c]] <- vector("list",length=length(phyNames))#
+		names(PD[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			# read in results#
+			PD[[c]][[p]] <- read.csv(paste0(PDwd, "PD_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)	#
+		}#
+	}#
+#
+# Analyze PD#
+years <- 2000:2003#
+crosstypes <- c("fr","fo","na")#
+spaces <- c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2)#
+#
+# PD: Individual#
+	# PD: Full individual data: Summary statistics#
+	PD_full_indiv <- vector("list",length=length(phyNames))#
+	names(PD_full_indiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDsum <- cbind(ctyear, year, PD$full_indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PD_full_indiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PD_full_indiv[[p]]) <- CtYrNames#
+	}#
+	# Plot#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[1]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PDindiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PDindiv)[[p]])#
+	}#
+	dev.off()#
+	# PD: Common individual data: Summary statistics#
+	PD_common_indiv <- vector("list",length=length(phyNames))#
+	names(PD_common_indiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDsum <- cbind(ctyear, year, PD$common_indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PD_common_indiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PD_common_indiv[[p]]) <- CtYrNames#
+	}#
+	# Plot#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[2]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PDindiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PDindiv)[[p]])#
+	}#
+	dev.off()
+names(PD)
+summary(PD)
+Analyze PD#
+years <- 2000:2003#
+crosstypes <- c("fr","fo","na")#
+spaces <- c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2)#
+#
+# PD: Individual#
+	# PD: Full individual data: Summary statistics#
+	PD_full_indiv <- vector("list",length=length(phyNames))#
+	names(PD_full_indiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDsum <- cbind(ctyear, year, PD$full_indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PD_full_indiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PD_full_indiv[[p]]) <- CtYrNames#
+	}#
+	# Plot#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[1]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD_full_indiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PD_full_indiv)[[p]])#
+	}#
+	dev.off()#
+	# PD: Common individual data: Summary statistics#
+	PD_common_indiv <- vector("list",length=length(phyNames))#
+	names(PD_common_indiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDsum <- cbind(ctyear, year, PD$common_indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PD_common_indiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PD_common_indiv[[p]]) <- CtYrNames#
+	}#
+	# Plot#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[2]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD_common_indiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PD_common_indiv)[[p]])#
+	}#
+	dev.off()
+Plot#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[1]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD_full_indiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PD_full_indiv)[[p]], ylim=c(20,120))#
+	}#
+	dev.off()#
+	# PD: Common individual data: Summary statistics#
+	PD_common_indiv <- vector("list",length=length(phyNames))#
+	names(PD_common_indiv) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		PDmean <- PDse <- c()#
+		PDsum <- cbind(ctyear, year, PD$common_indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				PDmean <- c(PDmean, mean(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3]))#
+				PDse <- c(PDse, sd(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])/sqrt(length(PDsum[PDsum[,1] == crosstypes[h] & PDsum[,2] == years[y],3])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		PD_common_indiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=PDmean,se=PDse)#
+		rownames(PD_common_indiv[[p]]) <- CtYrNames#
+	}#
+	# Plot#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[2]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD_common_indiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PD_common_indiv)[[p]], ylim=c(20,120))#
+	}#
+	dev.off()
+pdf( file=paste0( FIGwd, "PD_", names(PD[1]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD_full_indiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PD_full_indiv)[[p]], ylim=c(0,120))#
+	}#
+	dev.off()
+Plot#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[2]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD_common_indiv[[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(PD_common_indiv)[[p]], ylim=c(0,120))#
+	}#
+	dev.off()
+names(PD_full_pooled)
+names(PD$full_pooled)
+names(PDindiv)
+PD: Pooled by crosstype within years#
+	# PD: full community data pooled#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[3]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[3]][[p]][,1], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(PD$full_pooled)[[p]])#
+	}#
+	dev.off()#
+#
+	# PD: common community data pooled#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[4]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[4]][[p]][,1], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(PD$common_pooled)[[p]])#
+	}#
+	dev.off()
+PD: Pooled by crosstype within years#
+	# PD: full community data pooled#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[3]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[3]][[p]][,1], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(PD$full_pooled)[[p]], ylim=c(0,250))#
+	}#
+	dev.off()#
+#
+	# PD: common community data pooled#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[4]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[4]][[p]][,1], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(PD$common_pooled)[[p]], ylim=c(0,250))#
+	}#
+	dev.off()
+PD: full community data pooled by crosstype#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[5]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[5]][[p]][,1], col = c("black", "red", "blue"), main=names(PD$full_crosstype)[[p]], ylim=c(0,250))#
+	}#
+	dev.off()#
+#
+	# PD: common community data pooled by crosstype#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[6]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[6]][[p]][,1], col = c("black", "red", "blue"), main=names(PD$full_crosstype)[[p]], ylim=c(0,160))#
+	}#
+	dev.off()
+PD: full community data pooled by crosstype#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[5]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[5]][[p]][,1], col = c("black", "red", "blue"), main=names(PD$full_crosstype)[[p]], ylim=c(0,300))#
+	}#
+	dev.off()#
+#
+	# PD: common community data pooled by crosstype#
+	pdf( file=paste0( FIGwd, "PD_", names(PD[6]), ".pdf" ), width=10, height=10 )#
+	par(mfrow=c(4,5))#
+	for (p in 1:20) #
+	{ 	#
+		barplot(PD[[6]][[p]][,1], col = c("black", "red", "blue"), main=names(PD$full_crosstype)[[p]], ylim=c(0,300))#
+	}#
+	dev.off()
+Make a list to contain NRI results#
+NRI_abund <- NRI_pres <- vector("list",length=length(coms))#
+#
+# Estimate NRI for all communities and branch lengths#
+for (c in 1:length(coms)) #
+{	NRI_abund[[c]] <- vector("list",length=length(phyNames))#
+	NRI_pres[[c]] <- vector("list",length=length(phyNames))#
+	for (p in 1:length(phylos)) #
+	{ 	NRI_abund[[c]][[p]] <- ses.mpd(coms[[c]], phydist[[c]][[p]], null.model = "richness", abundance.weighted = TRUE, runs = 9)#
+		NRI_pres[[c]][[p]] <- ses.mpd(coms[[c]], phydist[[c]][[p]], null.model = "richness", abundance.weighted = FALSE, runs = 9)#
+#
+		# write results to file#
+		write.csv(NRI_abund[[c]][[p]], paste0(NRIwd, "NRI_abund_", names(coms)[c],"_", phyNames[p], ".csv"))#
+		write.csv(NRI_pres[[c]][[p]], paste0(NRIwd, "NRI_pres_", names(coms)[c],"_", phyNames[p], ".csv"))#
+		# read in results from file#
+		NRI_abund[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_abund_", names(coms)[c],"_", phyNames[p], ".csv"))#
+		NRI_pres[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_pres_", names(coms)[c],"_", phyNames[p], ".csv"))#
+	}#
+}#
+# Read in NRI from file#
+	NRI_abund <- NRI_pres <- vector("list",length=length(coms))#
+	names(NRI_abund) <- names(NRI_pres) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		# create list to hold each set of results within each community #
+		NRI_abund[[c]] <- NRI_pres[[c]] <- vector("list",length=length(phyNames))#
+		names(NRI_abund[[c]]) <- names(NRI_pres[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			# read in results#
+			NRI_abund[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_abund_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)	#
+			NRI_pres[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_pres_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)		}#
+	}
+NRI: Individual#
+	# Summary statistics of individual NRI results#
+	NRI_common_indiv_abund <- vector("list",length=length(phyNames))#
+	names(NRI_common_indiv_abund) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		NRImean <- NRIse <- c()#
+		NRIhy <- cbind(ctyear, year, NRI_abund$indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				NRImean <- c(NRImean, mean(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y],8]))#
+				NRIse <- c(NRIse, sd(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y],8])/sqrt(length(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y],8])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		NRIindiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=NRImean,se=NRIse)#
+		rownames(NRIindiv[[p]]) <- CtYrNames#
+	}
+NRIhy <- cbind(ctyear, year, NRI_abund$indiv[[p]])
+NRIhy
+NRI_abund$indiv[[p]]
+summary(NRI_abund)
+NRI_full_indiv_abund <- vector("list",length=length(phyNames))#
+	names(NRI_full_indiv_abund) <- phyNames
+NRImean <- NRIse <- c()#
+		NRIhy <- cbind(ctyear, year, NRI_abund$full_indiv[[p]])
+NRYhy
+NRIhy
+NRI_full_indiv_abund <- vector("list",length=length(phyNames))#
+	names(NRI_full_indiv_abund) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		NRImean <- NRIse <- c()#
+		NRIhy <- cbind(ctyear, year, NRI_abund$full_indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				NRImean <- c(NRImean, mean(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8]))#
+				NRIse <- c(NRIse, sd(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8])/sqrt(length(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		NRIindiv[[p]] <- data.frame(crosstype=ct,year=yr,mean=NRImean,se=NRIse)#
+		rownames(NRIindiv[[p]]) <- CtYrNames#
+	}
+NRI_full_indiv_abund
+NRI_full_indiv_abund <- vector("list",length=length(phyNames))#
+	names(NRI_full_indiv_abund) <- phyNames#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		NRImean <- NRIse <- c()#
+		NRIhy <- cbind(ctyear, year, NRI_abund$full_indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				NRImean <- c(NRImean, mean(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8]))#
+				NRIse <- c(NRIse, sd(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8])/sqrt(length(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		NRI_full_indiv_abund[[p]] <- data.frame(crosstype=ct,year=yr,mean=NRImean,se=NRIse)#
+		rownames(NRI_full_indiv_abund[[p]]) <- CtYrNames#
+	}
+NRI_full_indiv_abund
+NRI_full_indiv_abund <- vector("list",length=length(phyNames))
+NRI_full_indiv_abund <- NRI_full_indiv_pres <- NRI_common_indiv_abund <- NRI_common_indiv_pres <- vector("list",length=length(phyNames))#
+	names(NRI_full_indiv_abund) <- names(NRI_full_indiv_pres) <- names(NRI_common_indiv_abund) <- names(NRI_common_indiv_pres) <- phyNames#
+	NRIs <- c("NRI_full_indiv_abund", "NRI_full_indiv_pres", "NRI_common_indiv_abund", "NRI_common_indiv_pres")
+class(NRIs)
+NRIs <- list("NRI_full_indiv_abund", "NRI_full_indiv_pres", "NRI_common_indiv_abund", "NRI_common_indiv_pres")
+class(NRIs)
+for(n in 1:length(NRIs))#
+{	#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		NRImean <- NRIse <- c()#
+		NRIhy <- cbind(ctyear, year, NRIs[[n]]$full_indiv[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				NRImean <- c(NRImean, mean(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8]))#
+				NRIse <- c(NRIse, sd(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8])/sqrt(length(NRIhy[NRIhy[,1] == crosstypes[h] & NRIhy[,2] == years[y], 8])))#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		NRIs[[n]][[p]] <- data.frame(crosstype=ct,year=yr,mean=NRImean,se=NRIse)#
+		rownames(NRIs[[n]][[p]]) <- CtYrNames#
+	}#
+}
+NRI_abund
+summary(NRI_abund)
+summary(NRI_pres)
+rm(NRI)
+NRI$full_indiv[[p]]
+NRI <- NRI_abund
+NRI$full_indiv[[p]]
+community <- full_indiv
+NRI$full_indiv[[p]]
+CtYrNames
+NRI$community[[p]]
+NRIsummarymaker <- function(NRI=NRI_abund, community=full_indiv)#
+{#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI$community[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean([res[,1] == crosstypes[h] & res[,2] == years[y], 8]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(NRI[[p]]) <- CtYrNames#
+	}#
+	NRI#
+}
+NRIsummarymaker <- function(NRI=NRI_abund, community=full_indiv) {#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI$community[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean([res[,1] == crosstypes[h] & res[,2] == years[y], 8]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(NRI[[p]]) <- CtYrNames#
+	}#
+	NRI#
+}
+NRIsummarymaker <- function(NRI=NRI_abund, community=full_indiv) {#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI$community[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean([res[,1] == crosstypes[h] & res[,2] == years[y], 8]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(NRI[[p]]) <- CtYrNames#
+	}#
+	summary#
+}
+NRIsummarymaker <- function(NRI=NRI_abund, community=full_indiv) {#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI$community[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean([res[,1] == crosstypes[h] & res[,2] == years[y], 8]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(NRI[[p]]) <- CtYrNames#
+	}#
+	summary#
+}
+summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames
+NRIsummarymaker <- function(NRI=NRI_abund, community=full_indiv) #
+{#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI$community[[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean(res[res[,1] == crosstypes[h] & res[,2] == years[y], 8]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(NRI[[p]]) <- CtYrNames#
+	}#
+	summary#
+}
+test <- NRIsummarymaker
+test
+test <- NRIsummarymaker()
+summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames
+p=1
+y=1
+h=1
+mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI$community[[p]])
+res
+summary(NRI_abund)
+community=1
+mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI[[community]][[p]])
+res
+NRIsummarymaker <- function(NRI=NRI_abund, community=1) #
+{#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI[[community]][[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean(res[res[,1] == crosstypes[h] & res[,2] == years[y], 8]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(NRI[[p]]) <- CtYrNames#
+	}#
+	summary#
+}#
+#
+test <- NRIsummarymaker()
+NRIsummarymaker <- function(NRI=NRI_abund, community=1) #
+{#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI[[community]][[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean(res[res[,1] == crosstypes[h] & res[,2] == years[y], 8]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(summary[[p]]) <- CtYrNames#
+	}#
+	summary#
+}#
+#
+test <- NRIsummarymaker()
+test
+NRIsummarymaker <- function(NRI=NRI_abund, community=1) #
+{#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI[[community]][[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean(res[res[,1] == crosstypes[h] & res[,2] == years[y], 8]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], 8] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(summary[[p]]) <- CtYrNames#
+	}#
+	summary#
+}#
+#
+NRI_full_indiv_abund <- NRIsummarymaker(NRI=NRI_abund, community=1)#
+NRI_full_indiv_pres <- NRIsummarymaker(NRI=NRI_pres, community=1)#
+NRI_common_indiv_abund <- NRIsummarymaker(NRI=NRI_abund, community=2)#
+NRI_common_indiv_pres <- NRIsummarymaker(NRI=NRI_pres, community=2)
+colnames(NRI_abund[[1]])
+colnames(NRI_abund[[1]][[1]])
+IndivSummaryMaker <- function(result=NRI_abund, community=1, column=8) #
+{#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI[[community]][[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean(res[res[,1] == crosstypes[h] & res[,2] == years[y], column]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], column] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], column] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(summary[[p]]) <- CtYrNames#
+	}#
+	summary#
+}#
+#
+NRI_full_indiv_abund <- IndivSummaryMaker(result=NRI_abund, community=1, column=8)#
+NRI_full_indiv_pres <- IndivSummaryMaker(result =NRI_pres, community=1, column=8)#
+NRI_common_indiv_abund <- IndivSummaryMaker(result =NRI_abund, community=2, column=8)#
+NRI_common_indiv_pres <- IndivSummaryMaker(result =NRI_pres, community=2, column=8)
+NRI_full_indiv_pres
+NRI_full_indiv_abund
+NRI_full_indiv_pres
+NRI_full_indiv_abund
+NRI_common_indiv_abund
+NRI_common_indiv_pres
+NRI_abund
+Make a list to contain NRI results#
+NRI_abund <- NRI_pres <- vector("list",length=length(coms))#
+#
+# Estimate NRI for all communities and branch lengths#
+for (c in 1:length(coms)) #
+{	NRI_abund[[c]] <- vector("list",length=length(phyNames))#
+	NRI_pres[[c]] <- vector("list",length=length(phyNames))#
+	for (p in 1:length(phylos)) #
+	{ 	NRI_abund[[c]][[p]] <- ses.mpd(coms[[c]], phydist[[c]][[p]], null.model = "richness", abundance.weighted = TRUE, runs = 9)#
+		NRI_pres[[c]][[p]] <- ses.mpd(coms[[c]], phydist[[c]][[p]], null.model = "richness", abundance.weighted = FALSE, runs = 9)#
+#
+		# write results to file#
+		write.csv(NRI_abund[[c]][[p]], paste0(NRIwd, "NRI_abund_", names(coms)[c],"_", phyNames[p], ".csv"))#
+		write.csv(NRI_pres[[c]][[p]], paste0(NRIwd, "NRI_pres_", names(coms)[c],"_", phyNames[p], ".csv"))#
+		# read in results from file#
+		NRI_abund[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_abund_", names(coms)[c],"_", phyNames[p], ".csv"))#
+		NRI_pres[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_pres_", names(coms)[c],"_", phyNames[p], ".csv"))#
+	}#
+}#
+# Read in NRI from file#
+	NRI_abund <- NRI_pres <- vector("list",length=length(coms))#
+	names(NRI_abund) <- names(NRI_pres) <- names(coms)#
+	for (c in 1:length(coms)) #
+	{	#
+		# create list to hold each set of results within each community #
+		NRI_abund[[c]] <- NRI_pres[[c]] <- vector("list",length=length(phyNames))#
+		names(NRI_abund[[c]]) <- names(NRI_pres[[c]]) <- phyNames#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			# read in results#
+			NRI_abund[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_abund_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)	#
+			NRI_pres[[c]][[p]] <- read.csv(paste0(NRIwd, "NRI_pres_", names(coms)[c], "_", phyNames[p], ".csv"), row.names=1)		}#
+	}
+NRI_abund[[1]][[1]]
+NRI_pres[[1]][[1]]
+IndivSummaryMaker <- function(result=NRI_abund, community=1, column=8) #
+{#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, NRI[[community]][[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean(res[res[,1] == crosstypes[h] & res[,2] == years[y], column]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], column] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], column] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(summary[[p]]) <- CtYrNames#
+	}#
+	summary#
+}
+NRI_full_indiv_abund <- IndivSummaryMaker(result=NRI_abund, community=1, column=8)#
+NRI_full_indiv_pres <- IndivSummaryMaker(result=NRI_pres, community=1, column=8)#
+NRI_common_indiv_abund <- IndivSummaryMaker(result=NRI_abund, community=2, column=8)#
+NRI_common_indiv_pres <- IndivSummaryMaker(result=NRI_pres, community=2, column=8)
+NRI_full_indiv_abund
+NRI_full_indiv_pres
+IndivSummaryMaker <- function(result=NRI_abund, community=1, column=8) #
+{#
+	summary <- vector("list",length=length(phyNames))#
+	names(summary) <- phyNames#
+#
+	for (p in 1:length(phylos)) #
+	{ 	#
+		mean <- se <- c()#
+		res <- cbind(ctyear, year, result[[community]][[p]])#
+		for(y in 1:length(years))#
+		{#
+			for(h in 1:length(crosstypes))#
+			{#
+				mean <- c(mean, mean(res[res[,1] == crosstypes[h] & res[,2] == years[y], column]))#
+				se <- c(se, sd( res[res[,1] == crosstypes[h] & res[,2] == years[y], column] ) / sqrt( length( res[res[,1] == crosstypes[h] & res[,2] == years[y], column] ) ) )#
+			}#
+		}#
+		ct <- rep(c("fr","fo","na"),4)#
+		yr <- c(rep(2000,3),rep(2001,3),rep(2002,3),rep(2003,3))#
+		summary[[p]] <- data.frame(crosstype=ct,year=yr,mean=mean,se=se)#
+		rownames(summary[[p]]) <- CtYrNames#
+	}#
+	summary#
+}#
+#
+NRI_full_indiv_abund <- IndivSummaryMaker(result=NRI_abund, community=1, column=8)#
+NRI_full_indiv_pres <- IndivSummaryMaker(result=NRI_pres, community=1, column=8)#
+NRI_common_indiv_abund <- IndivSummaryMaker(result=NRI_abund, community=2, column=8)#
+NRI_common_indiv_pres <- IndivSummaryMaker(result=NRI_pres, community=2, column=8)
+NRI_full_indiv_abund
+NRI_full_indiv_abund
+NRI_full_indiv_pres
+summary(PD)
+PD_full_indiv <- IndivSummaryMaker(result=PD, community=1, column=2)#
+PD_common_indiv <- IndivSummaryMaker(result=PD, community=2, column=2)
+rm(IndivSummaryMaker)
+source('~/Projects/Phylomeet/Analysis/IndivSummaryMaker.R', chdir = TRUE)#
+PD_full_indiv <- IndivSummaryMaker(result=PD, community=1, column=2)#
+PD_common_indiv <- IndivSummaryMaker(result=PD, community=2, column=2)
+NRIindiv <- vector("list",length=4)
+source('~/Projects/Phylomeet/Analysis/IndivSummaryMaker.R', chdir = TRUE)#
+	NRIindiv <- vector("list",length=4)#
+	names(NRIindiv) <- c("NRI_full_indiv_abund", "NRI_full_indiv_pres", "NRI_common_indiv_abund", "NRI_common_indiv_pres")#
+	NRIindiv[[1]] <- IndivSummaryMaker(result=NRI_abund, community=1, column=8)#
+	NRIindiv[[2]] <- IndivSummaryMaker(result=NRI_pres, community=1, column=8)#
+	NRIindiv[[3]] <- IndivSummaryMaker(result=NRI_abund, community=2, column=8)#
+	NRIindiv[[4]] <- IndivSummaryMaker(result=NRI_pres, community=2, column=8)
+summary(NRIindiv)
+summary(NRIindiv[[1]])
+summary(NRIindiv[[1]][[1]])
+names(NRIindiv[[i]])[[p]]
+i=1
+names(NRIindiv[[i]])[[p]]
+p=1
+names(NRIindiv[[i]])[[p]]
+paste0( FIGwd, names(NRIindiv[[i]]), names(NRI[1]), ".pdf" )
+paste0( FIGwd, "NRI_full_indiv_pres", names(NRI[1]), ".pdf" )
+names(NRI[1])
+paste0( FIGwd, "NRI_full_indiv_pres", ".pdf" )
+paste0( FIGwd, names(NRIindiv[[i]]), ".pdf" )
+names(NRIindiv[[1]])
+names(NRIindiv[1])
+paste0( FIGwd, names(NRIindiv[i]), ".pdf" )
+for(i in 1:4)#
+	{#
+		pdf( file=paste0( FIGwd, names(NRIindiv[i]), ".pdf"), width=10, height=10 )#
+		par(mfrow=c(4,5))#
+		for (p in 1:20) #
+		{ 	barplot(-NRIindiv[[i]][[p]][,3], col = c("black", "red", "blue"), space=spaces, main=names(NRIindiv[[i]])[[p]], ylim=c(-2,2)) 	}#
+		dev.off()#
+	}
+names(NRI_abund[2])
+names(NRI_abund[3])
+names(NRI_abund[3])
+paste0( FIGwd, "NRI_abund_", names(NRI_abund[3]), ".pdf" )
+paste0( FIGwd, "NRI_", names(NRI_abund[3]), "_abund.pdf" )
+names(NRI_abund[4])
+names(NRI_abund[[i]][[p]])
+names(NRI_abund[[i]][p])
+paste0( FIGwd, "NRI_", names(NRI_abund[i]), "_abund.pdf" )
+for(i in 3:4)#
+	{#
+		pdf( file=paste0( FIGwd, "NRI_", names(NRI_abund[i]), "_abund.pdf" ), width=10, height=10 )#
+		par(mfrow=c(4,5))#
+		for (p in 1:20) #
+		{ 	barplot(-NRI_abund[[i]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRI_abund[[i]][p]), ylim=c(-2,2))	}#
+		dev.off()#
+		pdf( file=paste0( FIGwd, "NRI_", names(NRI_abund[i]), "_pres.pdf" ), width=10, height=10 )#
+		par(mfrow=c(4,5))#
+		for (p in 1:20) #
+		{ 	barplot(-NRI_pres[[i]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRI_pres[[i]][p]), ylim=c(-2,2))	}#
+		dev.off()#
+	}
+NRI: Pooled by crosstype within years#
+	for(i in 3:4)#
+	{#
+		pdf( file=paste0( FIGwd, "NRI_", names(NRI_abund[i]), "_abund.pdf" ), width=10, height=10 )#
+		par(mfrow=c(4,5))#
+		for (p in 1:20) #
+		{ 	barplot(-NRI_abund[[i]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRI_abund[[i]][p]), ylim=c(-2,2))	}#
+		dev.off()#
+		pdf( file=paste0( FIGwd, "NRI_", names(NRI_pres[i]), "_pres.pdf" ), width=10, height=10 )#
+		par(mfrow=c(4,5))#
+		for (p in 1:20) #
+		{ 	barplot(-NRI_pres[[i]][[p]][,6], space = c(0.2,0.2,0.2,1,0.2,0.2,1,0.2,0.2,1,0.2,0.2), col = c("black", "red", "blue"), main=names(NRI_pres[[i]][p]), ylim=c(-2,2))	}#
+		dev.off()#
+	}#
+#
+	# NRI: Pooled by cross type#
+	for(i in 5:6)#
+	{#
+		pdf( file=paste0( FIGwd, "NRI_", names(NRI_abund[i]), "_abund.pdf" ), width=10, height=10 )#
+		par(mfrow=c(4,5))#
+		for (p in 1:20) #
+		{ 	barplot(-NRI_abund[[i]][[p]][,6], col = c("black", "red", "blue"), main=names(NRI_abund[[i]][p]), ylim=c(-2,2))	}#
+		dev.off()#
+		pdf( file=paste0( FIGwd, "NRI_", names(NRI_abund[i]), "_pres.pdf" ), width=10, height=10 )#
+		par(mfrow=c(4,5))#
+		for (p in 1:20) #
+		{ 	barplot(-NRI_pres[[i]][[p]][,6], col = c("black", "red", "blue"), main=names(NRI_pres[[i]][p]), ylim=c(-2,2))	}#
+		dev.off()#
+	}
+length(coms)
+paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv")
+Set folder locations#
+#
+# Set folder for output of PD results#
+PDwd <- "~/Projects/Phylomeet/Analysis/Results_PD/"#
+#
+# Set folder for output of NRI results#
+NRIwd <- "~/Projects/Phylomeet/Analysis/Results_NRI/"#
+#
+# Set folder for output of ComDist results#
+ComDistwd <- "~/Projects/Phylomeet/Analysis/Results_ComDist/"#
+#
+# Set directory for figures#
+FIGwd <- "~/Projects/Phylomeet/Analysis/Figures/"
+paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv")
+ComDist <- vector("list",length=length(coms))#
+names(ComDist) <- names(coms)#
+#
+# find comdist for all communities and branch lengths#
+	# loop through community subsets#
+	for (c in 1:length(coms)) #
+	{	#
+		# list to contain results for phylogeny#
+		ComDist_abund[[c]] <- ComDist_pres[[c]] <- vector("list",length=length(phyNames)) #
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+		# loop through phylogenies within each community subset#
+		for (p in 1:length(phylos)) #
+			{ 	#
+			ComDist_abund[[c]][[p]] <- comdist( coms[[c]], phydist[[c]][[p]], abundance.weighted=TRUE )#
+			ComDist_pres[[c]][[p]] <- comdist( coms[[c]], phydist[[c]][[p]], abundance.weighted=FALSE )#
+			write.csv( as.matrix( ComDist_abund[[c]][[p]]), paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv"))#
+			write.csv( as.matrix( ComDist_pres[[c]][[p]]), paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv"))#
+			}#
+#
+	# import pre-run results#
+	for (p in 1:length(phylos)) #
+		{ 	#
+			ComDist_abund[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+			ComDist_pres_[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+		}#
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	}
+ComDist_abund <- ComDist_pres <- vector("list",length=length(coms))#
+names(ComDist_abund) <- names(ComDist_pres) <- names(coms)#
+#
+# find comdist for all communities and branch lengths#
+	# loop through community subsets#
+	for (c in 1:length(coms)) #
+	{	#
+		# list to contain results for phylogeny#
+		ComDist_abund[[c]] <- ComDist_pres[[c]] <- vector("list",length=length(phyNames)) #
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+		# loop through phylogenies within each community subset#
+		for (p in 1:length(phylos)) #
+			{ 	#
+			ComDist_abund[[c]][[p]] <- comdist( coms[[c]], phydist[[c]][[p]], abundance.weighted=TRUE )#
+			ComDist_pres[[c]][[p]] <- comdist( coms[[c]], phydist[[c]][[p]], abundance.weighted=FALSE )#
+			write.csv( as.matrix( ComDist_abund[[c]][[p]]), paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv"))#
+			write.csv( as.matrix( ComDist_pres[[c]][[p]]), paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv"))#
+			}#
+#
+	# import pre-run results#
+	for (p in 1:length(phylos)) #
+		{ 	#
+			ComDist_abund[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+			ComDist_pres_[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+		}#
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	}
+import results#
+	for (c in 1:length(coms)) #
+	{	#
+		# list to contain results for phylogeny#
+		ComDist_abund[[c]] <- ComDist_pres[[c]] <- vector("list",length=length(phyNames)) #
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	# import results#
+	for (p in 1:length(phylos)) #
+		{ 	#
+			ComDist_abund[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+			ComDist_pres_[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+		}#
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	}
+paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv" )
+names(coms)[1]
+names(coms)
+paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv" )
+ComDist_abund[[c]] <- ComDist_pres[[c]] <- vector("list",length=length(phyNames)) #
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames
+ComDist_abund[[1]]
+for (c in 1:length(coms)) #
+	{	#
+		# list to contain results for phylogeny#
+		ComDist_abund[[c]] <- ComDist_pres[[c]] <- vector("list",length=length(phyNames)) #
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	# import results#
+	for (p in 1:length(phylos)) #
+		{ 	#
+			ComDist_abund[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+			ComDist_pres_[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+		}#
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	}
+for (c in 1:length(coms)) #
+	{	#
+		# list to contain results for phylogeny#
+		ComDist_abund[[c]] <- ComDist_pres[[c]] <- vector("list",length=length(phyNames)) #
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	# import results#
+	for (p in 1:length(phylos)) #
+		{ 	#
+			ComDist_abund[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+			# ComDist_pres_[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+		}#
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	}
+length(coms)
+summary(coms)
+ComDist_abund[[c]][[p]]
+ComDist_pres[[c]][[p]]
+ComDist_abund[[c]][[p]] <- comdist( coms[[c]], phydist[[c]][[p]], abundance.weighted=TRUE )
+ComDist_abund[[c]][[p]]
+ComDist_abund <- ComDist_pres <- vector("list",length=length(coms))#
+names(ComDist_abund) <- names(ComDist_pres) <- names(coms)
+loop through community subsets#
+	for (c in 1:length(coms)) #
+	{	#
+		# list to contain results for phylogeny#
+		ComDist_abund[[c]] <- ComDist_pres[[c]] <- vector("list",length=length(phyNames)) #
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+		# loop through phylogenies within each community subset#
+		for (p in 1:length(phylos)) #
+		{ 	#
+			ComDist_abund[[c]][[p]] <- comdist( coms[[c]], phydist[[c]][[p]], abundance.weighted=TRUE )#
+			ComDist_pres[[c]][[p]] <- comdist( coms[[c]], phydist[[c]][[p]], abundance.weighted=FALSE )#
+			write.csv( as.matrix( ComDist_abund[[c]][[p]]), paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv"))#
+			write.csv( as.matrix( ComDist_pres[[c]][[p]]), paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv"))#
+		}#
+	}
+for (c in 1:length(coms)) #
+	{	#
+		# list to contain results for phylogeny#
+		ComDist_abund[[c]] <- ComDist_pres[[c]] <- vector("list",length=length(phyNames)) #
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	# import results#
+	for (p in 1:length(phylos)) #
+		{ 	#
+			ComDist_abund[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_abund_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+			ComDist_pres[[c]][[p]] <- dist( read.csv( paste0( ComDistwd, "ComDist_pres_", names(coms)[c], "_", phyNames[p], ".csv" ), row.names=1 ) ) #
+		}#
+		names(ComDist_abund[[c]]) <- names(ComDist_pres[[c]]) <- phyNames#
+	}
+summary(ComDist_abund)
+summary(ComDist_pres)
+summary(ComDist_abund[[1]])
+summary(ComDist_abund[[2]])
+summary(ComDist_abund[[3]])
+summary(ComDist_abund[[4]])
+summary(ComDist_abund[[5]])
+summary(ComDist_abund[[6]])
+summary(ComDist_pres[[1]])
+summary(ComDist_pres[[2]])
+summary(ComDist_pres[[3]])
+summary(ComDist_pres[[4]])
+summary(ComDist_pres[[5]])
+summary(ComDist_pres[[6]])
+ComDist <- list(ComDist_abund, ComDist_pres)
+paste0( FIGwd, names(ComDist), names(ComDist[c]), ".pdf" )
+ComDist <- list(ComDist_abund, ComDist_pres)
+summary(ComDist)
+?list
+names(ComDist) <- c("ComDist_abund", "ComDist_pres")
+paste0( FIGwd, names(ComDist), names(ComDist[c]), ".pdf" )
+paste0( FIGwd, names(ComDist), names(ComDist[[a]][c]), ".pdf" )
+a=1
+paste0( FIGwd, names(ComDist), names(ComDist[[a]][c]), ".pdf" )
+c
+c=1
+paste0( FIGwd, names(ComDist), names(ComDist[[a]][c]), ".pdf" )
+paste0( FIGwd, names(ComDist), "_", names(ComDist[[a]][c]), ".pdf" )
+paste0( FIGwd, names(ComDist[a]), "_", names(ComDist[[a]][c]), ".pdf" )
+library(MASS)#
+	library(car)#
+	type <- rep(c("Fre","F1","Nar"),4)		# names for labels#
+	cols <- rep(c("black","red","blue"),4)	# colors for labels#
+	syms <- rep(c(15,16,17),4)#
+#
+	# plot into pdf files#
+	for( a in 1:length(ComDist))#
+	{#
+		for( c in 1:length(ComDist_abund) )#
+		{#
+			pdf( file=paste0( FIGwd, names(ComDist[a]), "_", names(ComDist[[a]][c]), ".pdf" ), width=10, height=10 )#
+			par( mfrow=c(4,5) )#
+			for( p in 1:20 )#
+			{#
+				fit <- isoMDS(ComDist[[c]][[p]], k=2)#
+				x <- fit$points[,1]#
+				y <- fit$points[,2]#
+				plot( x, y, col=cols, pch=syms, cex=2, main = paste0( names( ComDist[c]), " ", names( ComDist[[c]][p] ) ) )#
+			}#
+			dev.off()#
+		}		#
+	}
+library(MASS)#
+	library(car)#
+	type <- rep(c("Fre","F1","Nar"),4)		# names for labels#
+	cols <- rep(c("black","red","blue"),4)	# colors for labels#
+	syms <- rep(c(15,16,17),4)#
+#
+	# plot into pdf files#
+	for( a in 1:length(ComDist))#
+	{#
+		for( c in 1:length(ComDist_abund) )#
+		{#
+			pdf( file=paste0( FIGwd, names(ComDist[a]), "_", names(ComDist[[a]][c]), ".pdf" ), width=10, height=10 )#
+			par( mfrow=c(4,5) )#
+			for( p in 1:20 )#
+			{#
+				fit <- isoMDS(ComDist[[a]][[c]][[p]], k=2)#
+				x <- fit$points[,1]#
+				y <- fit$points[,2]#
+				plot( x, y, col=cols, pch=syms, cex=2, main = paste0( names( ComDist[[a]][c]), " ", names( ComDist[[a]][[c]][p] ) ) )#
+			}#
+			dev.off()#
+		}		#
+	}

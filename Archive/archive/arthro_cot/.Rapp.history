@@ -1,0 +1,460 @@
+x <- seq(1,1000)#
+y <- log(x)#
+plot(y~x)
+x <- seq(1,1000)#
+y <- log(x, base=2)#
+plot(y~x, add = TRUE)
+?plot
+points(y~x, add = TRUE)
+points(x,y, add = TRUE)
+points(x,y)
+x <- seq(1,1000)#
+y <- log(x)#
+plot(y~x)#
+#
+x <- seq(1,1000)#
+y <- log(x, base=2)#
+points(x,y)
+x <- seq(1,1000)#
+y <- log(x)#
+plot(y~x)
+y <- log(x, base=0.5)
+points(x,y)
+x <- seq(1,1000)#
+y <- log(x)#
+plot(y~x)#
+#
+x <- seq(1,1000)#
+y <- log(x, base=0.5)#
+points(x,y)
+y <- log(x, base=0.5)
+y
+x <- seq(1,1000)#
+y <- log(x,10)#
+plot(y~x)#
+#
+#
+y <- log(x,5)#
+points(x,y)
+x <- seq(1,1000)#
+y <- log(x,5)#
+plot(y~x)#
+#
+#
+y <- log(x,10)#
+points(x,y)
+lines(x,y)
+x <- seq(1,1000)#
+y <- log(x,5)#
+plot(y~x)#
+#
+#
+y <- log(x,10)#
+lines(x,y)
+x <- seq(1,1000)#
+y <- log(x,5)#
+plot(y~x)#
+#
+#
+y <- log(x,15)#
+lines(x,y)
+par(mfrow=c(1,1))
+lines(x,y)
+x <- seq(1,1000)#
+y <- log(x,5)#
+plot(y~x)#
+#
+y <- log(x,15)#
+lines(x,y)
+?plot
+plot(y~x, type=l)
+plot(y~x, type="l")
+x <- seq(1,1000)#
+y <- log(x,5)#
+plot(y~x, type="l")#
+#
+y <- log(x,15)#
+lines(x,y)
+x <- seq(1,1000)#
+y <- log(x,1)#
+plot(y~x, type="l")#
+#
+y <- log(x,10)#
+lines(x,y)
+x <- seq(1,1000)#
+y <- log(x,1)#
+plot(y~x, type="l")
+y <- log(x,2)
+y <- log(x,1)
+y <- log(x,2)
+x <- seq(1,1000)#
+y <- log(x,2)#
+plot(y~x, type="l")#
+#
+y <- log(x,10)#
+lines(x,y)
+y <- log(x,10)
+x <- seq(1,1000)#
+y <- log(x,10)#
+plot(y~x, type="l")#
+#
+y <- log(x,100)#
+lines(x,y)
+x <- seq(1,1000)#
+y <- log(x,10)#
+plot(y~x, type="l", label = "Barrier Effects on Genetic Differentiation", xlab = "generations", ylab = "genetic differentiation")#
+#
+y <- log(x,100)#
+lines(x,y)
+x <- seq(1,1000)#
+y <- log(x,1000)#
+plot(y~x, type="l", label = "Barrier Effects on Genetic Differentiation", xlab = "generations", ylab = "genetic differentiation")#
+#
+y <- log(x,10000)#
+lines(x,y)
+x <- seq(1,1000)#
+y <- log(x,1000)#
+plot(y~x, type="l", label = "Barrier Effects on Genetic Differentiation", xlab = "generations", ylab = "genetic differentiation")#
+#
+y <- log(x,100000)#
+lines(x,y)
+x <- rep(1,1000)
+y <- -1/x
+plot(x,y)
+x <- seq(1,1000)
+y <- -1/x
+plot(x,y)
+y <- 1/x
+lines(x,y)
+plot(x,y, type = "l")
+x <- seq(1,1000)#
+y <- -1/x#
+plot(x,y, type = "l")#
+y <- 1/x#
+lines(x,y)
+x <- seq(1,1000)
+y <- -1/x + 1
+plot(x,y, type = "l")
+y <- log(x)
+lines(x,y)
+y <- log(x,10)
+lines(x,y)
+y <- log(x,1000)
+lines(x,y)
+y <- log(x,100)
+lines(x,y)
+y <- log(x,100)
+plot(x,y, type = "l")
+x <- seq(1,1000000)
+y <- log(x,100)
+plot(x,y, type = "l")
+x <- seq(1,1000000)
+y <- log(x,1000)
+plot(x,y, type = "l")
+y <- log(x,10000)
+plot(x,y, type = "l")
+y <- log(x,100000)
+plot(x,y, type = "l")
+b <- c(1,10,100)
+y <- log(x,b)
+for i in (1:length(b))#
+{#
+	y <- log(x,i)#
+	}
+b <- c(1,10,100)#
+for b in (1:length(b))#
+{#
+	y <- log(x,b)#
+	}
+for b in (1:3)
+?for
+)
+?"for"
+for (b in 1:3)
+{#
+	y <- log(x,b)#
+	}
+y
+x <- seq(1,10)
+b <- c(1,10,100)
+for (b in 1:3)
+{
+	y <- log(x,b)
+	}
+y
+b <- c(1,10,100)#
+for (i in b)#
+{#
+	y <- log(x,i)#
+	}
+log(1)
++
+)
+log(10)
+log(100)
+log(1,1)
+x <- seq(1,10)#
+b <- c(10,100,1000)#
+for (i in b)#
+{#
+	y <- log(x,i)#
+	}
+y
+y <- matrix(10,3)
+y <- matrix(10,3)#
+for (i in b)#
+{#
+	y[i] <- log(x,i)#
+	}
+y <- matrix(10,3)#
+for (i in b)#
+{#
+	y[,i] <- log(x,i)#
+	}
+y
+y[,1]
+y[1]
+y <- matrix(10,3)
+y
+y <- matrix(10,3)
+y
+y <- matrix(10,30)
+y <- matrix(10,30);y
+y <- matrix(0,10,3);y
+y[i]
+y[i,1]
+x <- seq(1,10)#
+b <- c(10,100,1000)#
+y <- matrix(0,10,3);y#
+for (i in b)#
+{#
+	y[,i] <- log(x,i)#
+	}
+y
+for (i in 1:b)
+{#
+	y[,i] <- log(x,i)#
+	}
+for (i in 1:length(b))
+{
+	y[,i] <- log(x,i)
+	}
+length(b)
+library(picante)
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cottonwood")
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+plot(fullphy, cex=0.25)
+comm <- data.matrix(read.csv("arthro_cot_2003.csv"))
+comm <- data.matrix(read.csv("arthro_cot_2003_insect.csv"))
+phy <- prune.sample(comm,fullphy) # cuts down the phylogeny to include only what's in the community
+plot(phy, cex=0.4)
+phy.pd <- pd(comm, phy, include.root = TRUE)
+write.csv(phy.pd,"pd_u.csv")
+phydist <- cophenetic(phy)
+phy.ses.mpd <- ses.mpd(comm, phydist, null.model = "richness", abundance.weighted = TRUE, runs = 999)
+write.csv(phydist,"phydist.csv")
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro/")#
+phy <- read.nexus("arthro.nexus")#
+phy <- read.nexus("arthroultra.trees")#
+plot(phy, cex=0.25)#
+comm <- data.matrix(read.table("arthrocomm.txt"))
+phydist <- cophenetic(phy)#
+ses.mpd.arthro.w <- ses.mpd(comm, phydist, null.model = 'richness', abundance.weighted = TRUE, runs = 999); ses.mpd.arthro.w
+comm <- data.matrix(read.csv("arthro_cot_2003.csv"))
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+plot(fullphy, cex=0.25)
+comm <- data.matrix(read.csv("arthro_cot_2003.csv"))
+phy <- prune.sample(comm,fullphy) # cuts down the phylogeny to include only what's in the community
+plot(phy, cex=0.4)
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cottonwood")
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+comm <- data.matrix(read.csv("arthro_cot_2003.csv"))
+phy <- prune.sample(comm,fullphy) # cuts down the phylogeny to include only what's in the community
+plot(phy, cex=0.4)
+phy.pd <- pd(comm, phy, include.root = TRUE)
+write.csv(phy.pd,"pd_u.csv")
+phy.ses.pd <- ses.pd(comm, phy, null.model="richness", runs=999)
+write.csv(phy.ses.pd,"pds_u.csv")
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+phy <- fullphy
+plot(phy)
+library(picante)
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cottonwood")
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+comm <- data.matrix(read.csv("arthro_cot_2003.csv"))
+phydist <- cophenetic(phy)
+phy <- fullphy
+phydist <- cophenetic(phy)
+phy.ses.mpd <- ses.mpd(comm, phydist, null.model = "richness", abundance.weighted = TRUE, runs = 999)
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+phy <- fullphy
+phydist <- cophenetic(phy)
+phy.ses.mpd <- ses.mpd(comm, phydist, null.model = "richness", abundance.weighted = TRUE, runs = 999)
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cottonwood")
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+phy <- fullphy
+plot(phy, cex=0.4)
+phydist <- cophenetic(phy)
+ses.mntd.arthro.w <- ses.mntd(comm, phydist, null.model = 'richness', abundance.weighted = TRUE, runs = 999); ses.mntd.arthro.w
+phy.ses.mpd <- ses.mpd(comm, phydist, null.model = "richness", abundance.weighted = TRUE, runs = 999)
+phydist <- cophenetic(phy)
+phy.comdist <- comdist(comm, phydist, abundance.weighted=FALSE)
+comm <- data.matrix(read.csv("arthro_cot_2003.csv"))
+phy.pd <- pd(comm, phy, include.root = TRUE)
+phydist <- cophenetic(phy)
+phy.ses.mpd <- ses.mpd(comm, phydist, null.model = "richness", abundance.weighted = TRUE, runs = 999)
+phydist <- cophenetic(phy)#
+#
+# not abundance weighted#
+phy.comdist <- comdist(comm, phydist,
+phy.comdist <- comdist(comm, phydist, abundance.weighted=FALSE)
+phy.comdist
+phy.comdist.uw <- comdist(comm, phydist, abundance.weighted=FALSE)
+comm <- data.matrix(read.csv("arthro_cot_2003_insect.csv"))
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cottonwood")#
+fullphy <- read.nexus("arthro_cot_ultra.trees")#
+plot(fullphy, cex=0.25)
+comm <- data.matrix(read.csv("arthro_cot_2003_insect.csv"))
+phy <- prune.sample(comm,fullphy) # cuts down the phylogeny to include only what's in the community
+plot(phy, cex=0.4)
+write.csv(comm,"comtest")
+write.csv(comm,"comtest.csv")
+setwd("/Users/karljarvis/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro/")
+comm <- data.matrix(read.table("arthrocomm.txt"))
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro/")
+comm <- data.matrix(read.table("arthrocomm.txt"))
+comm <- data.matrix(read.table("arthro_cot_2003_insect.txt"))
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cottonwood")
+fullphy <- read.nexus("arthro_cot_ultra.trees")
+plot(fullphy, cex=0.25)
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cottonwood")#
+fullphy <- read.nexus("arthro_cot_ultra.trees")#
+plot(fullphy, cex=0.25)#
+#
+# Community with all arthropods#
+#comm <- data.matrix(read.csv("arthro_cot_2003.csv"))#
+#
+# Community with insects only#
+comm <- data.matrix(read.table("arthro_cot_2003_insect.txt"))
+phy <- prune.sample(comm,fullphy) # cuts down the phylogeny to include only what's in the community#
+plot(phy, cex=0.4)
+comm <- data.matrix(read.table("arthro_cot_2003_insect.txt"))
+phy <- prune.sample(comm,fullphy) # cuts down the phylogeny to include only what's in the community#
+plot(phy, cex=0.4)
+phydist <- cophenetic(phy)
+phy.ses.mpd <- ses.mpd(comm, phydist, null.model = "richness", abundance.weighted = TRUE, runs = 999)
+write.csv(phy.ses.mpd,"nri_u_rich.csv")
+phydist <- cophenetic(phy)#
+out.ses.mntd <- ses.mntd(comm, phydist, null.model = 'richness', abundance.weighted = TRUE, runs = 999); write.csv(out.ses.mntd,"nti_w_rich.csv")
+nti <- out.ses.mntd[mntd.obs.p]
+nti <- out.ses.mntd[,mntd.obs.p]
+nti <- as.matrix(out.ses.mntd)
+nti
+ntip <- nti[,mntd.obs.p]
+ntip <- nti$mntd.obs.p
+nti
+class(out.sees.mntd)
+class(out.ses.mntd)
+out.ses.mntd$mntd.obs.p
+ntip <- out.ses.mntd$mntd.obs.p
+hist(ntip)
+nrip <- out.ses.mpd$mpd.obs.p
+nrip <- phy.ses.mpd$mpd.obs.p
+hist(nrip)
+phydist <- cophenetic(phy)
+out.comdist <- comdist(comm, phydist, abundance.weighted=TRUE)
+write(phy.comdist.w, "phylobeta.w.txt", ncol=nrow(comm))
+write(out.comdist, "phylobeta.txt", ncol=nrow(comm))
+write.csv(out.comdist, "phylobeta.csv", ncol=nrow(comm))
+write.csv(out.comdist, "phylobeta.csv")
+write(out.comdist, "phylobeta.txt", ncol=nrow(comm))
+library(cluster)
+phy.comdist.w.clusters <- hclust(phy.comdist.w)
+phy.comdist.clusters <- hclust(out.comdist)
+plot(out.comdist.clusters, cex=0.5)
+out.comdist.clusters <- hclust(out.comdist)
+plot(out.comdist.clusters, cex=0.5)
+plot(out.comdist.clusters, cex=1)
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cot_bl")
+fullphy <- read.nexus("arthro_cot_bltest.trees")
+plot(fullphy, cex=0.25)
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cot_bl")
+fullphy <- read.nexus("arthro_cot_bltest.trees")
+plot(fullphy, cex=0.25)
+fullphy <- read.nexus("arthro_cot_bltest.trees")
+plot(fullphy, cex=0.25)
+comm <- data.matrix(read.table("arthro_cot_2003_insect.txt"))
+phy <- prune.sample(comm,fullphy) # cuts down the phylogeny to include only what's in the community#
+plot(phy, cex=0.4)#
+#
+##################################
+# Faith's Phylogenetic Diversity#
+##################################
+# regular PD#
+out.pd <- pd(comm, phy, include.root = TRUE) #
+write.csv(out.pd,"pd_u.csv")#
+#
+# standardized PD, richness null model#
+out.ses.pd <- ses.pd(comm, phy, null.model="richness", runs=999)#
+write.csv(out.ses.pd,"pds_u.csv")#
+#
+##################################
+# NRI #
+##################################
+# NRI - abundance weighted#
+phydist <- cophenetic(phy)#
+out.ses.mpd <- ses.mpd(comm, phydist, null.model = "richness", abundance.weighted = TRUE, runs = 999)#
+write.csv(out.ses.mpd,"nri_ultra_rich.csv")#
+#
+##################################
+# NTI #
+##################################
+# abundance weighted#
+phydist <- cophenetic(phy)#
+out.ses.mntd <- ses.mntd(comm, phydist, null.model = 'richness', abundance.weighted = TRUE, runs = 999); write.csv(out.ses.mntd,"nti_ultra_rich.csv")#
+#
+##################################
+# Phylogenetic Beta Diversity#
+##################################
+phydist <- cophenetic(phy)#
+#
+# not abundance weighted#
+#out.comdist.uw <- comdist(comm, phydist, abundance.weighted=FALSE)#
+##
+#library(cluster)#
+#phy.comdist.uw.clusters <- hclust(phy.comdist)#
+#plot(phy.comdist.uw.clusters, cex=0.5)#
+#
+# abundance weighted#
+out.comdist <- comdist(comm, phydist, abundance.weighted=TRUE)#
+write(out.comdist, "phylobeta.txt", ncol=nrow(comm))#
+#
+library(cluster)#
+out.comdist.clusters <- hclust(out.comdist)#
+plot(out.comdist.clusters, cex=1)
+setwd("/Users/kjj/Documents/_NAU/Classes/G2E/Phylomeet/Analysis/arthro_cottonwood")#
+fullphy <- read.nexus("arthro_cot_ultra.trees")#
+plot(fullphy, cex=0.25)#
+#
+# Community with all arthropods#
+#comm <- data.matrix(read.csv("arthro_cot_2003.csv"))#
+#
+# Community with insects only#
+comm <- data.matrix(read.table("arthro_cot_2003_insect.txt"))#
+#
+#trait <- read.table("arthrotrait.txt")#
+#write.table(comm[,36:111], "acom.txt")#
+#
+# prune tree#
+phy <- prune.sample(comm,fullphy) # cuts down the phylogeny to include only what's in the community#
+plot(phy, cex=0.4)
+phydist <- cophenetic(phy)
+out.comdist <- comdist(comm, phydist, abundance.weighted=TRUE)#
+write(out.comdist, "phylobeta.txt", ncol=nrow(comm))#
+#
+library(cluster)#
+out.comdist.clusters <- hclust(out.comdist)#
+plot(out.comdist.clusters, cex=1)

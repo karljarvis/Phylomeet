@@ -1,0 +1,110 @@
+CLUSTAL 2.1 multiple sequence alignment
+
+
+Seq1            TGTATCTGACCTGTTGCTTCCGTGCTGCACATGCCCGCGAAGGTGTGCCTCCTGGTCCGG
+Seq5            ------------------------------------------------------------
+Seq4            ------------------------------------------------------------
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            AGTACGCCACGTACTGCGCACCCCGGGGGGTCGGCACGGGAGGTTGACCGTAAGAAACTC
+Seq5            ------------------------------------------------------------
+Seq4            ------------------------------------------------------------
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            TTGCCTTTGAATGTCTTCTGTCTGAACTGTATTACACAAAGAGTTAAAACTTTCAACAAC
+Seq5            ------------------------------------------------------------
+Seq4            ------------------------------------------------------------
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            GGATCTCTTGGTTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAGTGTGAATT
+Seq5            ------------------------------------------------------------
+Seq4            ------------------------------------------------------------
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            GCAGAATTCCGTGAATCATCGAATCTTTGAACGCACATTGCGCCTCCTGGTATTCCGGGA
+Seq5            ------------------------------------------------------------
+Seq4            ------------------------------------------------------------
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            GGCATGCCTGTCCGAGCGTCACTAAAATCAACTCGAGCACTTTTGCACGGTCGTGGAGGA
+Seq5            ------------------------------------------------------------
+Seq4            ------------------------------------------------------------
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            AGAGTCCGTCTCGTCGCGGTCTCCCCCCCGAAAATCAACGGCGGAGAGTCACTGGCACCT
+Seq5            ------------------------------------------------------------
+Seq4            ------------------------------------------------------------
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            GGCGTAGTAGCATCGTTCGCTGATCAAACCAGTGTCGTTCCTGCCGGCAAACCCCCGAAT
+Seq5            ------------------------------------------------------------
+Seq4            ------------------------------------------------------------
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            GAACATGTCTCTCAGCATGATATTTCAAATCCCACCTGTGTATCTTACCTGTTGCTTCCG
+Seq5            -----------------------------------------------------GCTTCCG
+Seq4            ---------------CATGATATTTCAAACCCCACCTGTGTATCTTACCTGTTGCTTCCG
+Seq3            --------------------TATTTCAAATCCCACCTGTGTATCTTACCTGTTGCTTCCG
+                                                                     *******
+
+Seq1            TGCTGCACATGCTGCCAAGGCGTGTCTCCT--GGTCC-----CGCGTACC---GAGTGCT
+Seq5            TGCTGCACATGCTGCGAAGTCGTGTCTCCT--GGTCC-----CGCGTACC---GAGTGCT
+Seq4            TGCCGCACATGCTGTGAAGGCGTGCCTCCTCTGGTCCTCTGGCACGTACCCCGAGGTACT
+Seq3            TGCTGCACATGCTGCAAAGTCGTGTCTCCCGGTGTCC-----CGCGTACC---GAGTGCT
+                *** **********  *** **** ****    ****     * ******     ** **
+
+Seq1            ACGACGCGGAA----CCTGGTG-AGTCGGCACGGGAGGTTAACCTTAA-ACTCTTGCCTC
+Seq5            ACGTCACGGAA----CCTGGTG-AGTCGGCACGGAAGGTTAACCTTAA-ACTCTTGCCTT
+Seq4            GCCCCCGGGAC----CCTGGGGGAGTCGGCACGGGAGGTTAACCGTAA-ACTCTTGCCTT
+Seq3            ACGGCACGGACGGGCCCCTGGGGAGTCGGCACGGGAGGTTAACCTTAAGACTCTTGCCTT
+                 *  *  ***     **  * * *********** ********* *** ********** 
+
+Seq1            TGAATGCCTTCTGTCTGAACTGTAGTACATTGGAAAAAAGTTAAAACTTTCAACAACGGA
+Seq5            TGAATGCCTTCTGTCTGAACTGTAGTACATTGAAAAAAAGTTAAAACTTTCAACAACGGA
+Seq4            TGAATGCCTTCCGTCTGAACTATAGTACGT---AGAAAAGTTAAAACTTTCAACAACGGA
+Seq3            TGAATGCCTTCTGTCTGAACTGTAGTACAT-AAAAAGAAGTTAAAACTTTCAACAACGGA
+                *********** ********* ****** *   * * ***********************
+
+Seq1            TCTCTTGGTTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAGTGTGAATTGCA
+Seq5            TCTCTTGGTTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAGTGTGAATTGCA
+Seq4            TCTCTTGGTTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAGTGTGAATTGCA
+Seq3            TCTCTTGGTTCTCGCATCGATGAAGAACGCAGCGAAATGCGATAAGTAGTGTGAATTGCA
+                ************************************************************
+
+Seq1            GAATTCCGTGAATCATCGAATCTTTGAACGCACATTGCGCCTCCTGGCATTCCGGGAGGC
+Seq5            GAATTCCGTGAATCATCGAATCTTTGAACGCACATTGCGCCTCCTGGCATTCCGGGAGGC
+Seq4            GAATTCCGTGAATCATCGAATCTTTGAACGCACATTGCGCCTCCTGGTATTCCGGGAGGC
+Seq3            GAATTCCGTGAATCATCGAATCTTTGAACGCACATTGCGCCTCCTGGCATTCCGGGAGGC
+                *********************************************** ************
+
+Seq1            ATGCCTGTTCGAGCGTCACTAAAATGAACTCAAGCACTTTTT-GCGTGGTCATGGAGGAA
+Seq5            ATGCCTGTTCGAGCGTCACTAAAATCAACTCAAGCACTTTT--GCGTGGTCATGGAGGAA
+Seq4            ATGCCTGTTCGAGCGTCACTAAAATCAACTCAAGCACTTTT--GCGTGGTCATGGAGGAA
+Seq3            ATGCCTGTCCGAGCGCCTCGAAAATCAGCACGGGTGCTCGCCGGCCCGGTCATGGAGGAA
+                ******** ****** * * ***** * * *  *  **     **  *************
+
+Seq1            GAGCCT-GCCTTGTTGCGGTGTCTCCCCTCCCAAAATCAACGGCGGAAAGTCACTGGCAC
+Seq5            GAGTCT-GCCTTGTTGCGG-GTCTCCCCTCCCAAAATCAACGGCGGAAAGTCACTGGCAC
+Seq4            GAGTCCCGCCTTGTTGCGG--TCTCCCCTCCCAAAATCAAGGGCGGAAAGTCACTGGCAC
+Seq3            GAGTCT-GCCTTGTTGCGTGGACTCCCCTCCCAAAATCAACGGCGGAGAGTCA-------
+                *** *  ***********    ****************** ****** *****       
+
+Seq1            TCTGCGTAGTAGTATCATTCGCCGATCATCCAGTGTCCTTCCTGCCGCCAAACCCCCACA
+Seq5            TCGGCGTAGTAGTATCATTCGCCGATCATCCAGTGTGCTTCCTGCCGCCAAA--------
+Seq4            TCGGCGTAGTAGTAACATTCGCGGGTCGTCCAGTGTCCTTCCTGCCGTCAAACCC-----
+Seq3            ------------------------------------------------------------
+                                                                            
+
+Seq1            ATTCTCTCGA
+Seq5            ----------
+Seq4            ----------
+Seq3            ----------
+                          
