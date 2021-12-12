@@ -1,6 +1,6 @@
 # Phylomeet: Community Phylogenetics
  
-This is code I wrote for a (study)[https://onlinelibrary.wiley.com/doi/10.1002/ece3.3146] I led on how communities of arthropods differ in their evolutionary lineages, depending on which species of host tree they live on. 
+This is code I wrote for a [study](https://onlinelibrary.wiley.com/doi/10.1002/ece3.3146) I led on how communities of arthropods differ in their evolutionary lineages, depending on which species of host tree they live on. 
 
 ## arcot_data
 arcot is short for arthropod cottonwood data. The data for this study came from our coauthor Gina Wimp. She gathered the data for her dissertation in 2000-2003. 
